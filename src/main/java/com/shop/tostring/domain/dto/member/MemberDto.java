@@ -19,6 +19,7 @@ public class MemberDto {
     private String memail;      // 회원 이메일
     private String madress;     // 주소
 
+    // 엔티티로 변환
     public MemberEntity toMemberEntity(){
         return MemberEntity.builder()
                 .mno( this.mno )

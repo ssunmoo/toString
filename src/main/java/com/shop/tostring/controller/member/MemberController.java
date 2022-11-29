@@ -1,6 +1,7 @@
 package com.shop.tostring.controller.member;
 
 import com.shop.tostring.domain.dto.member.MemberDto;
+
 import com.shop.tostring.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -80,20 +81,28 @@ public class MemberController {
     }
 
     // 5. 아이디 찾기
-    @GetMapping("/findId")
+    @PostMapping("/findId")
     public String findId( @RequestBody MemberDto memberDto ){
+        System.out.println("--아이디찾기con--");
+        System.out.println(memberDto);
         String result = memberService.findId( memberDto );
         return result;
     }
 
     // 6. 비밀번호 찾기
-    @GetMapping("/findPw")
+    @PostMapping("/findPw")
     public String findPw( @RequestBody MemberDto memberDto ){
+        System.out.println("--비번찾기con--");
+        System.out.println(memberDto);
         String result = memberService.findPw( memberDto );
         return result;
     }
 
-
+    // 7. 이메일 인증코드 발송
+    @GetMapping("/getAuth")
+    public String getAuth( @RequestParam("toemail") String toemail ) {
+        return memberService.getAuth( toemail );
+    }
 
 
 

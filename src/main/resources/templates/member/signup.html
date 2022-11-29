@@ -33,17 +33,25 @@
       </div>
 
       <div>
-        <div><label>
-          <input type="text" class="memail" placeholder="이메일" onkeyup="emailCheck()">
-        </label></div>
-        <div class="check6"> </div>
-      </div>
-
-      <div>
         <div> <input type="text" class="madress" placeholder="주소"> </div>
         <div class="check7"> </div>
       </div>
     </form>
+
+    <div>
+        <div>
+            <input type="text" class="memail" placeholder="이메일" onkeyup="emailCheck()">
+        </div>
+        <div class="check6"> </div>
+        <div>
+            <button type="button" onclick="getAuth()" class="getauthbtn"> 인증코드 발급 </button>
+        </div>
+        <div class="authbox">
+            <div> <input type="text" class="authinput"> </div>
+            <button type="button" class="authbtn" onclick="authCode()">인증</button>
+            <div class="timerbox">  </div>
+        </div>
+    </div>
 
     <h3> 이용약관 </h3>
     <div class="confirmbox">
@@ -70,7 +78,6 @@
 
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
     <script src="/js/member/signup.js"></script>
 
 

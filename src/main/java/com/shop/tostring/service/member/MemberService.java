@@ -8,22 +8,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.User;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Random;
 
 @Transactional
 @RequiredArgsConstructor
 @Service
 public class MemberService {
 
+    // 회원 리포지토리
     @Autowired
     private final MemberRepository memberRepository;
 
+    // 세션
     @Autowired
     private HttpServletRequest request;
+
+    // 메일 전송
+    @Autowired
+    private JavaMailSender javaMailSender;
+
 
 //    // 로그인 정보 호출
 //    @Autowired
@@ -121,19 +132,22 @@ public class MemberService {
     public String findId( MemberDto memberDto ){
         // 1. 모든 레코드/엔티티 꺼내기
         List<MemberEntity> entityList = memberRepository.findAll();
-        System.out.println("아이디찾기 : " + memberDto.getMname());
-        System.out.println("아이디찾기 : " + memberDto.getMemail());
+
+        System.out.println("아이디찾기 서비스 : " + entityList.toString());
+
         // 2. 리스트에서 찾기
         for ( MemberEntity entity : entityList ){
             if( entity.getMname().equals( memberDto.getMname() )){  // 저장된 이름과 입력한 이름이 같으면
+                System.out.println(memberDto.getMname());
                 if( entity.getMemail().equals( memberDto.getMemail() )){  // 저장된 이메일과 입력한 이메일이 같으면
+                    System.out.println(memberDto.getMemail());
+                    System.out.println(entity.getMid());
                     return entity.getMid();
                 }
             }
         }
         return null;
     }
-
 
     // 6. 비밀번호 찾기
     @Transactional
@@ -152,6 +166,55 @@ public class MemberService {
     }
 
 
+    // 7. 이메일 인증코드 발송
+    public String getAuth( String toemail ){
+        String auth = ""; // 인증 코드
+        String html = "<html><body> <h2> .toString 회원가입 이메일 인증코드 입니다.</h2><br>";
+
+        Random random = new Random();   // 난수 객체
+        for ( int i = 0; i < 6; i++ ){  // 6번 반복
+            char randomchar = (char)(random.nextInt(26)+97); // 97부터 26개 : 97~122까지 : 알파벳 소문자
+            // char randomchar = (char)(random.nextInt(10)+48); // 48부터 10개 : 48~57까지 : 0~9
+            auth += randomchar;
+        }
+        html += "<h3> 인증코드 : " + auth + "</h3><br>"
+                + "<div> 해당 인증코드를 회원가입 창에 입력해 주세요 </div>";
+
+        html += "</body></html>";
+
+        emailsend( toemail, "인증코드입니다.", html ); // 메일 전송
+        return auth; // 인증 코드를 반환
+    } // getauth e
+
+    // **. 메일 전송 서비스
+    public void emailsend( String toemail, String title, String content ) {
+
+        try{
+            // 1. Mime 프로토콜 객체 생성
+            MimeMessage message = javaMailSender.createMimeMessage();
+            // 2. Mime 설정 객체 생성 new MimeMessageHelper( mime객체명, 첨부파일여부, 인코딩타입 )
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper( message, true, "UTF-8");
+            // 3. 보내는 사람의 정보
+            mimeMessageHelper.setFrom("14hhy@naver.com", "관리자");
+            // 4. 받는 사람의 정보
+            mimeMessageHelper.setTo( toemail );
+            // 5. 메일 제목
+            mimeMessageHelper.setSubject( title );
+            // 6. 메일의 내용
+            mimeMessageHelper.setText( content.toString(), true ); // HTML 형식
+            // 7. 메일 전송
+            javaMailSender.send( message );
+
+        } catch ( Exception e ) {
+            System.out.println("메일 전송 실패 :: " + e);
+        }
+
+    } // emailsend e
+
+
+
+
 
 
 }
+

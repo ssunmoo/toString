@@ -1,0 +1,41 @@
+package com.shop.tostring.domain.entity.board;
+
+import com.shop.tostring.domain.dto.board.BoardDto;
+import lombok.*;
+
+import javax.persistence.*;
+
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Entity
+@Table( name = "board")
+@Builder
+public class BoardEntity {
+
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    private int bno;		    // 게시글 번호
+    private String btitle;	    // 제목
+    private String bcontent;	// 내용	[ 썸머노트 이용하여 사진/영상 대용량 추가 ]
+    private String bdate;		// 작성일 : 기본 값 현재 시스템 날짜
+    private int bview;			// 조회수 : 기본 값 0
+    private int bcno;			// 게시판 카테고리 번호
+    private int mno;			// 작성자
+
+
+    // Dto로 변환
+    public BoardDto toBoardDto(){
+        return BoardDto.builder()
+                .bno(this.bno)
+                .btitle(this.btitle)
+                .bcontent(this.bcontent)
+                .bdate(this.bdate)
+                .bview(this.bview)
+                .bcno(this.bcno)
+                .mno(this.mno)
+                .build();
+    }
+
+}

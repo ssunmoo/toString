@@ -15,24 +15,30 @@ function setLogin() {
             location.href="/"
         }
     })
-
 }
 
 // 2. 아이디 찾기
 function findId(){
     let info = {
-        mname: document.querySelector('.mname').value,
-        memail: document.querySelector('.memail').value
+        mname : document.querySelector('.mname').value,
+        memail : document.querySelector('.memail').value
     }
 
     $.ajax({
         url : "/member/findId",
-        type : "get",
+        type : "post",
         data : JSON.stringify(info),
         contentType: "application/json",
         success: re => {
-            console.log( "결과ㅏㅏ "+re.mid );
-            document.querySelector('.findid').innerHTML = re.mid;
+            let html = '';
+            if( re !== '' ){
+                html += '<span>아이디  </span>'
+                    + '<span>'+ re +'</span>';
+                document.querySelector('.findid').innerHTML = html;
+            } else {
+                html += '<span> 정보를 다시 입력해 주세요 </span>';
+                document.querySelector('.findid').innerHTML = html;
+            }
         }
     })
 }
@@ -46,12 +52,21 @@ function findPw(){
 
     $.ajax({
         url : "/member/findPw",
-        type : "get",
+        type : "post",
         data : JSON.stringify(info),
         contentType: "application/json",
         success: re => {
-            console.log( "결과ㅏㅏ "+re.mpw );
-           document.querySelector('.findpw').innerHTML = re.mpw;
+            let html = '';
+            if( re !== '' ){
+                html += '<span>비밀번호  </span>'
+                    + '<span>'+ re +'</span>';
+                document.querySelector('.findpw').innerHTML = html;
+            } else {
+                html += '<span> 정보를 다시 입력해 주세요 </span>';
+                document.querySelector('.findpw').innerHTML = html;
+            }
         }
     })
 }
+
+
