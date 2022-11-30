@@ -27,7 +27,6 @@ public class BoardDto {
                 .bcontent(this.bcontent)
                 .bdate(this.bdate)
                 .bview(this.bview)
-                .bcno(this.bcno)
                 .mno(this.mno)
                 .build();
     }

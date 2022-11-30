@@ -38,7 +38,7 @@
 //                .defaultSuccessUrl("/")         //로그인 성공시 이동 페이지 URL
 //                .usernameParameter("mid")       // 로그인 시 아이디로 입력받을 변수명
 //                .passwordParameter("mpw")       // 로그인 시 비밀번호로 입력받을 변수명
-//                .failureUrl("/members/login/error") // 로그인 에러페이지 URL
+//                .failureUrl("/members/login")   // 로그인 실패 시 이동할 URL
 //                .and()
 //
 //             // 페이지 권한 설정
