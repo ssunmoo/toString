@@ -54,12 +54,14 @@ public class BoardController {
     // 게시글 작성
     @PostMapping("/setWrite")
     public boolean setWrite(BoardDto boardDto){
-        System.out.println("------");
-        System.out.println(boardDto);
         return boardService.setWrite(boardDto);
     }
 
-
+//    // 첨부파일 다운로드
+//    @GetMapping("/filedownload")
+//    public void filedownload( @RequestParam("filename") String filename ){
+//        boardService.filedownload( filename );
+//    }
 
 
 

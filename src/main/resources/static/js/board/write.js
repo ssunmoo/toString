@@ -24,13 +24,10 @@ document.querySelector('.categorylist').addEventListener( "change", e =>{
 // 3. 게시글 작성
 function setWrite(){
     let setform = document.querySelector('.setform');
-    console.log(setform)
+    // console.log(setform)
     let formdata = new FormData( setform );
     formdata.set("bcno", bcno ); // 카테고리 값 넣기
-    console.log("bcno : "+bcno)
-    console.log(formdata)
-    console.log(formdata.bcno)
-    console.log(formdata.btitle)
+
     $.ajax({
         url : "/board/setWrite",
         type : "post",
@@ -38,7 +35,6 @@ function setWrite(){
         contentType: false,
         processData: false,
         success: re => {
-            alert(re)
             if( re == true ){
                 alert('게시글 등록이 완료되었습니다');
             }else {
