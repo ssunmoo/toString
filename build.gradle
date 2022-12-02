@@ -29,6 +29,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // 타임리프
+    implementation 'org.springframework.boot:spring-boot-devtools:2.6.2' // 자동빌드
 }
 
 tasks.named('test') {

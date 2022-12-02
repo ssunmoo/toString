@@ -32,9 +32,35 @@ public class BoardController {
         return new ClassPathResource("templates/board/write.html");
     }
 
+    // 후기 게시판
+    @GetMapping("/rList")
+    public Resource rList(){
+        return new ClassPathResource("templates/board/review.html");
+    }
 
+    // 후기 게시판 상세보기
+    @GetMapping("/rListview")
+    public Resource rListview(){
+        return new ClassPathResource("templates/board/rListview.html");
+    }
 
+    // 게시글 수정
+    @GetMapping("/rListPut")
+    public Resource rListPut(){
+        return new ClassPathResource("templates/board/rListUpdate.html");
+    }
 
+    // 시연영상 게시판
+    @GetMapping("/tList")
+    public Resource tList(){
+        return new ClassPathResource("templates/board/testing.html");
+    }
+
+    // 시연영상 게시판 상세보기
+    @GetMapping("/tListview")
+    public Resource tListview(){
+        return new ClassPathResource("templates/board/tListview.html");
+    }
 
 
     // ------------------------ [ 요청 & 응답 ] ------------------------
@@ -57,12 +83,39 @@ public class BoardController {
         return boardService.setWrite(boardDto);
     }
 
-//    // 첨부파일 다운로드
-//    @GetMapping("/filedownload")
-//    public void filedownload( @RequestParam("filename") String filename ){
-//        boardService.filedownload( filename );
+    // 첨부파일 다운로드
+    @GetMapping("/filedownload")
+    public void filedownload( @RequestParam("filename") String filename ){
+        boardService.filedownload( filename );
+    }
+
+    // 후기 게시판
+    @GetMapping("/reviewList")
+    public List<BoardDto> reviewList(){
+        return boardService.reviewList();
+    }
+
+    // 후기 게시판 상세보기
+    @GetMapping("/reviewSelect")
+    public BoardDto reviewSelect( @RequestParam("bno") int bno ){
+        return boardService.reviewSelect( bno );
+    }
+
+    // 후기 게시판 게시글 수정
+    @PutMapping("/rUpdate")
+    public boolean rUpdate( BoardDto boardDto ){
+        return boardService.rUpdate( boardDto );
+    }
+
+    // 후기 게시판 게시글 삭제
+    @DeleteMapping("/rDelete")
+    public boolean rDelete( @RequestParam("bno") int bno ){
+        return boardService.rDelete( bno );
+    }
+
+//    // 시연영상 게시판
+//    public List<BoardDto> testingList(){
+//        return boardService.testingList();
 //    }
-
-
 
 }

@@ -3,11 +3,15 @@ package com.shop.tostring.domain.entity.board;
 import com.shop.tostring.domain.dto.board.BoardDto;
 import com.shop.tostring.domain.entity.BaseEntity;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@DynamicInsert // 컬럼 디폴트 값 사용시 선언
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,6 +26,8 @@ public class BoardEntity extends BaseEntity {
     private int bno;		    // 게시글 번호
     private String btitle;	    // 제목
     private String bcontent;	// 내용
+
+    @ColumnDefault("0")
     private int bview;			// 조회수 : 기본 값 0
     private int bstar;          // 별점
     private String bfile;       // 첨부파일
