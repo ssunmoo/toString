@@ -208,8 +208,21 @@ public class BoardService {
     // 후기 게시판 게시글 삭제
     public boolean rDelete( int bno ){
         Optional<BoardEntity> optional = boardRepository.findById( bno );
-
-        return true;
+        if ( optional.isPresent() ){
+            BoardEntity boardEntity = optional.get();
+            
+            // 첨부파일 삭제
+            if( boardEntity.getBfile() != null ){
+                File file = new File(path + boardEntity.getBfile()); // 등록된 첨부파일을 객체화
+                if( file.exists() ){
+                    file.delete();
+                }
+            }
+            boardRepository.delete( boardEntity );
+            return true;
+        }else {
+            return false;
+        }
     }
 
 //    // 시연영상 게시판

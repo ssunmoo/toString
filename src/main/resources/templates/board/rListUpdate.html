@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/rListUpdate.css">
 </head>
 <body>
     <div>
@@ -12,8 +13,23 @@
             </select>
         </div>
     </div>
-    <form class="updateform">
+    <form class="updateform" name="myform" id="myform" method="post">
         <div>
+            <div>
+                <fieldset>
+                    <div> 별점 선택 </div>
+                    <input type="radio" name="bstar" value="5" id="rate1" class="star1">
+                    <label for="rate1">★</label>
+                    <input type="radio" name="bstar" value="4" id="rate2" class="star2">
+                    <label for="rate2">★</label>
+                    <input type="radio" name="bstar" value="3" id="rate3" class="star3">
+                    <label for="rate3">★</label>
+                    <input type="radio" name="bstar" value="2" id="rate4" class="star4">
+                    <label for="rate4">★</label>
+                    <input type="radio" name="bstar" value="1" id="rate5" class="star5">
+                    <label for="rate5">★</label>
+                </fieldset>
+            </div>
             <div>
                 <input type="text" class="btitle" name="btitle">
             </div>

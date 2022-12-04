@@ -1,0 +1,155 @@
+a{
+    text-decoration-line: none;
+    color: #4c4c4c;
+}
+a:hover{
+    color: #f4cb49;
+}
+
+.header{
+    background: blueviolet;
+    height: 280px;
+}
+
+.top{
+    background: #f4cb49;
+    height: 40px;
+}
+
+.topbox{
+    width: 1200px;
+    height: 40px;
+    margin: 0 auto;
+    font-size: 13px;
+    text-align: center;
+    line-height: 3;
+}
+
+.mid{
+    background: #f5f6f7;
+    height: 40px;
+    border: 1px solid #dcdcdd;
+}
+
+.midbox{
+    width: 1200px;
+    height: 40px;
+    margin: 0 auto;
+    background: #f5f6f7;
+    display: flex;
+    justify-content: space-between;
+}
+
+.snsMenu{
+    font-size: 13px;
+    display: flex;
+    line-height: 3;
+}
+
+.snsMenu div{
+    border-right: 1px solid #dcdcdd;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+.userMenu{
+    font-size: 13px;
+    display: flex;
+    line-height: 3;
+    padding-left: 20px;
+    margin-right: 10px;
+}
+
+.userMenu span{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+
+.userMenu span:nth-child(1), .userMenu span:nth-child(2){
+    border-right: 1px solid #dcdcdd;
+}
+
+
+
+.bottom{
+    background: #fff;
+    height: 150px;
+    border-bottom: 1px solid #dcdcdd;
+}
+
+.bottomBox{
+    width: 1200px;
+    height: 150px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.logoBox{
+    width: 600px;
+    font-size: 60px;
+    line-height: 3;
+    padding-left: 20px;
+}
+
+.searchBox{
+    width: 600px;
+    display: flex;
+}
+
+.searchImg{
+    width: 250px;
+    border-right: 1px solid #dcdcdd;
+}
+
+.searchInput{
+    width: 300px;
+    height: 35px;
+    background: #fff;
+    border: 1px solid #f4cb49;
+    border-radius: 20px;
+    padding-left: 15px;
+    margin-top: 70px;
+}
+
+.search{
+    width: 250px;
+    height: 33px;
+    border: none;
+    outline: none;
+}
+
+
+
+.menu{
+    background: #fff;
+    height: 50px;
+    border-bottom: 1px solid #dcdcdd;
+}
+
+.menuBox{
+    width: 1200px;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    line-height: 3.5;
+}
+
+.boardMenu{
+    margin-left: 10px;
+}
+
+.boardMenu span{
+    padding-left: 15px;
+}
+
+.productMenu{
+    margin-right: 10px;
+}
+
+.productMenu span{
+    padding-right: 15px;
+}

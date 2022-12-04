@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+
 </head>
 <body>
-    <div th:replace="fragments/header.html :: header"></div>
+    <div th:replace="layouts/header.html :: header"></div>
     <h3> 메인 페이지 </h3>
     <div th:replace="fragments/footer.html :: footer"></div>
 </body>

@@ -45,11 +45,17 @@ function btnCreate(){
 
 // 후기 게시판 게시글 삭제
 function rDelete(){
-
+    $.ajax({
+        url : "/board/rDelete",
+        type : "delete",
+        data: { "bno" : bno },
+        success: re => {
+            location.href="/board/rList";
+        }
+    })
 }
 
 // 수정하기 버튼 클릭 시 수정 페이지 이동
-// 페이지 이동 함수
 function rUpdateBtn( bno ){
     sessionStorage.setItem( "bno", bno );
     location.href = "/board/rListPut";
