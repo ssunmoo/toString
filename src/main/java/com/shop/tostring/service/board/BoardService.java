@@ -2,11 +2,16 @@ package com.shop.tostring.service.board;
 
 import com.shop.tostring.domain.dto.board.BcategoryDto;
 import com.shop.tostring.domain.dto.board.BoardDto;
+import com.shop.tostring.domain.dto.board.PageVo;
 import com.shop.tostring.domain.entity.board.BcategoryEntity;
 import com.shop.tostring.domain.entity.board.BcategoryRepository;
 import com.shop.tostring.domain.entity.board.BoardEntity;
 import com.shop.tostring.domain.entity.board.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -160,14 +165,49 @@ public class BoardService {
 
     // 후기 게시판
     @Transactional
-    public List<BoardDto> reviewList(){
-        List<BoardEntity> entityList = boardRepository.findAll();
+    public PageVo reviewList( int bcno, int page, String key, String keyWord ){
+        Page<BoardEntity> entityList = null;
+        // vo 출력 객체 생성
+        PageVo pageVo = new PageVo();
+        // 페이지 설정 -> 0부터 시작
+        Pageable pageable = PageRequest.of( page-1, 5, Sort.by(Sort.Direction.DESC, "bno") );
+
+        // 검색여부
+        if( key.equals("btitle")){
+            entityList = boardRepository.findByBtitle( bcno, keyWord, pageable );
+        } else if ( key.equals("bcontent") ){
+            entityList = boardRepository.findByBcontent( bcno, keyWord, pageable );
+        } else {
+            entityList = boardRepository.findByBcno( bcno, pageable ); // 전체출력
+        }
         List<BoardDto> dtoList = new ArrayList<>();
+
+        // 표시할 페이징 번호 버튼 수
+        int btnCount = 5;
+        int startBtn = ( page/btnCount ) * btnCount+1; // 시작번호 버튼
+        int endBtn = startBtn + btnCount-1; // 마지막 버튼
+        
+        // 토탈 페이지
+        if( endBtn > entityList.getTotalPages() ) { // 마지막 페이지가 크면
+            endBtn = entityList.getTotalPages();    // 같게 만들기
+        }
+            
         // 엔티티에 있는 내용들을 dto로 저장해서 리턴
-        entityList.forEach( (r) -> dtoList.add( r.toBoardDto()));
-        System.out.println(dtoList);
-        return dtoList;
+        entityList.forEach( (r) ->
+                dtoList.add( r.toBoardDto() )
+        );
+        pageVo.setBoardDtoList( dtoList );
+        pageVo.setStartBtn( startBtn );
+        pageVo.setEndBtn( endBtn );
+        pageVo.setTotalPage( entityList.getTotalPages() );
+
+        return pageVo;
     }
+
+
+
+
+
 
     // 후기 게시판 상세보기
     @Transactional

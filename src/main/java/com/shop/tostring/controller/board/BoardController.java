@@ -2,6 +2,7 @@ package com.shop.tostring.controller.board;
 
 import com.shop.tostring.domain.dto.board.BcategoryDto;
 import com.shop.tostring.domain.dto.board.BoardDto;
+import com.shop.tostring.domain.dto.board.PageVo;
 import com.shop.tostring.service.board.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -91,8 +92,12 @@ public class BoardController {
 
     // 후기 게시판
     @GetMapping("/reviewList")
-    public List<BoardDto> reviewList(){
-        return boardService.reviewList();
+    public PageVo reviewList(
+            @RequestParam("bcno") int bcno, // 카테고리번호
+            @RequestParam("page") int page, // 페이지 번호
+            @RequestParam("key") String key, // 검색할 필드명 [ 제목, 작성자 등 ]
+            @RequestParam("keyWord") String keyWord ){ // 검색할 데이터
+        return boardService.reviewList( bcno, page, key, keyWord );
     }
 
     // 후기 게시판 상세보기
@@ -113,9 +118,5 @@ public class BoardController {
         return boardService.rDelete( bno );
     }
 
-//    // 시연영상 게시판
-//    public List<BoardDto> testingList(){
-//        return boardService.testingList();
-//    }
 
 }

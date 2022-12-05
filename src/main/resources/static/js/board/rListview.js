@@ -5,12 +5,14 @@ alert("게시글번호 : " + bno);
 // 후기 게시판 상세보기
 reviewSelect()
 function reviewSelect(){
+
     $.ajax({
         url : "/board/reviewSelect",
         type : "get",
         data : { "bno" : bno },
         success: re => {
             console.log(re)
+
             let html = '<tr>'
                 + '<td>회원번호'+re.mno+'</td>'
                 + '<td>별점'
@@ -34,6 +36,20 @@ function reviewSelect(){
                 + '<tr><td>'+re.bcontent+'</td></tr>'
                 + '<tr><td>'+re.bfile+'</td></tr>';
             document.querySelector('.rlist').innerHTML = html;
+
+            // css도 같이 바꿔줘야 하는 것 같다..!
+            if( re.bstar === 5 ){
+                let star = document.querySelector('.star1').checked === true;
+            }else if( re.bstar === 4 ){
+                let star = document.querySelector('.star2').checked === true;
+            }else if( re.bstar === 3 ){
+                let star = document.querySelector('.star3').checked === true;
+            }else if( re.bstar === 2 ){
+                let star = document.querySelector('.star4').checked === true;
+            }else if( re.bstar === 1 ){
+                let star = document.querySelector('.star5').checked === true;
+            }
+
         }
     })
 }
