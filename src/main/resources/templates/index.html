@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>toString</title>
     <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link th:href="@{/css/review.css}" rel="stylesheet">
+    <link th:href="@{/css/content.css}" rel="stylesheet">
+
+    <th:block layout:fragment="css"></th:block>
+    <th:block layout:fragment="script"></th:block>
 
 </head>
 <body>
-    <!-- <div th:replace="layouts/header.html :: header"></div> -->
-    <h3> 메인 페이지 </h3>
-    <div th:replace="fragments/footer.html :: footer"></div>
+    <div th:replace="fragments/header.html ::header"></div>
+    <div layout:fragment="content" class="container"></div>
+    <div th:replace="fragments/footer.html ::footer"></div>
+
+<!--    th : 타임리프 문법
+    1. th:fragment = " 이름정의 "
+    2. th:replace = "파일명.html :: fragment이름"
+    4.  세션 호출 방식
+    ${ session.세션이름 }
+    3. 조건식
+    th:if = 조건식
+    th:else = 조건식
+    5. 데이터 호출
+    th:text  = "${ 데이터 }"-->
 </body>
 </html>

@@ -13,6 +13,7 @@ a:hover{
 
 .top{
     background: #f4cb49;
+    width: 100%;
     height: 40px;
 }
 
@@ -100,7 +101,12 @@ a:hover{
 
 .searchImg{
     width: 250px;
-    border-right: 1px solid #dcdcdd;
+}
+.searchImg img{
+    width: 200px;
+    float: right;
+    padding-top: 25px;
+    padding-right: 10px;
 }
 
 .searchInput{
@@ -140,6 +146,7 @@ a:hover{
 
 .boardMenu{
     margin-left: 10px;
+    font-weight: 600;
 }
 
 .boardMenu span{
@@ -148,6 +155,7 @@ a:hover{
 
 .productMenu{
     margin-right: 10px;
+    font-weight: 600;
 }
 
 .productMenu span{

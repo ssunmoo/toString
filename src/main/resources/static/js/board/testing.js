@@ -63,12 +63,12 @@ function boardList( bcno, page ){
 // 게시글 상세보기 페이지 이동 함수
 function getView( bno ){
     sessionStorage.setItem( "bno", bno );
-    location.href = "/board/rListview";
+    location.href = "/board/tListview";
 }
 
 
 // 검색처리
-function rSearch(){
+function tSearch(){
     pageInfo.key = key = document.querySelector('.key').value;
     pageInfo.keyWord = keyWord = document.querySelector('.keyWord').value;
     console.log("pageInfo.key :: " + pageInfo.key)

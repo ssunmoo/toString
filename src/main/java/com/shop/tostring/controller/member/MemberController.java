@@ -51,6 +51,11 @@ public class MemberController {
         return new ClassPathResource("templates/member/findpw.html");
     }
 
+    @GetMapping("/layout")
+    public Resource getlayout(){
+        return new ClassPathResource("templates/layouts/layout1.html");
+    }
+
     // ------------------------ [ 요청 & 응답 ] ------------------------
 
     // 1. 회원가입

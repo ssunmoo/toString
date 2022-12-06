@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
+    <title>toString</title>
 </head>
 <body>
-    <div>
+
+<!--    <div layout:fragment="content"> -->
+    <div th:replace="fragments/header.html ::header"></div>
+
         <div> 후기 게시판 </div>
         <div>
             <button><a href="/board/write">글작성</a></button>
@@ -27,8 +32,7 @@
 
             </div>
         </div>
-    </div>
-
+<!--    </div>-->
 
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>

@@ -24,7 +24,7 @@ public class BcategoryEntity extends BaseEntity {
 
     // ---- 연관관계 ----
     // 게시판 카테고리 <-> 게시판
-    @Builder.Default
+    @Builder.Default // 기본 값 깡통을 만들어서 자리 만들어줘야함
     @OneToMany(mappedBy = "bcategoryEntity")
     private List<BoardEntity> boardEntityList = new ArrayList<>();
 

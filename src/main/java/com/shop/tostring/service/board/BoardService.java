@@ -166,6 +166,7 @@ public class BoardService {
     // 후기 게시판
     @Transactional
     public PageVo reviewList( int bcno, int page, String key, String keyWord ){
+
         Page<BoardEntity> entityList = null;
         // vo 출력 객체 생성
         PageVo pageVo = new PageVo();
