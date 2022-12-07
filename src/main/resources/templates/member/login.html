@@ -1,27 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{ index }">
 <head>
     <meta charset="UTF-8">
+    <title>toString</title>
 </head>
-<body>
 
-    <form class="loginbox">
-      <div>
-        <div> <input type="text" class="mid" placeholder="아이디"> </div>
-        <div> <input type="text" class="mpw" placeholder="비밀번호"> </div>
-      </div>
-    </form>
-
-    <div>
-      <button type="button" onclick="setLogin()"> 로그인 </button>
-    </div>
-    <div>
-        <a href="/member/getId"><button type="button" > 아이디 찾기 </button> </a><br>
-        <a href="/member/getpassword"><button type="button"> 비밀번호 찾기 </button> </a>
-    </div>
-
+<!-- 스크립트 불러오기 -->
+<th:block layout:fragment="script">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/js/member/login.js"></script>
+</th:block>
 
+<body>
+
+    <div layout:fragment="content" class="content">
+        <h3> 로그인</h3>
+        <form class="loginbox">
+          <div>
+            <div> <input type="text" class="mid" placeholder="아이디"> </div>
+            <div> <input type="text" class="mpw" placeholder="비밀번호"> </div>
+          </div>
+        </form>
+
+        <div>
+          <button type="button" onclick="setLogin()"> 로그인 </button>
+        </div>
+        <div>
+            <a href="/member/getId"><button type="button" > 아이디 찾기 </button> </a>
+            <a href="/member/getpassword"><button type="button"> 비밀번호 찾기 </button> </a>
+        </div>
+
+<!--        <script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
+<!--        <script src="/js/member/login.js"></script>-->
+    </div>
 </body>
 </html>

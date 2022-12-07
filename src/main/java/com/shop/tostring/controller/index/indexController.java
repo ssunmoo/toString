@@ -1,10 +1,7 @@
 package com.shop.tostring.controller.index;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class indexController {
@@ -15,5 +12,10 @@ public class indexController {
         return "index";
     }
 
+    // 레이아웃 페이지 오픈
+    @GetMapping("/layout")
+    public String getLayout(){
+        return "layouts/layout1";
+    }
 
 }

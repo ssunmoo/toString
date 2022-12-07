@@ -1,21 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{ index }">
 <head>
     <meta charset="UTF-8">
-
+    <title>toString</title>
 </head>
-<body>
-    <h3> 아이디 찾기</h3>
-    <div> <input type="text" class="mname" placeholder="이름"> </div>
-    <div> <input type="text" class="memail" placeholder="메일"> </div>
-    <button type="button" onclick="findId()"> 아이디 찾기 </button>
-    <div class="findid">
 
-    </div>
-    <br><br>
-    <a href="/"> <button type="button"> 메인페이지 </button> </a>
-
+<!-- 스크립트 불러오기 -->
+<th:block layout:fragment="script">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/js/member/login.js"></script>
+</th:block>
+
+<body>
+
+    <div layout:fragment="content" class="content">
+        <h3> 아이디 찾기</h3>
+        <div> <input type="text" class="mname" placeholder="이름"> </div>
+        <div> <input type="text" class="memail" placeholder="이메일"> </div>
+        <button type="button" onclick="findId()"> 아이디 찾기 </button>
+        <div class="findid">
+
+        </div>
+        <br><br>
+        <a href="/"> <button type="button"> 메인페이지 </button> </a>
+
+<!--        <script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
+<!--        <script src="/js/member/login.js"></script>-->
+
+    </div>
 </body>
 </html>

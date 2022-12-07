@@ -13,9 +13,9 @@ function reviewSelect(){
         success: re => {
             console.log(re)
 
-            let html = '<tr>'
-                + '<td>회원번호'+re.mno+'</td>'
-                + '<td>별점'
+            let html = '<div>'
+                + '<div>회원번호'+re.mno+'</div>'
+                + '<div>별점'
                 + '<form name="myform" id="myform" method="post">'
                 + '<fieldset>'
                 + '<input type="radio" name="bstar" value="5" id="rate1" class="star1">'
@@ -30,11 +30,11 @@ function reviewSelect(){
                 + '<label for="rate5">★</label>'
                 + '</fieldset>'
                 + '</form>'
-                + '</td>'
-                + '</tr>'
-                + '<tr><td>'+re.btitle+'</td></tr>'
-                + '<tr><td>'+re.bcontent+'</td></tr>'
-                + '<tr><td>'+re.bfile+'</td></tr>';
+                + '</div>'
+                + '</div>'
+                + '<div>'+re.btitle+'</div>'
+                + '<div>'+re.bcontent+'</div>'
+                + '<div>'+re.bfile+'</div>';
             document.querySelector('.rlist').innerHTML = html;
 
             // css도 같이 바꿔줘야 하는 것 같다..!

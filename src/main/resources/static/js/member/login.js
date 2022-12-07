@@ -12,7 +12,12 @@ function setLogin() {
         data : JSON.stringify(info),
         contentType: "application/json",
         success: function(re){
-            location.href="/"
+            if( re == true ){
+                location.href="/"
+            }else {
+                alert('로그인 정보를 다시 입력해주세요');
+            }
+
         }
     })
 }

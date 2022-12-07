@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{ index }">
 <head>
     <meta charset="UTF-8">
+    <title>toString</title>
 </head>
+
+<!-- 스크립트 불러오기 -->
+<th:block layout:fragment="script">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/js/board/testing.js"></script>
+</th:block>
+
 <body>
-    <div>
+    <div layout:fragment="content" class="content">
         <div> 시연 게시판 </div>
         <div>
             <button><a href="/board/write">글작성</a></button>

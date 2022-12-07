@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{ index }">
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
 </head>
+
+<!-- 스크립트 불러오기 -->
+<th:block layout:fragment="script">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/js/board/review.js"></script>
+</th:block>
+
 <body>
 
-<!--    <div layout:fragment="content"> -->
-    <div th:replace="fragments/header.html ::header"></div>
+    <div layout:fragment="content" class="content">
 
         <div> 후기 게시판 </div>
         <div>
@@ -32,10 +39,10 @@
 
             </div>
         </div>
-<!--    </div>-->
+    </div>
 
 
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="/js/board/review.js"></script>
+<!--    <script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
+<!--    <script src="/js/board/review.js"></script>-->
 </body>
 </html>
