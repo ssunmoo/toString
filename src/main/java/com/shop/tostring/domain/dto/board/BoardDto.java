@@ -30,7 +30,6 @@ public class BoardDto {
                 .bcontent(this.bcontent)
                 .bview(this.bview)
                 .bstar(this.bstar)
-                .mno(this.mno)
                 .build();
     }
 

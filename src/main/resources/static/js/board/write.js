@@ -21,6 +21,7 @@ document.querySelector('.categorylist').addEventListener( "change", e =>{
     bcno = e.currentTarget.value
 })
 let bstar = '';
+
 // 3. 게시글 작성
 function setWrite(){
 

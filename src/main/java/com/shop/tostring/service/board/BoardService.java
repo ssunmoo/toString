@@ -14,8 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -24,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
 
 @Service
 public class BoardService {
@@ -43,7 +42,7 @@ public class BoardService {
         BcategoryEntity entity = bcategoryRepository.save( bcategoryDto.toBcEntity() );
         System.out.println("카테고리등록 ");
         System.out.println(entity);
-        if ( entity.getBcno() !=0 ){
+        if ( entity.getBcno() != 0 ){
             return true;
         }else {
             return false;

@@ -2,9 +2,14 @@ package com.shop.tostring.domain.entity.member;
 
 import com.shop.tostring.constant.Role;
 import com.shop.tostring.domain.dto.member.MemberDto;
+import com.shop.tostring.domain.entity.BaseEntity;
+import com.shop.tostring.domain.entity.board.BoardEntity;
+import com.shop.tostring.domain.entity.product.CartEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,7 +18,7 @@ import javax.persistence.*;
 @Entity
 @Table( name = "member" )
 @Builder
-public class MemberEntity {
+public class MemberEntity extends BaseEntity {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -36,6 +41,17 @@ public class MemberEntity {
     // 타입을 엔티티 속성으로 지정
     @Enumerated(EnumType.STRING)
     private Role role;
+
+
+    // 카트에 회원 번호 pk 전달
+    @OneToMany( mappedBy = "memberEntity" )
+    @Builder.Default
+    private List<CartEntity> cartEntityList = new ArrayList<>();
+
+    // 게시판에 회원 번호 pk 전달
+    @OneToMany( mappedBy = "memberEntity" )
+    @Builder.Default
+    private List<BoardEntity> boardEntityList = new ArrayList<>();
 
 
     // Dto로 형변환

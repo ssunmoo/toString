@@ -2,6 +2,7 @@ package com.shop.tostring.domain.entity.board;
 
 import com.shop.tostring.domain.dto.board.BoardDto;
 import com.shop.tostring.domain.entity.BaseEntity;
+import com.shop.tostring.domain.entity.member.MemberEntity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
@@ -32,14 +33,18 @@ public class BoardEntity extends BaseEntity {
     private int bstar;          // 별점
     private String bfile;       // 첨부파일
 
-    private int mno;			// 작성자 FK 연결할 것
-
-    // ---- 연관관계 ----
-    // 게시판 <-> 게시판 카테고리
+    // 게시판 카테고리 번호 fk 받기
     @ManyToOne
     @ToString.Exclude
-    @JoinColumn(name="bcno") // bcno을 FK로 받아오기
+    @JoinColumn( name = "bcno" )
     private BcategoryEntity bcategoryEntity;
+
+    // 회원번호 fk 받기
+    @ManyToOne
+    @JoinColumn( name = "mno" )
+    @ToString.Exclude
+    private MemberEntity memberEntity;
+
 
 
 //    // 게시판 <-> 리플
@@ -59,7 +64,6 @@ public class BoardEntity extends BaseEntity {
                 .bstar(this.bstar)
                 .bview(this.bview)
                 .bfilename( this.bfile ) // 파일명만 함께 보내기
-                .mno(this.mno)
                 .build();
     }
 
