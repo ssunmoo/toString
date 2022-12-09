@@ -25,7 +25,7 @@ public class ProductEntity extends BaseEntity {
     private int pprice;					// 제품 가격
     private int pdiscount;				// 제품 할인율
     private int pactive; 				// 제품 상품 상태 : 0 준비중 등
-    private String pimg;				// 제품 썸네일 경로
+    private String pimg;				// 제품 썸네일
 
 
     // 제품 카테고리번호 fk 받기
@@ -49,7 +49,7 @@ public class ProductEntity extends BaseEntity {
                 .pprice( this.pprice )
                 .pdiscount( this.pdiscount )
                 .pactive( this.pactive )
-                .pimg( this.pimg )
+                .pimgname( this.pimg ) // 파일명 전달
                 .build();
     }
 

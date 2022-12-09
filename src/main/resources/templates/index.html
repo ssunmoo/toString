@@ -19,7 +19,11 @@
 </head>
 <body>
     <div th:replace="fragments/header.html ::header"></div>
-    <div layout:fragment="content" class="container"></div>
+    <div layout:fragment="content" class="container">
+
+        <div class="productList">
+        </div>
+    </div>
     <div th:replace="fragments/footer.html ::footer"></div>
 
 <!--    th : 타임리프 문법
@@ -34,5 +38,8 @@
     th:text  = "${ 데이터 }"
 -->
     <th:block layout:fragment="script"></th:block>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/js/product/productList.js"></script>
 </body>
 </html>

@@ -40,8 +40,6 @@ public class BoardService {
     // 1. 카테고리 등록
     public boolean setBcategory(BcategoryDto bcategoryDto){
         BcategoryEntity entity = bcategoryRepository.save( bcategoryDto.toBcEntity() );
-        System.out.println("카테고리등록 ");
-        System.out.println(entity);
         if ( entity.getBcno() != 0 ){
             return true;
         }else {
@@ -162,7 +160,7 @@ public class BoardService {
         return false;
     }
 
-    // 후기 게시판
+    // 후기 게시판 출력
     @Transactional
     public PageVo reviewList( int bcno, int page, String key, String keyWord ){
 
@@ -203,10 +201,6 @@ public class BoardService {
 
         return pageVo;
     }
-
-
-
-
 
 
     // 후기 게시판 상세보기

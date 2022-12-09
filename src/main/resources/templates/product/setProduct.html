@@ -7,12 +7,6 @@
     <title>toString</title>
 </head>
 
-<!-- 스크립트 불러오기 -->
-<th:block layout:fragment="script">
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="/js/product/setProduct.js"></script>
-</th:block>
-
 <body>
 
     <div layout:fragment="content" class="content">
@@ -21,7 +15,7 @@
         <div>
             <div>
                 <div>
-                    카테고리 등록
+                    신규 카테고리 등록
                     <input type="text" name="pcname" class="pcname">
                     <button onclick="setPcategory()"> 등록 </button>
                 </div>
@@ -31,33 +25,49 @@
                     </select>
                 </div>
             </div>
+            <div>
+                <form class="setform" method="post">
+                    <div>
+                        상품명
+                        <input type="text" name="pname" class="pname">
+                    </div>
+                    <div>
+                        판매가
+                        <input type="text" name="pprice" class="pprice"> 원
+                    </div>
+                    <div>
+                        할인율
+                        <input type="text" name="pdiscount" class="pdiscount"> %
+                    </div>
+                    <div>
+                        판매상태
+                        <select name="pactive" class="pactive">
+                            <option>선택</option>
+                            <option value="1">판매중</option>
+                            <option value="0">상품준비중</option>
+                        </select>
+                    </div>
+                    <div>
+                        대표이미지
+                        <input type="file" name="pimg" class="pimg">
+                        <div>
+                            <img src="" class="imgView">
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" onclick="setProduct()"> 등록 </button>
+                    </div>
+                </form>
 
-                <div>
-                    대표이미지
-                    <input type="file" name="pimg" class="pimg">
-                </div>
-                <div>
-                    제품명
-                    <input type="text" name="pname" class="pname">
-
-                </div>
-                <div>
-                    판매가
-                    <input type="text" name="pprice" class="pprice"> 원
-                </div>
-                <div>
-                    할인율
-                    <input type="text" name="pdiscount" class="pdiscount"> %
-                </div>
-                <div>
-                    판매상태
-                    <input type="text" name="pactive" class="pactive">
-                </div>
+            </div>
         </div>
     </div>
 
-<!--    <script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
-<!--    <script src="/js/product/setProduct.js"></script>-->
+    <!-- 스크립트 불러오기 -->
+    <th:block layout:fragment="script">
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/js/product/setProduct.js"></script>
+    </th:block>
 
 </body>
 </html>

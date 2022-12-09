@@ -2,6 +2,7 @@ package com.shop.tostring.domain.dto.product;
 
 import com.shop.tostring.domain.entity.product.ProductEntity;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +17,8 @@ public class ProductDto {
     private int pprice;					// 제품 가격
     private int pdiscount;				// 제품 할인율
     private int pactive; 				// 제품 상품 상태 : 0 준비중 등
-    private String pimg;				// 제품 썸네일 경로
+    private MultipartFile pimg;         // 첨부파일 객체 [ 업로드용 ]
+    private String pimgname;            // 첨부파일 [ 출력용 ]
 
     private int pcno;                   // 제품 카테고리 fk
 
@@ -29,7 +31,6 @@ public class ProductDto {
                 .pprice( this.pprice )
                 .pdiscount( this.pdiscount )
                 .pactive( this.pactive )
-                .pimg( this.pimg )
                 .build();
     }
 

@@ -1,6 +1,7 @@
 package com.shop.tostring.controller.product;
 
 import com.shop.tostring.domain.dto.product.PcategoryDto;
+import com.shop.tostring.domain.dto.product.ProductDto;
 import com.shop.tostring.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,11 @@ public class ProductController {
         return "product/setProduct";
     }
 
+    // 제품 상세보기 페이지
+    @GetMapping("/getProductView")
+    public String getProductView(){
+        return "product/productView";
+    }
     
 
 
@@ -34,12 +40,26 @@ public class ProductController {
         return productService.setPcategory( pcategoryDto );
     }
 
+    // 제품 카테고리 출력
     @ResponseBody
     @GetMapping("/pcategoryList")
     public List<PcategoryDto> pcategoryList(){
         return productService.pcategoryList();
     }
 
+    // 제품 등록
+    @ResponseBody
+    @PostMapping("/setProduct")
+    public boolean setProduct( ProductDto productDto ){
+        return productService.setProduct( productDto );
+    }
+
+    // 제품 출력
+    @ResponseBody
+    @GetMapping("/getProductList")
+    public List<ProductDto> getProductList(){
+        return productService.getProductList();
+    }
 
 
 }
