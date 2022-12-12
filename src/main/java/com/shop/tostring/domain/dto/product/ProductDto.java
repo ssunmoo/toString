@@ -15,7 +15,7 @@ public class ProductDto {
     private int pno;		            // 제품 번호
     private String pname;				// 제품 이름
     private int pprice;					// 제품 가격
-    private int pdiscount;				// 제품 할인율
+    private float pdiscount;			// 제품 할인율
     private int pactive; 				// 제품 상품 상태 : 0 준비중 등
     private MultipartFile pimg;         // 첨부파일 객체 [ 업로드용 ]
     private String pimgname;            // 첨부파일 [ 출력용 ]

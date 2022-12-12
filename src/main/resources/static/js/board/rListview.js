@@ -34,7 +34,7 @@ function reviewSelect(){
                 + '</div>'
                 + '<div>'+re.btitle+'</div>'
                 + '<div>'+re.bcontent+'</div>'
-                + '<div>'+re.bfile+'</div>';
+                + '<div>'+re.bfilename+'</div>';
             document.querySelector('.rlist').innerHTML = html;
 
             // css도 같이 바꿔줘야 하는 것 같다..!

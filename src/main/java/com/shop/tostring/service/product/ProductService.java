@@ -48,7 +48,8 @@ public class ProductService {
 
 
     // 3. 대표이미지 업로드 경로
-    String productpath = "C:\\Users\\504\\IdeaProjects\\toString\\src\\main\\resources\\static\\pimages\\";
+    String productpath = "C:\\Users\\504\\IdeaProjects\\toString\\src\\main\\resources\\static\\pImg\\";
+
     public boolean pimgUpload(  ProductDto productDto, ProductEntity productEntity ){
         if( productDto.getPimg() != null ){ // 첨부파일이 있을 경우
 
