@@ -37,7 +37,6 @@ public class PsizeEntity extends BaseEntity {
 
 
 
-
     // dto로 변환
     public PsizeDto toPsizeDto(){
         return PsizeDto.builder()

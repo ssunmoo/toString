@@ -3,23 +3,43 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{ index }">
 <head>
-  <meta charset="UTF-8">
-  <title>toString</title>
+    <meta charset="UTF-8">
+    <title>toString</title>
 </head>
 
 <body>
 
-  <div layout:fragment="content" class="content">
+    <div layout:fragment="content" class="content">
 
-    <h3>상세페이지</h3>
+      <h3>상세페이지</h3>
+      <div class="productView">
+          <form class="setform">
+              <div> <!--제품이미지-->
+                  <img src="" class="pimg">
+              </div>
+              <div class="pname"></div> <!--제품명-->
+              <div class="ppriceBox"></div> <!--정상가-->
+              <div class="discountprice"></div> <!--할인가-->
+              <div class="pdiscount"></div> <!--할인율-->
+          </form>
 
+          <div>
+              <div class="sizeBox"></div>
+          </div>
 
-  </div>
+          <div>
+              <button type="button" class="likeBtn">찜하기</button>
+              <button type="button" class="cartBtn">장바구니</button>
+              <button type="button" class="buyBtn">구매하기</button>
+          </div>
+      </div>
 
-  <!-- 스크립트 불러오기 -->
-  <th:block layout:fragment="script">
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="/js/product/productView.js"></script>
-  </th:block>
+    </div>
+
+    <!-- 스크립트 불러오기 -->
+    <th:block layout:fragment="script">
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="/js/product/productView.js"></script>
+    </th:block>
 </body>
 </html>

@@ -17,16 +17,16 @@ function reviewSelect(){
                 + '<div>회원번호'+re.mno+'</div>'
                 + '<div>별점'
                 + '<form name="myform" id="myform" method="post">'
-                + '<fieldset>'
-                + '<input type="radio" name="bstar" value="5" id="rate1" class="star1">'
+                + '<fieldset>' // 체크 설정 추가
+                + '<input type="radio" name="bstar" value="5" id="rate1" class="star1" disabled>'
                 + '<label for="rate1">★</label>'
-                + '<input type="radio" name="bstar" value="4" id="rate2" class="star2">'
+                + '<input type="radio" name="bstar" value="4" id="rate2" class="star2" disabled>'
                 + '<label for="rate2">★</label>'
-                + '<input type="radio" name="bstar" value="3" id="rate3" class="star3">'
+                + '<input type="radio" name="bstar" value="3" id="rate3" class="star3" disabled>'
                 + '<label for="rate3">★</label>'
-                + '<input type="radio" name="bstar" value="2" id="rate4" class="star4">'
+                + '<input type="radio" name="bstar" value="2" id="rate4" class="star4" disabled>'
                 + '<label for="rate4">★</label>'
-                + '<input type="radio" name="bstar" value="1" id="rate5" class="star5">'
+                + '<input type="radio" name="bstar" value="1" id="rate5" class="star5" disabled>'
                 + '<label for="rate5">★</label>'
                 + '</fieldset>'
                 + '</form>'
@@ -34,20 +34,20 @@ function reviewSelect(){
                 + '</div>'
                 + '<div>'+re.btitle+'</div>'
                 + '<div>'+re.bcontent+'</div>'
-                + '<div>'+re.bfilename+'</div>';
+                + '<div><img src="/upload/'+re.bfilename+'"></div>'; // 이미지 경로 수정
             document.querySelector('.rlist').innerHTML = html;
 
             // css도 같이 바꿔줘야 하는 것 같다..!
             if( re.bstar === 5 ){
-                let star = document.querySelector('.star1').checked === true;
+                document.querySelector('.star1').checked = true;
             }else if( re.bstar === 4 ){
-                let star = document.querySelector('.star2').checked === true;
+                document.querySelector('.star2').checked = true;
             }else if( re.bstar === 3 ){
-                let star = document.querySelector('.star3').checked === true;
+                document.querySelector('.star3').checked = true;
             }else if( re.bstar === 2 ){
-                let star = document.querySelector('.star4').checked === true;
+                document.querySelector('.star4').checked = true;
             }else if( re.bstar === 1 ){
-                let star = document.querySelector('.star5').checked === true;
+                document.querySelector('.star5').checked = true;
             }
 
         }

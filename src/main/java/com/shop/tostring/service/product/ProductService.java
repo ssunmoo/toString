@@ -2,10 +2,7 @@ package com.shop.tostring.service.product;
 
 import com.shop.tostring.domain.dto.product.PcategoryDto;
 import com.shop.tostring.domain.dto.product.ProductDto;
-import com.shop.tostring.domain.entity.product.PcategoryEntity;
-import com.shop.tostring.domain.entity.product.PcategoryRepository;
-import com.shop.tostring.domain.entity.product.ProductEntity;
-import com.shop.tostring.domain.entity.product.ProductRepository;
+import com.shop.tostring.domain.entity.product.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +22,12 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private PsizeRepository psizeRepository;
+
+    @Autowired
+    private PstockRepository pstockRepository;
 
 
     // 1. 제품 카테고리 추가
@@ -50,6 +53,7 @@ public class ProductService {
     // 3. 대표이미지 업로드 경로
     String productpath = "C:\\Users\\504\\IdeaProjects\\toString\\src\\main\\resources\\static\\pImg\\";
 
+    @Transactional
     public boolean pimgUpload(  ProductDto productDto, ProductEntity productEntity ){
         if( productDto.getPimg() != null ){ // 첨부파일이 있을 경우
 
@@ -61,6 +65,7 @@ public class ProductService {
             // 지정된 경로에 파일 생성하기
             try{
                 File upLoadImg = new File( productpath + fileName );
+                productDto.getPimg().transferTo( upLoadImg ); // .transferTo() 지정한 경로에 파일을 생성하기
             }catch (Exception e){
                 System.out.println("대표이미지 업로드 실패 : " + e);
             }
@@ -73,24 +78,41 @@ public class ProductService {
     // 4. 제품 등록
     @Transactional
     public boolean setProduct(ProductDto productDto){
-        // 카테고리 정보 호출 
+
+        System.out.println("*** 제품 정보 ***");
+        System.out.println(productDto.toString());
+
+        // 카테고리 정보 호출
         Optional<PcategoryEntity> optional = pcategoryRepository.findById( productDto.getPcno() );
         if ( !optional.isPresent() ) { // null 인지 확인
             return false;
         }
         PcategoryEntity pcategoryEntity = optional.get();
         ProductEntity productEntity = productRepository.save( productDto.toProductEntity() );
-        System.out.println("---productEntity---");
-        System.out.println(productEntity.toString());
+
+        // productDto에 있는 속성을 다른 엔티티로 넣어야함
+        // 1. 사이즈 넣어주기
+//        Optional<ProductEntity> optional2 = productRepository.findById( productDto.getPno() );
+//        if( !optional.isPresent() ){
+//            return false;
+//        }
+        PsizeEntity psizeEntity = psizeRepository.save( productDto.toSizeEntity() );
+        psizeEntity.setPsize( productDto.getPsize() );
+        psizeEntity.setpno( productDto.getPno() );
+
+        // 2. 컬러, 재고 넣어주기
+        PstockEntity pstockEntity = pstockRepository.save( productDto.toStockEntity() );
+        pstockEntity.setPcolor( productDto.getPcolor() );
+        pstockEntity.setPstock( productDto.getPstock() );
 
         if( productEntity.getPno() != 0 ){
             pimgUpload( productDto, productEntity ); // 이미지 업로드 함수 실행
 
             productEntity.setPcategoryEntity( pcategoryEntity );
             pcategoryEntity.getProductEntityList().add( productEntity );
-            System.out.println("************");
-            System.out.println(productEntity.getPcategoryEntity());
-            System.out.println("************");
+//            System.out.println("************");
+//            System.out.println(productEntity.getPcategoryEntity());
+//            System.out.println("************");
             return true;
         }
         return false;
@@ -103,6 +125,25 @@ public class ProductService {
         entityList.forEach( (p) -> dtoList.add( p.toProductDto()) );
         return dtoList;
     }
+
+    // 6. 제품 상세페이지
+    public ProductDto productView( int pno ){
+        Optional< ProductEntity > optional = productRepository.findById( pno );
+        if( optional.isPresent() ){
+            ProductEntity productEntity = optional.get();
+            return  productEntity.toProductDto();
+        }else {
+            return null;
+        }
+    }
+
+    // 7. 장바구니 페이지
+    public ProductDto setCartList( ProductDto productDto ){
+
+
+        return null;
+    }
+
 
 
 

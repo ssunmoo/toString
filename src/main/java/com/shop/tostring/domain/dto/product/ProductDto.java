@@ -1,6 +1,8 @@
 package com.shop.tostring.domain.dto.product;
 
 import com.shop.tostring.domain.entity.product.ProductEntity;
+import com.shop.tostring.domain.entity.product.PsizeEntity;
+import com.shop.tostring.domain.entity.product.PstockEntity;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +24,9 @@ public class ProductDto {
 
     private int pcno;                   // 제품 카테고리 fk
 
+    private String psize;		// 제품 사이즈 이름
+    private String pcolor;		// 제품 이름
+    private int pstock;			// 제품 재고
 
     // entity 변환
     public ProductEntity toProductEntity(){
@@ -33,5 +38,22 @@ public class ProductDto {
                 .pactive( this.pactive )
                 .build();
     }
+
+    // 사이즈 저장
+    public PsizeEntity toSizeEntity(){
+        return PsizeEntity.builder()
+                .psize( this.psize )
+                .build();
+    }
+
+    // 사이즈, 재고 저장
+    public PstockEntity toStockEntity(){
+        return PstockEntity.builder()
+                .pcolor( this.pcolor )
+                .pstock( this.pstock )
+                .build();
+    }
+
+
 
 }

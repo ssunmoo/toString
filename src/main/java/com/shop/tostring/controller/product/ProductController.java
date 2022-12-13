@@ -16,19 +16,23 @@ public class ProductController {
     public ProductService productService;
 
 
-
     // 제품 등록 페이지
     @GetMapping("/getProduct")
     public String getProduct(){
         return "product/setProduct";
     }
 
-    // 제품 상세보기 페이지
+    // 제품 상세페이지
     @GetMapping("/getProductView")
     public String getProductView(){
         return "product/productView";
     }
-    
+
+    // 장바구니 페이지
+    @GetMapping("/getCartList")
+    public String getCartList(){
+        return "product/cartList";
+    }
 
 
     // -----------------------------------------------------------------
@@ -59,6 +63,20 @@ public class ProductController {
     @GetMapping("/getProductList")
     public List<ProductDto> getProductList(){
         return productService.getProductList();
+    }
+
+    // 제품 상세페이지
+    @ResponseBody
+    @GetMapping("/productView")
+    public ProductDto getPView( @RequestParam("pno") int pno ){
+        return productService.productView( pno );
+    }
+
+    // 장바구니 페이지
+    @ResponseBody
+    @PostMapping("setCartList")
+    public ProductDto setCartList( ProductDto productDto ){
+        return productService.setCartList( productDto );
     }
 
 

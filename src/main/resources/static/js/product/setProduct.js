@@ -39,14 +39,12 @@ function pcategoryList(){
 // 3. 선택한 카테고리의 value 값 가져와서 저장
 document.querySelector('.pcategoryList').addEventListener( "change", e =>{
     pcno = e.currentTarget.value // 선택된 value 값을 pcno에 저장
-    alert(pcno)
 })
 
 
 // 4. 제품 등록
 function setProduct(){
     let setform = document.querySelector('.setform');
-    // console.log(setform)
     let formdata = new FormData( setform );
     formdata.set("pcno", pcno ); // 제품 카테고리 값 넣기
 
@@ -59,7 +57,6 @@ function setProduct(){
         success: re => {
             if( re == true ){
                 alert('제품 등록이 완료되었습니다');
-                location.href="/getProduct";
             }else {
                 alert('제품 등록이 실패하였습니다.');
             }
