@@ -63,7 +63,7 @@ public class BoardService {
     // 첨부 파일 업로드 메소드
     @Transactional
     public boolean fileupload( BoardDto boardDto , BoardEntity boardEntity ) {
-        if ( boardDto.getBfile() != null ) {  // ** 첨부파일 있을때
+        if ( !boardDto.getBfile().getOriginalFilename().equals("") ) {  // ** 첨부파일 있을때
             
             // 업로드 파일의 중복 방지를 위해 난수 발생 UUID 사용
             String uuid = UUID.randomUUID().toString();
@@ -222,14 +222,14 @@ public class BoardService {
             BoardEntity boardEntity = optional.get();
             
             // 첨부파일 수정 관련
-            if( boardDto.getBfile() != null ){ // dto에 파일이 있고
+            if( !boardDto.getBfile().getOriginalFilename().equals("") ){ // dto에 파일이 있고
                 if( boardEntity.getBfile() != null ){ // 엔티티에 첨부파일이 있으면
                     File file = new File( path + boardEntity.getBfile() ); // 기존 첨부파일을 객체화
                     if( file.exists() ){ // 존재 시 파일 삭제
                         file.delete();
                     }
-                    fileupload( boardDto, boardEntity ); 
                 }
+                fileupload( boardDto, boardEntity );
             }
             boardEntity.setBtitle( boardDto.getBtitle() );
             boardEntity.setBcontent( boardDto.getBcontent() );

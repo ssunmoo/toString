@@ -22,6 +22,7 @@ public class PsizeDto {
         return PsizeEntity.builder()
                 .psno( this.psno )
                 .psize( this.psize )
+                //.pno( this.toPsizeEntity().getProductEntity().getPno())
                 .build();
     }
 

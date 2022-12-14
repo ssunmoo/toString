@@ -28,6 +28,7 @@ public class ProductDto {
     private String pcolor;		// 제품 이름
     private int pstock;			// 제품 재고
 
+
     // entity 변환
     public ProductEntity toProductEntity(){
         return ProductEntity.builder()

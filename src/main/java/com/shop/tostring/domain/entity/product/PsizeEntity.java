@@ -1,5 +1,6 @@
 package com.shop.tostring.domain.entity.product;
 
+import com.shop.tostring.domain.dto.product.ProductDto;
 import com.shop.tostring.domain.dto.product.PsizeDto;
 import com.shop.tostring.domain.entity.BaseEntity;
 import lombok.*;
@@ -36,13 +37,15 @@ public class PsizeEntity extends BaseEntity {
     private List<PstockEntity> pstockEntityList = new ArrayList<>();
 
 
-
     // dto로 변환
     public PsizeDto toPsizeDto(){
         return PsizeDto.builder()
                 .psno( this.psno )
                 .psize( this.psize )
+                .pno( this.getProductEntity().getPno() ) // ProductEntity에서 pno를 가져오겠다
                 .build();
     }
+
+
 
 }

@@ -1,6 +1,8 @@
 let pno = sessionStorage.getItem( "pno" );
 
 productList = []; // 선택된 제품의 옵션 목록 배열
+let stock = null; // 재고 목록
+let color = null; // 선택한 색상
 
 // 제품 상세정보 출력
 productView()
@@ -11,19 +13,48 @@ function productView(){
         data : { "pno" : pno },
         success: re => {
             console.log(re)
-            document.querySelector('.pimg').src ="/pImg/"+re.pimgname;
-            document.querySelector('.pname').innerHTML = re.pname;
+            let pproduct = re.productDtoList[0]
+            let psize = re.psizeDtoList[0]
+            let pstock = null;
+            console.log("---pproduct---")
+            console.log(pproduct)
+            console.log("---psize---")
+            console.log(psize)
+
+
+            document.querySelector('.pimg').src ="/pImg/"+pproduct.pimgname;
+            document.querySelector('.pname').innerHTML = pproduct.pname;
             
             // 판매가 출력
             let phtml = '';
             if( re.pdiscount == 0 ){ // 할인이 없을 경우
-                phtml += '<div>' + re.pprice.toLocaleString('ko-KR') + ' 원</div>';
+                phtml += '<div>' + pproduct.pprice.toLocaleString('ko-KR') + ' 원</div>';
             }else {
-                phtml += '<div>' + re.pprice.toLocaleString('ko-KR') + ' 원</div>'
-                    + '<div>' + (re.pprice - ( re.pprice * re.pdiscount ) ).toLocaleString('ko-KR') + ' 원</div>'
-                    + '<div>' + Math.round(re.pdiscount*100) + ' %</div>';
+                phtml += '<div>' + pproduct.pprice.toLocaleString('ko-KR') + ' 원</div>'
+                    + '<div>' + (pproduct.pprice - ( pproduct.pprice * pproduct.pdiscount ) ).toLocaleString('ko-KR') + ' 원</div>'
+                    + '<div>' + Math.round(pproduct.pdiscount*100) + ' %</div>';
             }
             document.querySelector('.ppriceBox').innerHTML = phtml;
+
+            // 사이즈 목록 중복 제거
+            let sizeList = []; // 중복 값 담을 배열
+            psize.forEach( s => {
+                sizeList.push( s.psize );   // 중복제거가 필요한 내용을 리스트에 담기
+            })
+            let sizeSet = new Set( sizeList ) // 사이즈 리스트 -> Set 목록 변경 [ 중복제거 ] 무슨 말..?
+
+            // 사이즈 종류
+            let shtml = '<span> [ '
+                    sizeSet.forEach( s => {
+                        shtml += " " + s + " ";
+                    })
+            shtml += ' ] </span> '
+
+            document.querySelector('.sizeBox').innerHTML = shtml;
+
+
+            // 색상, 재고
+
         }
     })
 }

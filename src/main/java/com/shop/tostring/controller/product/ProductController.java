@@ -1,5 +1,7 @@
 package com.shop.tostring.controller.product;
 
+import com.shop.tostring.domain.dto.board.PageVo;
+import com.shop.tostring.domain.dto.product.PViewVo;
 import com.shop.tostring.domain.dto.product.PcategoryDto;
 import com.shop.tostring.domain.dto.product.ProductDto;
 import com.shop.tostring.service.product.ProductService;
@@ -68,7 +70,7 @@ public class ProductController {
     // 제품 상세페이지
     @ResponseBody
     @GetMapping("/productView")
-    public ProductDto getPView( @RequestParam("pno") int pno ){
+    public PViewVo getPView(@RequestParam("pno") int pno ){
         return productService.productView( pno );
     }
 
