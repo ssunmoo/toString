@@ -50,6 +50,10 @@ public class ProductEntity extends BaseEntity {
                 .pdiscount( this.pdiscount )
                 .pactive( this.pactive )
                 .pimgname( this.pimg ) // 파일명 전달
+                .pcno( this.pcategoryEntity.getPcno() ) // @ToString.Exclude으로 막아놔서 dto에 함께 출력하려면 이렇게 호출해야함
+                .psize( this.psizeEntityList.get(0).getPsize() )
+                .pcolor( this.psizeEntityList.get(0).getPstockEntityList().get(0).getPcolor() )
+                .pstock( this.psizeEntityList.get(0).getPstockEntityList().get(0).getPstock() )
                 .build();
     }
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{ index }">
+<head>
+  <meta charset="UTF-8">
+  <title>toString</title>
+</head>
+
+<body>
+
+<div layout:fragment="content" class="content">
+
+    <h3> 상품 수정페이지 </h3>
+    <div>
+        <div>
+            제품 카테고리
+            <select class="pcategoryList">
+            </select>
+        </div>
+
+        <div>
+            제품명
+            <select class="productNameList">
+                <option selected="selected">제품선택</option>
+            </select>
+        </div>
+
+        <div>
+            <form class="setform" method="post">
+                <div>
+                    상품명
+                    <input type="text" name="pname" class="pname">
+                </div>
+                <div>
+                    판매가
+                    <input type="text" name="pprice" class="pprice"> 원
+                </div>
+                <div>
+                    할인율
+                    <input type="text" name="pdiscount" class="pdiscount"> %
+                </div>
+                <div>
+                    판매상태
+                    <select name="pactive" class="pactive">
+                        <option>선택</option>
+                        <option value="1">판매중</option>
+                        <option value="0">상품준비중</option>
+                    </select>
+                </div>
+                <div>
+                    사이즈
+                    <input type="text" name="psize" class="psize">
+                </div>
+                <div>
+                    색상
+                    <input type="text" name="pcolor" class="pcolor">
+                </div>
+                <div>
+                    재고수량
+                    <input type="text" name="pstock" class="pstock">
+                </div>
+                <div>
+                    대표이미지
+                    <input type="file" name="pimg" class="pimg">
+                <div>
+                    <img src="" class="imgView">
+                </div>
+                </div>
+                <div>
+                    <button type="button" onclick="productUpdate()"> 등록 </button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+<!-- 스크립트 불러오기 -->
+<th:block layout:fragment="script">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="/js/product/productUpdate.js"></script>
+</th:block>
+
+</body>
+</html>

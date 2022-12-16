@@ -92,8 +92,6 @@ public class ProductService {
         // 3. 컬러, 재고 레코드 생성
         PstockEntity pstockEntity = pstockRepository.save( productDto.toStockEntity() );
 
-
-
         if( productEntity.getPno() != 0 ){ // 제품 번호가 0이 아니면
             pimgUpload( productDto, productEntity ); // 이미지 업로드 함수 실행
 
@@ -121,7 +119,9 @@ public class ProductService {
     public List<ProductDto> getProductList(){
         List<ProductEntity> entityList = productRepository.findAll();
         List<ProductDto> dtoList = new ArrayList<>();
-        entityList.forEach( (p) -> dtoList.add( p.toProductDto()) );
+        for(ProductEntity p : entityList){
+            dtoList.add( p.toProductDto());
+        }
         return dtoList;
     }
 
@@ -142,30 +142,60 @@ public class ProductService {
 
         // 엔티티 내용을 dto로 변환
         dtoList.add(entity.toProductDto());
-        System.out.println("-------------------------");
-        System.out.println(entity.getPsizeEntityList());
-        System.out.println("-------------------------");
 
-        // 해당 제품에 대한 정보 저장
+        // 사이즈 정보 불러오기
         List<PsizeEntity> psizeEntityList = optional.get().getPsizeEntityList();
-        System.out.println("***psizeEntityList***");
-        System.out.println(psizeEntityList);
-
+        // 사이즈 정보 저장
         List<PsizeDto> psizeDtoList = new ArrayList<>();
         for(PsizeEntity pentity : psizeEntityList){
             psizeDtoList.add(pentity.toPsizeDto());
         }
 
-//        List<PstockDto> pstockDtoList = new ArrayList<>();
-//        for(PstockEntity pentity : p)
+        // 색상, 재고 리스트 불러오기
+        List<PstockEntity> pstockEntityList = psizeEntityList.get(0).getPstockEntityList();
+        List<PstockDto> pstockDtoList = new ArrayList<>();
+        for(PstockEntity pentity : pstockEntityList ){
+            pstockDtoList.add(pentity.toPstockDto());
+        }
 
+        // pViewVo에 모두 담기
         pViewVo.setProductDtoList( dtoList );
         pViewVo.setPsizeDtoList( psizeDtoList );
-
+        pViewVo.setPstockDtoList( pstockDtoList );
         return pViewVo;
     }
 
-    // 7. 장바구니 페이지
+    // 7. 제품 수정
+    public boolean productUpdate ( ProductDto productDto ){
+        Optional<ProductEntity> optional = productRepository.findById(productDto.getPno());
+        // 1. 프로덕트 레코드 생성
+        ProductEntity productEntity = productRepository.save( productDto.toProductEntity() );
+        // 2. 사이즈 레코드 생성
+        PsizeEntity psizeEntity = psizeRepository.save( productDto.toSizeEntity() );
+        // 3. 컬러, 재고 레코드 생성
+        PstockEntity pstockEntity = pstockRepository.save( productDto.toStockEntity() );
+
+        if( productEntity.getPno() != 0 ){ // 제품 번호가 0이 아니면
+            pimgUpload( productDto, productEntity ); // 이미지 업로드 함수 실행
+
+            // 제품 <-> 사이즈 연관관계
+            psizeEntity.setProductEntity( productEntity );
+            productEntity.getPsizeEntityList().add(psizeEntity);
+
+            // 사이즈 <-> 재고 연관관계
+            pstockEntity.setPsizeEntity( psizeEntity );
+            psizeEntity.getPstockEntityList().add(pstockEntity);
+
+//            System.out.println("************");
+//            System.out.println(productEntity.getPcategoryEntity());
+//            System.out.println("************");
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    // 8. 장바구니 페이지
     public ProductDto setCartList( ProductDto productDto ){
 
 

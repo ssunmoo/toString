@@ -29,4 +29,5 @@ public class PViewVo { // 제품 출력용 클래스
     // 색상, 재고 리스트
     List<PstockDto> pstockDtoList;
 
+
 }

@@ -30,6 +30,12 @@ public class ProductController {
         return "product/productView";
     }
 
+    // 제품 수정페이지
+    @GetMapping("/putProduct")
+    public String putProduct(){
+        return "product/productUpdate";
+    }
+
     // 장바구니 페이지
     @GetMapping("/getCartList")
     public String getCartList(){
@@ -72,6 +78,13 @@ public class ProductController {
     @GetMapping("/productView")
     public PViewVo getPView(@RequestParam("pno") int pno ){
         return productService.productView( pno );
+    }
+
+    // 제품 수정페이지
+    @ResponseBody
+    @PutMapping("/productUpdate")
+    public boolean productUpdate( ProductDto productDto ){
+        return productService.productUpdate( productDto );
     }
 
     // 장바구니 페이지

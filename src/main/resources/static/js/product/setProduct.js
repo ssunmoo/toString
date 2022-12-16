@@ -25,7 +25,6 @@ function pcategoryList(){
         url : "/pcategoryList",
         type : "get",
         success: re => {
-            console.log(re)
             let html = '<option selected="selected">선택</option>';
             re.forEach( (p) =>{
                 html += '<option value="'+p.pcno+'">'+ p.pcname +'</option>';
