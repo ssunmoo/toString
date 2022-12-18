@@ -7,21 +7,39 @@
     <title>toString</title>
     <link th:href="@{/css/header.css}" rel="stylesheet">
     <link th:href="@{/css/footer.css}" rel="stylesheet">
-    <link th:href="@{/css/review.css}" rel="stylesheet">
     <link th:href="@{/css/content.css}" rel="stylesheet">
     <link th:href="@{/css/write.css}" rel="stylesheet">
     <link th:href="@{/css/rListUpdate.css}" rel="stylesheet">
 
+    <!-- css초기화 -->
+    <link rel="stylesheet" href="https://unpkg.com/destyle.css@1.0.5/destyle.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <!-- Libre Baskerville 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <th:block layout:fragment="css"></th:block>
-
 
 </head>
 <body>
     <div th:replace="fragments/header.html ::header"></div>
-    <div layout:fragment="content" class="container">
-
+    <div class="mainImg">
+        <img src="/images/main.png">
+    </div>
+    <div layout:fragment="content" class="content">
+        <div class="textBox">
+            <div class="mainText">
+                New Item
+            </div>
+        </div>
         <div class="productList">
+        </div>
+        <div class="eventBanner">
+            <img src="/images/main_side_banner.png">
+            <div class="Banner2">
+
+            </div>
         </div>
     </div>
     <div th:replace="fragments/footer.html ::footer"></div>

@@ -165,35 +165,35 @@ public class ProductService {
         return pViewVo;
     }
 
-    // 7. 제품 수정
-    public boolean productUpdate ( ProductDto productDto ){
-        Optional<ProductEntity> optional = productRepository.findById(productDto.getPno());
-        // 1. 프로덕트 레코드 생성
-        ProductEntity productEntity = productRepository.save( productDto.toProductEntity() );
-        // 2. 사이즈 레코드 생성
-        PsizeEntity psizeEntity = psizeRepository.save( productDto.toSizeEntity() );
-        // 3. 컬러, 재고 레코드 생성
-        PstockEntity pstockEntity = pstockRepository.save( productDto.toStockEntity() );
-
-        if( productEntity.getPno() != 0 ){ // 제품 번호가 0이 아니면
-            pimgUpload( productDto, productEntity ); // 이미지 업로드 함수 실행
-
-            // 제품 <-> 사이즈 연관관계
-            psizeEntity.setProductEntity( productEntity );
-            productEntity.getPsizeEntityList().add(psizeEntity);
-
-            // 사이즈 <-> 재고 연관관계
-            pstockEntity.setPsizeEntity( psizeEntity );
-            psizeEntity.getPstockEntityList().add(pstockEntity);
-
-//            System.out.println("************");
-//            System.out.println(productEntity.getPcategoryEntity());
-//            System.out.println("************");
-            return true;
-        } else{
-            return false;
-        }
-    }
+//    // 7. 제품 수정
+//    public boolean productUpdate ( ProductDto productDto ){
+//        Optional<ProductEntity> optional = productRepository.findById(productDto.getPno());
+//        // 1. 프로덕트 레코드 생성
+//        ProductEntity productEntity = productRepository.save( productDto.toProductEntity() );
+//        // 2. 사이즈 레코드 생성
+//        PsizeEntity psizeEntity = psizeRepository.save( productDto.toSizeEntity() );
+//        // 3. 컬러, 재고 레코드 생성
+//        PstockEntity pstockEntity = pstockRepository.save( productDto.toStockEntity() );
+//
+//        if( productEntity.getPno() != 0 ){ // 제품 번호가 0이 아니면
+//            pimgUpload( productDto, productEntity ); // 이미지 업로드 함수 실행
+//
+//            // 제품 <-> 사이즈 연관관계
+//            psizeEntity.setProductEntity( productEntity );
+//            productEntity.getPsizeEntityList().add(psizeEntity);
+//
+//            // 사이즈 <-> 재고 연관관계
+//            pstockEntity.setPsizeEntity( psizeEntity );
+//            psizeEntity.getPstockEntityList().add(pstockEntity);
+//
+////            System.out.println("************");
+////            System.out.println(productEntity.getPcategoryEntity());
+////            System.out.println("************");
+//            return true;
+//        } else{
+//            return false;
+//        }
+//    }
 
     // 8. 장바구니 페이지
     public ProductDto setCartList( ProductDto productDto ){

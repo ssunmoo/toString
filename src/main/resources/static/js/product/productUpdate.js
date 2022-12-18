@@ -10,10 +10,10 @@ function pcategoryList(){
                 phtml += '<option value="'+p.pcno+'">'+ p.pcname +'</option>';
             })
             document.querySelector('.pcategoryList').innerHTML = phtml;
-
         }
     })
 }
+
 let pcno = 0;
 document.querySelector('.pcategoryList').addEventListener( "change", e => {
     pcno = e.currentTarget.value	// 선택된 카테고리 번호 가져오기
@@ -34,7 +34,6 @@ function getproduct( pcno ){
                 }
             })
             document.querySelector('.productNameList').innerHTML = uhtml;
-
         }
     })
 }

@@ -28,13 +28,14 @@
     font-family: 'Noto Sans KR';
     font-size: 13px;
     font-weight: 300;
-    color: #fff;
+    color: #a7a7a7;
     padding-top: 50px;
     padding-left: 30px;
 }
 .fContent div:nth-child(1){
     margin-bottom: 15px;
 }
+
 .fContent div:nth-child(2){
     margin-bottom: 3px;
 }
@@ -43,3 +44,8 @@
     width: 270px;
 }
 
+.fIcon img{
+    width: 25px;
+    padding-right: 5px;
+    margin-top: 75px;
+}

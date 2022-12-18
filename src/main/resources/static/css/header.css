@@ -1,7 +1,15 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
 a{
     text-decoration-line: none;
-    color: #4c4c4c;
 }
+
 a:hover{
     color: #f4cb49;
 }
@@ -28,8 +36,9 @@ a:hover{
 
 .midd{
     background: #f5f6f7;
-    height: 40px;
+    height: 42px;
     border: 1px solid #dcdcdd;
+    font-family: 'Pretendard-Regular';
 }
 
 .midbox{
@@ -39,6 +48,13 @@ a:hover{
     background: #f5f6f7;
     display: flex;
     justify-content: space-between;
+    color: #696969;
+}
+
+.snsMenu img{
+    width: 30px;
+    padding-bottom: 6px;
+    padding-right: 4px;
 }
 
 .snsMenu{
@@ -48,7 +64,7 @@ a:hover{
 }
 
 .snsMenu div{
-    border-right: 1px solid #dcdcdd;
+    border-left: 1px solid #dcdcdd;
     padding-left: 20px;
     padding-right: 20px;
 
@@ -56,6 +72,7 @@ a:hover{
 
 .userMenu{
     font-size: 13px;
+    font-weight: 400;
     display: flex;
     line-height: 3;
     padding-left: 20px;
@@ -90,7 +107,7 @@ a:hover{
 .logoBox{
     width: 600px;
     font-size: 60px;
-    line-height: 3;
+    line-height: 2;
     padding-left: 20px;
 }
 
@@ -120,10 +137,16 @@ a:hover{
 }
 
 .search{
-    width: 250px;
+    width: 240px;
     height: 33px;
     border: none;
     outline: none;
+}
+
+.searchInput img{
+    width: 27px;
+    padding-right: 3px;
+    padding-bottom: 5px;
 }
 
 
@@ -132,6 +155,7 @@ a:hover{
     background: #fff;
     height: 50px;
     border-bottom: 1px solid #dcdcdd;
+
 }
 
 .menuBox{
@@ -140,13 +164,14 @@ a:hover{
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    font-size: 15px;
-    line-height: 3.5;
+    font-family: 'Pretendard-Regular';
+    color: #333;
 }
 
 .boardMenu{
     margin-left: 10px;
-    font-weight: 600;
+    line-height: 3.5;
+    font-size: 15px;
 }
 
 .boardMenu span{
@@ -154,10 +179,15 @@ a:hover{
 }
 
 .productMenu{
-    margin-right: 10px;
-    font-weight: 600;
+    margin-right: 3px;
+    font-size: 16px;
+    line-height: 3;
 }
 
 .productMenu span{
     padding-right: 15px;
+}
+
+.product{
+
 }
