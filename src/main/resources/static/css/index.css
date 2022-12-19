@@ -56,7 +56,13 @@ body::-webkit-scrollbar {
     width: 270px;
     height: 270px;
     border-radius: 15px;
-    background: rgba(159, 42, 197, 0.75);
+    box-shadow: 1px 1px 10px #ccc;
+}
+
+.pimg img{
+    width: 270px;
+    height: 270px;
+    border-radius: 15px;
 }
 
 .pname{

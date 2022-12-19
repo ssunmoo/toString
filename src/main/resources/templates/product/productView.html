@@ -5,38 +5,63 @@
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
+
+    <!-- 이따 삭제 -->
+    <link rel="stylesheet" href="/css/productView.css">
+
 </head>
 
 <body>
 
     <div layout:fragment="content" class="content">
-
-      <h3>상세페이지</h3>
       <div class="productView">
-          <form class="setform">
-              <div> <!--제품이미지-->
-                  <img src="" class="pimg">
-              </div>
-              <div class="pname"></div> <!--제품명-->
-              <div class="ppriceBox"></div> <!--정상가-->
-              <div class="discountprice"></div> <!--할인가-->
-              <div class="pdiscount"></div> <!--할인율-->
-          </form>
+          <div class="setform">
+              <div class="viewBox">
+                  <div class="viewBoxImg"> <!--제품이미지-->
+                      <img src="" class="viewPimg">
+                  </div>
+                  <table class="viewBoxText">
+                      <tr>
+                          <td class="pname" colspan="2"><!--제품명--></td>
+                      </tr>
+                      <tr class="ppriceBox">
+                          <td class="viewTitle">소비자가</td> <td> <!--정상가--></td>
+                      </tr>
+                      <tr>
+                          <td class="viewTitle">판매가</td>
+                          <td class="discountprice"> <!--할인가--></td>
+                          <td class="pdiscount"><!--할인율--></td>
+                      </tr>
 
-          <div>
-              <div class="sizeBox">
-                  사이즈출력될곳
-              </div>
-              <div class="colorBox">
-                  컬러출력될곳
+                      <tr>
+                          <td class="viewTitle">쿠폰</td>
+                          <td class="couponBox">
+                              <a href="javascript:void(0)"><img src="/images/coupon.png" class="coupon"></a>
+                          </td>
+                      </tr>
+
+                      <tr>
+                          <td class="viewTitle">사이즈</td>
+                          <td class="sizeBox"></td>
+                      </tr>
+                      <tr>
+                          <td class="viewTitle">컬러</td>
+                          <td class="colorBox"></td>
+                      </tr>
+
+                      <tr>
+                          <td class="viewBtBox" colspan="2">
+                              <button type="button" class="buyBtn">💰 바로구매</button>
+                              <button type="button" class="likeBtn">💖 찜하기</button>
+                              <button type="button" class="cartBtn">🛒 장바구니</button>
+                          </td>
+                      </tr>
+
+                  </table>
               </div>
           </div>
 
-          <div>
-              <button type="button" class="likeBtn">찜하기</button>
-              <button type="button" class="cartBtn">장바구니</button>
-              <button type="button" class="buyBtn">구매하기</button>
-          </div>
+
       </div>
 
     </div>

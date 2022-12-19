@@ -1,0 +1,146 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+
+.productView{
+    margin-top: 150px;
+    margin-bottom: 300px;
+}
+.viewBox{
+    display: flex;
+    justify-content: space-around;
+}
+
+.viewBoxImg{
+    width: 550px;
+    height: 600px;
+}
+
+.viewPimg{
+    width: 100%;
+    height: 100%;
+}
+
+.viewBoxText{
+    width: 550px;
+    height: 600px;
+}
+
+table tr{
+    border: 1px solid #ccc;
+}
+
+.viewTitle{
+    width: 80px;
+    background: #f4cb49;
+    font-size: 14px;
+    font-family: 'Pretendard-Regular';
+}
+
+.viewCon{
+
+}
+
+
+.pname{
+    font-family: 'Pretendard-Regular';
+    padding-top: 10px;
+    font-size: 25px;
+}
+
+
+
+.ppriceBox{
+    font-family: 'Pretendard-Regular';
+    width: 550px;
+}
+
+
+
+.viewPrice{
+    font-size: 22px;
+    color: #b8b8b8;
+    text-decoration: line-through;
+    line-height: 1.5;
+    padding-left: 5px;
+}
+
+.viewDisPrice{
+    margin-left: 15px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+}
+
+.viewDis{
+    margin-left: 12px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #de570c;
+    line-height: 1.5;
+}
+
+.won1{
+    font-size: 17px;
+    text-decoration: line-through;
+    color: #b8b8b8;
+    line-height: 2;
+}
+
+.won2{
+    font-size: 17px;
+}
+
+.viewBtBox{
+    display: flex;
+    justify-content: space-between;
+}
+
+.likeBtn{
+    width: 150px;
+    height: 60px;
+    border: solid 1px #e8e8e8;
+}
+
+.cartBtn{
+    width: 150px;
+    height: 60px;
+    border: solid 1px #e8e8e8;
+}
+
+.buyBtn{
+    width: 150px;
+    height: 60px;
+    color: #fff;
+    background: #bd3020;
+}
+
+.likeBtn:hover, .cartBtn:hover{
+    background: #f6f6f6;
+}
+.buyBtn:hover{
+    background: #bd2912;
+}
+.couponBox{
+    text-align: center;
+    margin: 20px 0;
+}
+.coupon{
+    width: 280px;
+}
+
+.sizeBox{
+
+
+}
+
+.colorBox{
+
+
+}

@@ -16,20 +16,22 @@ function productView(){
             let psizeList = re.psizeDtoList[0]
             let pstockList = re.pstockDtoList[0]
 
-            document.querySelector('.pimg').src ="/pImg/"+productList.pimgname; // 이미지 출력
+            document.querySelector('.viewPimg').src ="/pImg/"+productList.pimgname; // 이미지 출력
             document.querySelector('.pname').innerHTML = productList.pname; // 제품명 출력
             
             // 판매가 출력
             let phtml = '';
             if( re.pdiscount == 0 ){ // 할인이 없을 경우
-                phtml += '<div>' + productList.pprice.toLocaleString('ko-KR') + ' 원</div>';
+                phtml += '<div class="viewPrice">' + productList.pprice.toLocaleString('ko-KR') + '</div>'
+                    + '<div class="won1">원</div>';
             }else {
-                phtml += '<div>' + productList.pprice.toLocaleString('ko-KR') + ' 원</div>'
-                    + '<div>' + (productList.pprice - ( productList.pprice * productList.pdiscount ) ).toLocaleString('ko-KR') + ' 원</div>'
-                    + '<div>' + Math.round(productList.pdiscount*100) + ' %</div>'
-                    + '<div>' + psizeList.psize + '</div>'
-                    + '<div>' + pstockList.pcolor + '</div>'
-                    + '<div>' + pstockList.pstock + '</div>';
+                phtml += '<div class="viewPrice">' + productList.pprice.toLocaleString('ko-KR') + '</div>'
+                    + '<span class="won1">원</span>'
+                    + '<div class="viewDisPrice">' + (productList.pprice - ( productList.pprice * productList.pdiscount ) ).toLocaleString('ko-KR') + '<span class="won2">원</span></div>'
+                    + '<div class="viewDis">' + Math.round(productList.pdiscount*100) + '% SALE</div>'
+                    // + '<div>' + psizeList.psize + '</div>'
+                    // + '<div>' + pstockList.pcolor + '</div>'
+                    // + '<div>' + pstockList.pstock + '</div>';
             }
             document.querySelector('.ppriceBox').innerHTML = phtml;
             console.log("==========")
