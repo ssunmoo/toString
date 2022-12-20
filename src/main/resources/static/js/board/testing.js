@@ -23,13 +23,13 @@ function boardList( bcno, page ){
             console.log(re);
             let list = re.boardDtoList;
             console.log(list.bcno) // bcno 왜 0이야..?
-            let html = '<tr>'
-                    + '<td>번호</td><td>제목</td><td>작성자</td><td>조회수</td>'
-                    + '</tr>';
+            let html = '';
             list.forEach( (r)=>{
-                html += '<tr>'
-                    + '<td>'+r.bno+'</td><td onclick="getView('+r.bno+')">'+r.btitle+'</td><td>예정</td><td>'+r.bview+'</td>'
-                    + '</tr>';
+                html += '<div class="boardText">'
+                    + '<span class="boardNum">'+r.bno+'</span>'
+                    + '<span onclick="getView('+r.bno+')" class="boardTitle">'+r.btitle+'</span>'
+                    + '<span class="boardMem">작성자</span>'
+                    + '</div>';
             });
             document.querySelector('.reviewlist').innerHTML = html;
 
@@ -38,21 +38,21 @@ function boardList( bcno, page ){
             
             // 이전 페이지
             if( page <= 1 ) {
-                pageHtml += '<button type="button" onclick="boardList('+(bcno+','+page)+')">이전</button>';
+                pageHtml += '<button class="pageBtn" type="button" onclick="boardList('+(bcno+','+page)+')">이전</button>';
             }else {
-                pageHtml += '<button type="button" onclick="boardList('+(bcno+','+(page-1))+')">이전</button>';
+                pageHtml += '<button class="pageBtn" type="button" onclick="boardList('+(bcno+','+(page-1))+')">이전</button>';
             }
 
             // 페이지 번호 출력
             for( let page = re.startBtn; page <= re.endBtn; page++ ){
-                pageHtml += '<button type="button" onclick="boardList('+(bcno+','+page)+')">'+page+'</button>';
+                pageHtml += '<button class="numBtn" type="button" onclick="boardList('+(bcno+','+page)+')">'+page+'</button>';
             }
 
             // 다음 페이지
             if( page >= re.totalPage ){
-                pageHtml += '<button type="button" onclick="boardList('+(bcno+','+page)+')">다음</button>';
+                pageHtml += '<button class="pageBtn" type="button" onclick="boardList('+(bcno+','+page)+')">다음</button>';
             }else {
-                pageHtml += '<button type="button" onclick="boardList('+(bcno+','+(page+1))+')">다음</button>';
+                pageHtml += '<button  class="pageBtn" type="button" onclick="boardList('+(bcno+','+(page+1))+')">다음</button>';
             }
             document.querySelector('.pageBox').innerHTML = pageHtml;
             

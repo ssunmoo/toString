@@ -5,6 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
+
+    <!-- 이따 삭제 -->
+    <link rel="stylesheet" href="/css/review.css">
 </head>
 
 <!-- 스크립트 불러오기 -->
@@ -13,32 +16,40 @@
     <script src="/js/board/review.js"></script>
 </th:block>
 
+
 <body>
 
     <div layout:fragment="content" class="content">
 
-        <div> 후기 게시판 </div>
-        <div>
-            <button><a href="/board/write">글작성</a></button>
-        </div>
-        <div class="searchBox">
-            <select class="key">
-                <option>전체</option>
-                <option value="btitle">제목</option>
-                <option value="bcontent">내용</option>
-            </select>
-            <input type="text" class="keyWord" placeholder="검색어를 입력하세요">
-            <button type="button" onclick="rSearch()">검색</button>
-        </div>
-        <div>
-            <table class="reviewlist">
 
+        <div class="boardCon">
+            <div class="boardSearchBox">
+                <select class="key">
+                    <option>전체</option>
+                    <option value="btitle">제목</option>
+                    <option value="bcontent">내용</option>
+                </select>
+                <input type="text" class="keyWord" placeholder="검색어를 입력하세요">
+                <button type="button" onclick="rSearch()" class="boardSBtn">
+                    <img src="/images/icon_sc.png">
+                </button>
+            </div>
+            <div>
+                <div class="reviewlist">
 
-            </table>
-            <div class="pageBox">
+                </div>
 
+                <div class="boardWBtn">
+                    <button><a href="/board/write">글작성</a></button>
+                </div>
+
+                <div class="pageBox">
+
+                </div>
             </div>
         </div>
+
+
     </div>
 
 

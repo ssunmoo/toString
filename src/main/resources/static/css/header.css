@@ -10,10 +10,6 @@ a{
     text-decoration-line: none;
 }
 
-a:hover{
-    color: #f4cb49;
-}
-
 .header{
     background: blueviolet;
     height: 280px;

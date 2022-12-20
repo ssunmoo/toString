@@ -1,5 +1,116 @@
-.container{
-    width: 1200px;
-    height: 700px;
-    margin: 0 auto;
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+*{
+    font-family: 'Pretendard-Regular';
+}
+
+.boardCon{
+    margin: 0 auto;
+    width: 700px;
+    padding-top: 20px;
+    padding-bottom: 150px;
+    height: 650px;
+}
+
+.boardWBtn{
+    width: 100px;
+    height: 35px;
+    color: #fff;
+    background: #2c2c2c;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 14px;
+    font-weight: 200;
+    float: right;
+    margin-top: 20px;
+}
+
+.boardWBtn:hover{
+    background: #494949;
+}
+
+.boardSearchBox{
+    margin-top: 20px;
+    border-radius: 50px;
+    border: 2px #333333 solid;
+    height: 45px;
+}
+
+.keyWord{
+    font-size: 15px;
+    width: 500px;
+    padding-left: 15px;
+}
+
+.key{
+    width: 100px;
+    text-align: center;
+    line-height: 3;
+    font-size: 15px;
+}
+
+.boardSBtn{
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    line-height: 2;
+    font-size: 14px;
+    float: right;
+}
+
+.boardSBtn img{
+    padding-top: 8px;
+}
+
+.reviewlist{
+    margin-top: 30px;
+}
+.boardNum{
+    padding-left: 10px;
+    color: #333;
+    font-size: 15px;
+}
+
+.boardText{
+    padding-top: 22px;
+    padding-bottom: 15px;
+    border-bottom: #afafaf solid 1px;
+    color: #333;
+}
+
+
+.boardTitle{
+    font-size: 21px;
+    font-weight: 500;
+    padding-left: 40px;
+}
+
+.boardMem{
+    margin-right: 20px;
+    font-size: 19px;
+    float: right;
+
+}
+
+
+.pageBox{
+    margin-top: 70px;
+    text-align: center;
+    color: #333333;
+}
+
+.pageBtn{
+    padding: 10px;
+}
+
+.numBtn{
+    padding: 5px;
+}
+

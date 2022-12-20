@@ -20,20 +20,22 @@ function productView(){
             document.querySelector('.pname').innerHTML = productList.pname; // 제품명 출력
             
             // 판매가 출력
-            let phtml = '';
             if( re.pdiscount == 0 ){ // 할인이 없을 경우
-                phtml += '<div class="viewPrice">' + productList.pprice.toLocaleString('ko-KR') + '</div>'
-                    + '<div class="won1">원</div>';
+                document.querySelector('.viewPrice').innerHTML = productList.pprice.toLocaleString('ko-KR')+"원";
             }else {
-                phtml += '<div class="viewPrice">' + productList.pprice.toLocaleString('ko-KR') + '</div>'
-                    + '<span class="won1">원</span>'
-                    + '<div class="viewDisPrice">' + (productList.pprice - ( productList.pprice * productList.pdiscount ) ).toLocaleString('ko-KR') + '<span class="won2">원</span></div>'
-                    + '<div class="viewDis">' + Math.round(productList.pdiscount*100) + '% SALE</div>'
+                document.querySelector('.viewPrice').innerHTML = productList.pprice.toLocaleString('ko-KR')+"원";
+                document.querySelector('.viewDiscountprice').innerHTML = (productList.pprice - ( productList.pprice * productList.pdiscount ) ).toLocaleString('ko-KR');
+                document.querySelector('.viewPdiscount').innerHTML = Math.round(productList.pdiscount*100)+"%OFF";
+
+                // phtml += '<div class="viewPrice">' + productList.pprice.toLocaleString('ko-KR') + '</div>'
+                //     + '<span class="won1">원</span>'
+                //     + '<div class="viewDisPrice">' + (productList.pprice - ( productList.pprice * productList.pdiscount ) ).toLocaleString('ko-KR') + '<span class="won2">원</span></div>'
+                //     + '<div class="viewDis">' + Math.round(productList.pdiscount*100) + '% SALE</div>'
                     // + '<div>' + psizeList.psize + '</div>'
                     // + '<div>' + pstockList.pcolor + '</div>'
                     // + '<div>' + pstockList.pstock + '</div>';
             }
-            document.querySelector('.ppriceBox').innerHTML = phtml;
+            // document.querySelector('.ppriceBox').innerHTML = phtml;
             console.log("==========")
             console.log(psizeList)
             console.log(psizeList.psize)

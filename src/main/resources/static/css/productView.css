@@ -32,59 +32,78 @@
     height: 600px;
 }
 
-table tr{
-    border: 1px solid #ccc;
+table td{
+    vertical-align: middle;
 }
-
-.viewTitle{
-    width: 80px;
-    background: #f4cb49;
-    font-size: 14px;
-    font-family: 'Pretendard-Regular';
-}
-
-.viewCon{
-
-}
-
 
 .pname{
     font-family: 'Pretendard-Regular';
     padding-top: 10px;
     font-size: 25px;
+    border-bottom: 1px solid #ccc;
 }
 
-
-
-.ppriceBox{
+.ppriceBox2{
     font-family: 'Pretendard-Regular';
-    width: 550px;
+    padding-top: 10px;
 }
 
 
+
+.viewTitle{
+    width: 80px;
+    font-size: 17px;
+    font-family: 'Pretendard-Regular';
+}
 
 .viewPrice{
+    padding-left: 15px;
     font-size: 22px;
     color: #b8b8b8;
     text-decoration: line-through;
     line-height: 1.5;
-    padding-left: 5px;
 }
 
-.viewDisPrice{
+.discountprice{
+    width: 100px;
+}
+.pdiscount{
+    padding-left: 10px;
+}
+.viewBoxText tr:nth-child(1){
+    height: 70px;
+}
+.viewBoxText tr:nth-child(2){
+    height: 60px;
+}
+
+.viewBoxText tr:nth-child(3),.viewBoxText tr:nth-child(5), .viewBoxText tr:nth-child(6){
+    height: 50px;
+}
+
+.viewDiscountprice{
     margin-left: 15px;
     font-size: 28px;
     font-weight: 600;
     color: #333;
 }
 
-.viewDis{
-    margin-left: 12px;
-    font-size: 25px;
-    font-weight: 600;
-    color: #de570c;
-    line-height: 1.5;
+.viewPdBox{
+    border-radius: 5px;
+    background: #de570c;
+    padding: 7px;
 }
+
+.viewPdiscount{
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.5;
+    text-align: center;
+
+}
+
+
 
 .won1{
     font-size: 17px;
@@ -97,9 +116,9 @@ table tr{
     font-size: 17px;
 }
 
+
 .viewBtBox{
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .likeBtn{
@@ -128,19 +147,9 @@ table tr{
     background: #bd2912;
 }
 .couponBox{
-    text-align: center;
+    height: 150px;
     margin: 20px 0;
 }
 .coupon{
-    width: 280px;
-}
-
-.sizeBox{
-
-
-}
-
-.colorBox{
-
-
+    width: 250px;
 }
