@@ -1,5 +1,6 @@
 package com.shop.tostring.service.member;
 
+import com.shop.tostring.constant.Role;
 import com.shop.tostring.domain.dto.member.MemberDto;
 import com.shop.tostring.domain.entity.member.MemberEntity;
 import com.shop.tostring.domain.entity.member.MemberRepository;
@@ -10,18 +11,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class MemberService {
+public class MemberService implements UserDetailsService {
 
     // 회원 리포지토리
     @Autowired
@@ -34,6 +45,43 @@ public class MemberService {
     // 메일 전송
     @Autowired
     private JavaMailSender javaMailSender;
+
+
+    // 로그인 인증 메서드 [ 시큐리티 사용 ]
+    @Override
+    public UserDetails loadUserByUsername(String mid) throws UsernameNotFoundException {
+        // 입력받은 아이디가 있는지 확인
+        MemberEntity memberEntity = memberRepository
+                .findBymid( mid );
+                // .orElseThrow( () -> new UsernameNotFoundException("사용자가 존재하지않습니다."));
+
+        // 검증된 토큰 생성 [ 일반 유저 ]
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add( new SimpleGrantedAuthority( memberEntity.getRole() )); // 회원정보를 빼온뒤 토큰에 저장
+
+        // 토큰 전달
+        MemberDto memberDto = memberEntity.toMemberDto();
+        memberDto.setAuthorities( authorities );
+
+        return memberDto;
+    }
+
+    // 로그인 여부 판단 [ 시큐리티 사용 ]
+    public String getloginMno(){
+        // 인증된 토큰 확인
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        System.out.println("토큰내용확인 " + principal);
+
+        if( principal.equals("anonymousUser")){ // 로그인 전 기본 값
+            return null;
+        }else {
+            MemberDto memberDto = (MemberDto) principal;
+            return memberDto.getMid();
+        }
+    }
+
+
 
 
 //    // 로그인 정보 호출
@@ -74,8 +122,15 @@ public class MemberService {
     // 1. 회원가입
     @Transactional
     public int setSignup( MemberDto memberDto ){
+
+        // 패스워드 암호화
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        memberDto.setMpw( passwordEncoder.encode( memberDto.getMpw()));
+
         MemberEntity memberEntity = memberRepository.save( memberDto.toMemberEntity()); // 받아온 값 저장
-        System.out.println("서비스 memberEntity : "+ memberEntity);
+
+        // 회원등급 삽입
+        memberEntity.setRole(Role.valueOf("USER"));
         return memberEntity.getMno();
     }
 
@@ -108,24 +163,24 @@ public class MemberService {
         } return false;
     }
 
-    // 4. 로그인
-    @Transactional
-    public int loginMember( MemberDto memberDto){
-        // 모든 정보 호출
-        List<MemberEntity> entityList = memberRepository.findAll();
-        // 2. 입력 바은 데이터와 일치하는 값 찾기
-        for( MemberEntity entity : entityList ){
-            if( entity.getMid().equals(memberDto.getMid())){
-                if( entity.getMpw().equals(memberDto.getMpw())){
-                    request.getSession().setAttribute("loginMno", entity.getMno());
-                    return 1;   // 1: 성공
-                } else {
-                    return 2; // 2: 패스워드 틀림
-                }
-            }
-        }
-        return 0; // 0 : 로그인 실패
-    }
+//    // 4. 로그인
+//    @Transactional
+//    public int loginMember( MemberDto memberDto){
+//        // 모든 정보 호출
+//        List<MemberEntity> entityList = memberRepository.findAll();
+//        // 2. 입력 바은 데이터와 일치하는 값 찾기
+//        for( MemberEntity entity : entityList ){
+//            if( entity.getMid().equals(memberDto.getMid())){
+//                if( entity.getMpw().equals(memberDto.getMpw())){
+//                    request.getSession().setAttribute("loginMno", entity.getMno());
+//                    return 1;   // 1: 성공
+//                } else {
+//                    return 2; // 2: 패스워드 틀림
+//                }
+//            }
+//        }
+//        return 0; // 0 : 로그인 실패
+//    }
 
     // 5. 아이디 찾기
     @Transactional
@@ -210,9 +265,6 @@ public class MemberService {
         }
 
     } // emailsend e
-
-
-
 
 
 

@@ -33,13 +33,6 @@ public class MemberController {
         return "member/login";
     }
 
-//    // 2. 로그인 error
-//    @GetMapping("/login/error")
-//    public Resource getLoginError(Model model ){
-//        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해 주세요");
-//        return new ClassPathResource("templates/member/login.html");
-//    }
-
     // 3. 아이디 찾기
     @GetMapping("/getId")
     public String getId(){
@@ -60,7 +53,6 @@ public class MemberController {
     @ResponseBody
     @PostMapping("/setSignup")
     public int setSignup(@RequestBody MemberDto memberDto ){
-        System.out.println( "컨트롤러ㅓ " + memberDto );
         return memberService.setSignup( memberDto );
     }
 

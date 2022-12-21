@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class ProductController {
 
     @Autowired
@@ -89,7 +90,7 @@ public class ProductController {
 
     // 장바구니 페이지
     @ResponseBody
-    @PostMapping("setCartList")
+    @PostMapping("/setCartList")
     public ProductDto setCartList( ProductDto productDto ){
         return productService.setCartList( productDto );
     }

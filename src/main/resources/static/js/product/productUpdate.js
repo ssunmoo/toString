@@ -2,7 +2,7 @@
 pcategoryList();
 function pcategoryList(){
     $.ajax({
-        url : "/pcategoryList",
+        url : "/admin/pcategoryList",
         type : "get",
         success: re => {
             let phtml = '<option selected="selected">선택</option>';
@@ -23,7 +23,7 @@ document.querySelector('.pcategoryList').addEventListener( "change", e => {
 // 카테고리에 맞는 제품 출력
 function getproduct( pcno ){
     $.ajax({
-        url : "/getProductList",
+        url : "/admin/getProductList",
         type : "get",
         success: re => {
             console.log(re)
@@ -47,7 +47,7 @@ document.querySelector('.productNameList').addEventListener( "change", e => {
 // 기존 정보 출력
 function productView(pno){
     $.ajax({
-        url : "/productView",
+        url : "/admin/productView",
         type : "get",
         data : {"pno" : pno },
         success: re => {
@@ -89,7 +89,7 @@ function productUpdate(){
     formdata.set("pcno", pcno ); // 제품 카테고리 값 넣기
 
     $.ajax({
-        url : "/productUpdate",
+        url : "/admin/productUpdate",
         type : "put",
         data : formdata,
         contentType: false,

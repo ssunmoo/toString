@@ -7,7 +7,7 @@ function setPcategory(){
     }
 
     $.ajax({
-        url : "/setPcategory",
+        url : "/admin/setPcategory",
         type : "post",
         data : JSON.stringify(data),
         contentType: "application/json",
@@ -22,7 +22,7 @@ function setPcategory(){
 pcategoryList();
 function pcategoryList(){
     $.ajax({
-        url : "/pcategoryList",
+        url : "/admin/pcategoryList",
         type : "get",
         success: re => {
             let html = '<option selected="selected">선택</option>';
@@ -48,7 +48,7 @@ function setProduct(){
     formdata.set("pcno", pcno ); // 제품 카테고리 값 넣기
 
     $.ajax({
-        url : "/setProduct",
+        url : "/admin/setProduct",
         type : "post",
         data : formdata,
         contentType: false,

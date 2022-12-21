@@ -26,22 +26,19 @@ public class MemberEntity extends BaseEntity {
 
     @Column( unique = true )
     private String mid;         // 회원 아이디
-
     private String mpw;         // 회원 비밀번호
-
     private String mname;       // 회원 이름
-
     private String mphone;      // 회원 연락처
-
     @Column( unique = true )
     private String memail;      // 회원 이메일
-
     private String madress;     // 주소
 
-    // 타입을 엔티티 속성으로 지정
-    @Enumerated(EnumType.STRING)
-    private Role role;
+//    // 타입을 엔티티 속성으로 지정
+//    @Enumerated(EnumType.STRING)
+//    private Role role;
 
+    // 타입을 엔티티 속성으로 지정
+    private String role; // 토큰 타입
 
     // 카트에 회원 번호 pk 전달
     @OneToMany( mappedBy = "memberEntity" )
@@ -66,12 +63,6 @@ public class MemberEntity extends BaseEntity {
                 .madress( this.madress )
                 .build();
     }
-
-
-
-
-
-
 
 
 

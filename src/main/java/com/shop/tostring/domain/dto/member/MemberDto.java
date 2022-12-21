@@ -1,7 +1,13 @@
 package com.shop.tostring.domain.dto.member;
 
+import com.shop.tostring.constant.Role;
 import com.shop.tostring.domain.entity.member.MemberEntity;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -9,7 +15,7 @@ import lombok.*;
 @Setter
 @ToString
 @Builder
-public class MemberDto {
+public class MemberDto implements UserDetails {
 
     private int mno;            // 회원 번호
     private String mid;         // 회원 아이디
@@ -18,6 +24,7 @@ public class MemberDto {
     private String mphone;      // 회원 연락처
     private String memail;      // 회원 이메일
     private String madress;     // 주소
+    private Set<GrantedAuthority> authorities; // 인증 권한 [토큰]
 
     // 엔티티로 변환
     public MemberEntity toMemberEntity(){
@@ -32,4 +39,45 @@ public class MemberDto {
                 .build();
     }
 
+    // 토큰을 넣을 setter
+    public void setAuthorities(Set<GrantedAuthority> authorities) {
+        this.authorities = authorities;
+    }
+    // UserDetails Override
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // 컬렉션의 상속을 받는 GrantedAuthority
+        return this.authorities;
+    }
+
+
+    @Override
+    public String getPassword() {
+        return this.mpw;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.mid;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

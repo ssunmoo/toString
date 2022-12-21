@@ -8,7 +8,7 @@ let color = null; // 선택한 색상
 productView()
 function productView(){
     $.ajax({
-        url : "/productView",
+        url : "/admin/productView",
         type : "get",
         data : { "pno" : pno },
         success: re => {
@@ -92,7 +92,7 @@ document.querySelector('.cartBtn').addEventListener( 'click', (e) =>{
     formdata.set("pno", pno ); // 제품 번호 추가
 
     $.ajax({
-        url : "/setCartList",
+        url : "/admin/setCartList",
         type : "post",
         data : formdata,
         contentType: false,
@@ -101,7 +101,7 @@ document.querySelector('.cartBtn').addEventListener( 'click', (e) =>{
             console.log(re)
             productList = [];
             if( confirm('장바구니 페이지로 이동하시겠습니까?') ) {
-                location.href = "/getCartList";
+                location.href = "/admin/getCartList";
             }else{
                 alert('장바구니 담기 실패');
             }

@@ -2,7 +2,7 @@
 getProductList()
 function getProductList(){
     $.ajax({
-        url : "/getProductList",
+        url : "/admin/getProductList",
         type : "get",
         success: re => {
             console.log(re)
@@ -16,7 +16,7 @@ function getProductList(){
                     // + '<div class="pprice">정상가 '+p.pprice.toLocaleString('ko-KR')+' 원</div>'
                     + '<div class="ppriceBox">'
                     + '<span class="pdiscount">'+Math.round(p.pdiscount*100)+'%</span>' // 소수점 제거 후 반올림
-                    + '<span class="discountprice"> '+ (p.pprice - ( p.pprice * p.pdiscount ) ).toLocaleString('ko-KR') +' 원</span>'
+                    + '<span class="discountprice"> '+ (p.pprice - ( p.pprice * p.pdiscount ) ).toLocaleString('ko-KR') +'원</span>'
                     + '</div>'
                     + '</span>';
             })
@@ -28,5 +28,5 @@ function getProductList(){
 // 제품 상세페이지로 이동
 function productPage( pno ){
     sessionStorage.setItem( "pno", pno );
-    location.href = "/getProductView";
+    location.href = "/admin/getProductView";
 }

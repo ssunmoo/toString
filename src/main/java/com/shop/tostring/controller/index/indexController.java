@@ -18,4 +18,10 @@ public class indexController {
         return "layouts/layout1";
     }
 
+    // 에러페이지
+    @GetMapping("/error")
+    public String getLoginError(){
+        return "error";
+    }
+
 }
