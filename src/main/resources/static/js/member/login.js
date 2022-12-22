@@ -1,26 +1,26 @@
 
-// 1. 로그인
-function setLogin() {
-
-    let info = {
-        mid: document.querySelector('.mid').value,
-        mpw: document.querySelector('.mpw').value
-    }
-    $.ajax({
-        url: "/member/loginMember",
-        type: "post",
-        data : JSON.stringify(info),
-        contentType: "application/json",
-        success: function(re){
-            if( re == true ){
-                location.href="/"
-            }else {
-                alert('로그인 정보를 다시 입력해주세요');
-            }
-
-        }
-    })
-}
+// // 1. 로그인
+// function setLogin() {
+//
+//     let info = {
+//         mid: document.querySelector('.mid').value,
+//         mpw: document.querySelector('.mpw').value
+//     }
+//     $.ajax({
+//         url: "/member/loginMember",
+//         type: "post",
+//         data : JSON.stringify(info),
+//         contentType: "application/json",
+//         success: function(re){
+//             if( re == true ){
+//                 location.href="/"
+//             }else {
+//                 alert('로그인 정보를 다시 입력해주세요');
+//             }
+//
+//         }
+//     })
+// }
 
 // 2. 아이디 찾기
 function findId(){

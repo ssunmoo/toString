@@ -1,0 +1,109 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.signupBox{
+    margin: 0 auto;
+    width: 600px;
+    height: 100%;
+    text-align: center;
+}
+
+.signupInputBox{
+    margin: 50px 0;
+}
+
+.infobox{
+    margin-top: 30px;
+}
+
+.mid, .mpw, .mpwcheck, .mname, .mphone, .madress {
+    width: 400px;
+    height: 55px;
+    padding-left: 15px;
+    border: 1px solid #a7a7a7;
+    margin-top: 10px;
+    font-family: 'Pretendard-Regular';
+}
+
+.memail{
+    width: 295px;
+    height: 55px;
+    padding-left: 15px;
+    border: 1px solid #a7a7a7;
+    margin-top: 10px;
+    font-family: 'Pretendard-Regular';
+}
+
+.getauthbtn{
+    width: 100px;
+    height: 55px;
+    margin-top: 10px;
+    background: #eaeaea;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    font-family: 'Pretendard-Regular';
+    text-align: center;
+}
+
+
+.authinput{
+    width: 295px;
+    height: 55px;
+    padding-left: 15px;
+    border: 1px solid #a7a7a7;
+    margin-top: 10px;
+    font-family: 'Pretendard-Regular';
+}
+
+.authbtn{
+    width: 100px;
+    height: 55px;
+    margin-top: 10px;
+    background: #eaeaea;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    font-family: 'Pretendard-Regular';
+    text-align: center;
+}
+
+.timerbox{
+    margin: 10px 0;
+}
+
+.signUpText, .terms{
+    font-family: 'Pretendard-Regular';
+    font-weight: 600;
+    font-size: 25px;
+    margin: 50px 0;
+    color: #333;
+}
+
+.signupBtn{
+    width: 400px;
+    height: 55px;
+    background: #f4cb49;
+    margin-top: 20px;
+    color: #fff;
+    font-family: 'Pretendard-Regular';
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.signupBtn:hover{
+    background: #ecc23c;
+}
+
+.textArea {
+    width: 400px;
+    height: 150px;
+    resize: none;
+    border: 1px solid #a7a7a7;
+    margin-top: 10px;
+    font-family: 'Pretendard-Regular';
+    font-size: 14px;
+    color: #333;
+}

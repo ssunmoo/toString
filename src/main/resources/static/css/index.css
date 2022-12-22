@@ -56,15 +56,16 @@ body::-webkit-scrollbar {
 .pimg{
     width: 270px;
     height: 270px;
-    border-radius: 15px;
-    box-shadow: 1px 1px 10px #ccc;
+    border-radius: 6px;
+    box-shadow: 1px 1px 5px #ccc;
 }
 
 .pimg img{
     width: 270px;
     height: 270px;
-    border-radius: 15px;
+    border-radius: 6px;
 }
+
 
 .pname{
     font-family: 'Pretendard-Regular';

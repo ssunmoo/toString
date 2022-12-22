@@ -11,6 +11,7 @@ function setSignup(){
         memail : document.querySelector('.memail').value,
         madress : document.querySelector('.madress').value
     }
+
     // 입력하지 않은 값이 있다면 안내 문구 출력
     if ( info.mid == '' ) { // alert -> document 로 변경
         document.querySelector('.check1').innerHTML = '아이디를 입력해 주세요'

@@ -5,6 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
+
+    <link rel="stylesheet" href="/css/login.css">
+
+
 </head>
 
 <!-- 스크립트 불러오기 -->
@@ -16,22 +20,19 @@
 <body>
 
     <div layout:fragment="content" class="content">
-        <h3> 로그인</h3>
-        <form class="loginbox">
-          <div>
-            <div> <input type="text" class="mid" placeholder="아이디"> </div>
-            <div> <input type="text" class="mpw" placeholder="비밀번호"> </div>
-          </div>
-        </form>
-
-        <div>
-          <button type="button" onclick="setLogin()"> 로그인 </button>
+        <div class="loginCon">
+            <form class="loginbox" method="post" action="/member/loginMember">
+                <div class="loginInputBox">
+                    <input type="text" name="mid" class="mid" placeholder="아이디"> <br>
+                    <input type="text" name="mpw" class="mpw" placeholder="비밀번호"> <br>
+                    <input type="submit" value="로그인" class="loginBtn">
+                </div>
+            </form>
+            <div class="loginBtnBox">
+                <a href="/member/getId"><button type="button" class="loginFindId"> 아이디 찾기 </button> </a>
+                <a href="/member/getpassword"><button type="button" class="loginFindPw"> 비밀번호 찾기 </button> </a>
+            </div>
         </div>
-        <div>
-            <a href="/member/getId"><button type="button" > 아이디 찾기 </button> </a>
-            <a href="/member/getpassword"><button type="button"> 비밀번호 찾기 </button> </a>
-        </div>
-
 <!--        <script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
 <!--        <script src="/js/member/login.js"></script>-->
     </div>

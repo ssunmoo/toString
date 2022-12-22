@@ -5,6 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
+
+    <link rel="stylesheet" href="/css/signup.css">
+
 </head>
 
 <!-- 스크립트 불러오기 -->
@@ -15,81 +18,81 @@
 
 <body>
     <div layout:fragment="content" class="content">
-        <h3> 신규 회원가입 </h3>
-        <form class="infobox">
-          <div>
-            <div> <input type="text" class="mid" placeholder="아이디" onkeyup="idCheck()"> </div>
-            <div class="check1"> </div>
-          </div>
 
-          <div>
-            <div> <input type="text" class="mpw" placeholder="비밀번호" onkeyup="pwCheck()"> </div>
-            <div class="check2"> </div>
-          </div>
+        <div class="signupBox">
+            <div class="signupInputBox">
+                <div class="signUpText"> 신규 회원가입 </div>
+                <form class="infobox">
+                <div>
+                <div> <input type="text" class="mid" placeholder="아이디" onkeyup="idCheck()"> </div>
+                <div class="check1"> </div>
+                </div>
 
-          <div>
-            <div> <input type="text" class="mpwcheck" placeholder="비밀번호 재입력" onkeyup="pwCheck2()"> </div>
-            <div class="check3"> </div>
-          </div>
+                <div>
+                <div> <input type="text" class="mpw" placeholder="비밀번호" onkeyup="pwCheck()"> </div>
+                <div class="check2"> </div>
+                </div>
 
-          <div>
-            <div> <input type="text" class="mname" placeholder="이름" onkeyup="nameCheck()"> </div>
-            <div class="check4"> </div>
-          </div>
+                <div>
+                <div> <input type="text" class="mpwcheck" placeholder="비밀번호 재입력" onkeyup="pwCheck2()"> </div>
+                <div class="check3"> </div>
+                </div>
 
-          <div>
-            <div> <input type="text" class="mphone" placeholder="연락처" onkeyup="phoneCheck()"> </div>
-            <div class="check5"> </div>
-          </div>
+                <div>
+                <div> <input type="text" class="mname" placeholder="이름" onkeyup="nameCheck()"> </div>
+                <div class="check4"> </div>
+                </div>
 
-          <div>
-            <div> <input type="text" class="madress" placeholder="주소"> </div>
-            <div class="check7"> </div>
-          </div>
-        </form>
+                <div>
+                <div> <input type="text" class="mphone" placeholder="연락처" onkeyup="phoneCheck()"> </div>
+                <div class="check5"> </div>
+                </div>
 
-        <div>
-            <div>
-                <input type="text" class="memail" placeholder="이메일" onkeyup="emailCheck()">
-            </div>
-            <div class="check6"> </div>
-            <div>
-                <button type="button" onclick="getAuth()" class="getauthbtn"> 인증코드 발급 </button>
-            </div>
-            <div class="authbox">
-                <div> <input type="text" class="authinput"> </div>
-                <button type="button" class="authbtn" onclick="authCode()">인증</button>
-                <div class="timerbox">  </div>
-            </div>
+                <div>
+                <div> <input type="text" class="madress" placeholder="주소"> </div>
+                <div class="check7"> </div>
+                </div>
+                </form>
 
-            <h3> 이용약관 </h3>
-            <div class="confirmbox">
+                <div>
+                <div>
+                    <input type="text" class="memail" placeholder="이메일" onkeyup="emailCheck()">
+                    <button type="button" onclick="getAuth()" class="getauthbtn"> 인증코드 발급 </button>
+                </div>
+                <div class="check6"> </div>
+
+                <div class="authbox">
+                    <div>
+                        <input type="text" class="authinput">
+                        <button type="button" class="authbtn" onclick="authCode()">인증</button>
+                    </div>
+                    <div class="timerbox"></div>
+                </div>
+
+                <div class="terms"> 이용약관 </div>
+                <div class="confirmbox">
                 <div>
                     <span> <input class="check8" type="checkbox"> </span>
                     <span> [필수] 이용약관 동의 </span>
-                    <div><textarea readonly="readonly"> </textarea></div>
+                    <div><textarea readonly="readonly" class="textArea"> </textarea></div>
                 </div>
 
                 <div>
                     <span> <input class="check9" type="checkbox"> </span>
                     <span> [필수] 개인정보 수집/이용 동의 </span>
-                    <div> <textarea readonly="readonly"> </textarea> </div>
+                    <div> <textarea readonly="readonly" class="textArea"> </textarea> </div>
                 </div>
-            </div>
+                </div>
 
-            <div>
-                <button type="button" onclick="setSignup()"> 등록 </button>
+                <div>
+                    <button type="button" onclick="setSignup()" class="signupBtn"> 등록 </button>
+                </div>
+                </div>
             </div>
         </div>
 
+
     </div>
-
-
-
-
-
-<!--    <script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
-<!--    <script src="/js/member/signup.js"></script>-->
 
 
 </body>

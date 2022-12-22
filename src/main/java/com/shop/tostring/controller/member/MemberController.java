@@ -4,10 +4,7 @@ import com.shop.tostring.domain.dto.member.MemberDto;
 
 import com.shop.tostring.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/member")
@@ -71,13 +68,13 @@ public class MemberController {
         return memberService.emailCheck( memail );
     }
 
-    // 4. 로그인
-    @ResponseBody
-    @PostMapping("/loginMember")
-    public int loginMember( @RequestBody MemberDto memberDto ){
-        int result = memberService.loginMember( memberDto );
-        return result;
-    }
+//    // 4. 로그인
+//    @ResponseBody
+//    @PostMapping("/loginMember")
+//    public int loginMember( @RequestBody MemberDto memberDto ){
+//        int result = memberService.loginMember( memberDto );
+//        return result;
+//    }
 
     // 5. 아이디 찾기
     @ResponseBody
@@ -107,7 +104,12 @@ public class MemberController {
     }
 
 
-
+    // 로그인 여부 판단
+    @GetMapping("/getloginMno")
+    public String getloginMno(){
+        String result = memberService.getloginMno();
+        return result;
+    }
 
 
 

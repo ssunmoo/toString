@@ -53,7 +53,8 @@ public class MemberService implements UserDetailsService {
         // 입력받은 아이디가 있는지 확인
         MemberEntity memberEntity = memberRepository
                 .findBymid( mid );
-                // .orElseThrow( () -> new UsernameNotFoundException("사용자가 존재하지않습니다."));
+                //.orElseThrow( () -> new UsernameNotFoundException("사용자가 존재하지않습니다."));
+                // 검색 결과 확인
 
         // 검증된 토큰 생성 [ 일반 유저 ]
         Set<GrantedAuthority> authorities = new HashSet<>();
@@ -130,7 +131,7 @@ public class MemberService implements UserDetailsService {
         MemberEntity memberEntity = memberRepository.save( memberDto.toMemberEntity()); // 받아온 값 저장
 
         // 회원등급 삽입
-        memberEntity.setRole(Role.valueOf("USER"));
+        memberEntity.setRole("USER");
         return memberEntity.getMno();
     }
 

@@ -5,6 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
+
+    <link rel="stylesheet" href="/css/findpw.css">
+
 </head>
 
 <!-- 스크립트 불러오기 -->
@@ -17,18 +20,16 @@
 
     <div layout:fragment="content" class="content">
 
-        <h3> 비밀번호 찾기</h3>
-        <input type="text" class="mname" placeholder="이름"> <br>
-        <input type="text" class="mid" placeholder="연락처"> <br>
-        <button type="button" onclick="findPw()"> 비밀번호 찾기 </button>
-        <div class="findpw">
-
+        <div class="findPwBox">
+            <div class="findPwInput">
+                <input type="text" class="mname" placeholder="이름"> <br>
+                <input type="text" class="mid" placeholder="연락처"> <br>
+                <button type="button" onclick="findPw()" class="findPwBtn"> 비밀번호 찾기 </button>
+                <div class="findpw">
+                </div>
+            </div>
         </div>
-        <br><br>
-        <a href="/"> <button type="button"> 메인페이지 </button> </a>
 
-<!--        <script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
-<!--        <script src="/js/member/login.js"></script>-->
     </div>
 
 </body>

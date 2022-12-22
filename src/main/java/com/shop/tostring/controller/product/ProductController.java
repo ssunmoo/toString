@@ -1,6 +1,5 @@
 package com.shop.tostring.controller.product;
 
-import com.shop.tostring.domain.dto.board.PageVo;
 import com.shop.tostring.domain.dto.product.PViewVo;
 import com.shop.tostring.domain.dto.product.PcategoryDto;
 import com.shop.tostring.domain.dto.product.ProductDto;

@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.findPwBox{
+    margin: 0 auto;
+    width: 600px;
+    height: 500px;
+    text-align: center;
+}
+
+.findPwInput{
+    margin-top: 50px;
+}
+
+.mname, .mid{
+    width: 400px;
+    height: 55px;
+    padding-left: 15px;
+    border: 1px solid #a7a7a7;
+    margin-top: 10px;
+    font-family: 'Pretendard-Regular';
+}
+
+.findPwBtn{
+    width: 400px;
+    height: 55px;
+    background: #f4cb49;
+    margin-top: 20px;
+    color: #fff;
+    font-family: 'Pretendard-Regular';
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.findPwBtn:hover{
+    background: #ecc23c;
+}
+
+.findpw{
+    margin-top: 30px;
+    font-family: 'Pretendard-Regular';
+    color: #333;
+    font-size: 17px;
+}

@@ -29,12 +29,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            // 인증된 요청
-            .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN") // 관리자는 /admin/ 링크에 모두 접근 가능
-                .antMatchers("/member/info").hasRole("USER")
-                .antMatchers("/**").permitAll() // 인증없이도 요청 가능 [ 모든 접근 허용 ]
-                .and()
+            // 인증된 요청 --> 권한키면 전체확인 어려움 추후 수정 예쩡
+//            .authorizeRequests()
+//                .antMatchers("/admin/**").hasRole("ADMIN") // 관리자는 /admin/ 링크에 모두 접근 가능
+//                .antMatchers("/member/info").hasRole("USER")
+//                .antMatchers("/**").permitAll() // 인증없이도 요청 가능 [ 모든 접근 허용 ]
+//                .and()
 
             // 로그인 페이지 보안 설정
             .formLogin()
@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/")         //로그인 성공시 이동 페이지 URL
                 .usernameParameter("mid")       // 로그인 시 아이디로 입력받을 변수명
                 .passwordParameter("mpw")       // 로그인 시 비밀번호로 입력받을 변수명
-                .failureUrl("/members/login")   // 로그인 실패 시 이동할 URL
+                .failureUrl("/error")   // 로그인 실패 시 이동할 URL
                 .and()
 
              // 페이지 권한 설정
