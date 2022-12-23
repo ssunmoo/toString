@@ -30,6 +30,8 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 
     implementation 'org.springframework.boot:spring-boot-starter-security' // 시큐리티
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client' //  SNS 로그인
+
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // 타임리프
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect' // 타임리프 layout
 

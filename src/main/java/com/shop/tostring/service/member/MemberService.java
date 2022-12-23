@@ -2,6 +2,7 @@ package com.shop.tostring.service.member;
 
 import com.shop.tostring.constant.Role;
 import com.shop.tostring.domain.dto.member.MemberDto;
+import com.shop.tostring.domain.dto.member.OauthDto;
 import com.shop.tostring.domain.entity.member.MemberEntity;
 import com.shop.tostring.domain.entity.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,20 +20,22 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 @Transactional
 @RequiredArgsConstructor
 @Service
-public class MemberService implements UserDetailsService {
+public class MemberService implements UserDetailsService, OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     // 회원 리포지토리
     @Autowired
@@ -268,6 +271,61 @@ public class MemberService implements UserDetailsService {
     } // emailsend e
 
 
+    // OAuth2 로그인
+    @Override
+    @Transactional
+    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+        OAuth2UserService oAuth2UserService = new DefaultOAuth2UserService();
+        OAuth2User oAuth2User = oAuth2UserService.loadUser( userRequest ); // oAuth2User.getAttributes() 임
 
+        System.out.println("2. oAuth2User " + oAuth2User.toString());
+
+        // 2. oauth2 클라이언트 식별 [ 카카오, 네이버, 구글 등 ]
+        String registrationId = userRequest
+                .getClientRegistration()
+                .getRegistrationId(); // 프로퍼티스에 입력한 클라이언트 아이디 가져오기
+        System.out.println("3. oauth2 회사명 " + registrationId );
+
+        // 3. 회원 정보를 담는 객체명 [ JSON 형태 ]
+        String oauth2UserInfo = userRequest
+                .getClientRegistration()
+                .getProviderDetails()
+                .getUserInfoEndpoint()
+                .getUserNameAttributeName();
+        System.out.println("4. 회원정보 객체명 " + oauth2UserInfo );
+        System.out.println("5. 인증 결과 " + oAuth2User.getAttributes() );
+        // 4. Dto 처리
+        OauthDto oauthDto = OauthDto.of( registrationId, oauth2UserInfo, oAuth2User.getAttributes() );
+
+        // 5. DB처리 ***
+        // 5-1. 기존 회원인지 아닌지 확인을 위해 엔티티에 이메일 검색
+        Optional<MemberEntity> optional =  memberRepository.findByMemail(oauthDto.getMemail()); // Optional 클래스 [ nill 예외처리 방지 ]
+        MemberEntity memberEntity = null;
+        if( optional.isPresent()){ // 기존 회원이면
+            memberEntity = optional.get();
+//            // 이메일이 존재하면서 sns 구분[ 카카오, 네이버 등 ]이 동일할 경우
+//            if( optional.get().getRole().equals( registrationId )){
+//                memberEntity = optional.get(); // 검색된 내용을 memberEntity에 담기
+//            }else {  // 이메일이 존재하면서 sns[ 카카오, 네이버 등 ] 구분이 다를 경우 새로 저장
+//                memberEntity = memberRepository.save( oauthDto.toEntity() );
+//            }
+        }else { // 기존 회원이 아니면 새로 저장
+            memberEntity = memberRepository.save( oauthDto.toEntity() );
+        }
+//        memberRepository.findByMemail( oauthDto.getMemail())
+//                .orElseThrow( ()-> {});
+
+        // 5-2. 권한 부여
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add( new SimpleGrantedAuthority(memberEntity.getRole())); // 권한이름
+
+        // 6. 반환 [ 세션 역할 부분 : DB에 있는 정보를 꺼내서 세션에 저장 ]
+        MemberDto memberDto = new MemberDto();
+        memberDto.setMemail( memberEntity.getMemail());
+        memberDto.setAuthorities( authorities ); // 권한 이름 전달 kakaoUser 등
+        memberDto.setAttributes( oauthDto.getAttributes() );
+
+        return memberDto; // dto에 담았으니 dto 리턴
+    }
 }
 

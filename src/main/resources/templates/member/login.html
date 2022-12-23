@@ -23,15 +23,33 @@
         <div class="loginCon">
             <form class="loginbox" method="post" action="/member/loginMember">
                 <div class="loginInputBox">
+                    <div class="loginCategory1">
+                        <span class="loginCaText">일반 로그인</span>
+                    </div>
                     <input type="text" name="mid" class="mid" placeholder="아이디"> <br>
                     <input type="text" name="mpw" class="mpw" placeholder="비밀번호"> <br>
                     <input type="submit" value="로그인" class="loginBtn">
                 </div>
             </form>
+            <div class="signupBtnbox">
+                <a href="/member/signup">회원가입</a>
+            </div>
+
             <div class="loginBtnBox">
                 <a href="/member/getId"><button type="button" class="loginFindId"> 아이디 찾기 </button> </a>
                 <a href="/member/getpassword"><button type="button" class="loginFindPw"> 비밀번호 찾기 </button> </a>
             </div>
+
+            <div class="snsLoginBox">
+                <div class="loginCategory2">
+                    <span class="loginCaText">SNS 로그인</span>
+                </div>
+                <span><a href="/oauth2/authorization/kakao"><img src="/images/login_kakao.png" class="loginIcon"></a></span>
+                <span><a href="/oauth2/authorization/naver"><img src="/images/login_naver.png" class="loginIcon"></a></span>
+                <span><a href="/oauth2/authorization/google"><img src="/images/login_google.png" class="loginIcon"></a></span>
+            </div>
+
+
         </div>
 <!--        <script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
 <!--        <script src="/js/member/login.js"></script>-->

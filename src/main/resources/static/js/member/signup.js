@@ -205,7 +205,7 @@ function setTimer(){
             clearInterval( timerinter ); // 타이머 종료
             alert('인증실패');
             auth = null; // 발급 인증코드 초기화
-            document.querySelector('.getauthbtn').innerHTML = "인증코드 발급" // 버튼의 문자 변경
+            document.querySelector('.timerbox').innerHTML = "인증완료" // 버튼의 문자 변경
         }
     }, 1000); // 1초 간격으로 함수 실행
 } // settimer e

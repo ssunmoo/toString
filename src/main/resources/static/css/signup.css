@@ -13,7 +13,8 @@
 }
 
 .signupInputBox{
-    margin: 50px 0;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 .infobox{
@@ -43,7 +44,6 @@
     height: 55px;
     margin-top: 10px;
     background: #eaeaea;
-    border: 1px solid #ccc;
     font-size: 13px;
     font-family: 'Pretendard-Regular';
     text-align: center;
@@ -64,7 +64,6 @@
     height: 55px;
     margin-top: 10px;
     background: #eaeaea;
-    border: 1px solid #ccc;
     font-size: 13px;
     font-family: 'Pretendard-Regular';
     text-align: center;
@@ -74,7 +73,7 @@
     margin: 10px 0;
 }
 
-.signUpText, .terms{
+.signUpText{
     font-family: 'Pretendard-Regular';
     font-weight: 600;
     font-size: 25px;
@@ -97,6 +96,7 @@
     background: #ecc23c;
 }
 
+
 .textArea {
     width: 400px;
     height: 150px;
@@ -106,4 +106,28 @@
     font-family: 'Pretendard-Regular';
     font-size: 14px;
     color: #333;
+    text-align: center;
+}
+
+.signupCheckBox{
+    display: flex;
+    margin-left: 100px;
+    margin-top: 30px;
+}
+
+
+.checkboxTitle{
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Pretendard-Regular';
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.check8{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ccc;
+    margin-top: 3px;
 }

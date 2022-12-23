@@ -70,7 +70,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
             // 오류 발생 설정
             .exceptionHandling()
-            .accessDeniedPage("/error"); // 오류 발생 시 시큐리티 페이지 전환
+                .accessDeniedPage("/error") // 오류 발생 시 시큐리티 페이지 전환
+                .and()
+        // SNS 로그인 보안 설정
+                .oauth2Login()
+                .defaultSuccessUrl("/") // 로그인 성공 시 이동할 URL
+                .userInfoEndpoint() // Endpoint[종착점] : 소셜 회원 정보가 들어오는 곳
+                .userService( memberService ); // 해당 서비스에서 정보를 전달해서 사용
     }
 
     // 비밀번호 암호화

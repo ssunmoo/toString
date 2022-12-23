@@ -12,9 +12,8 @@ function productView(){
         type : "get",
         data : { "pno" : pno },
         success: re => {
-            let productList = re.productDtoList[0]
-            let psizeList = re.psizeDtoList[0]
-            let pstockList = re.pstockDtoList[0]
+            let productList = re.productDtoList;
+            let sizecolor = re.sizecolor;
 
             document.querySelector('.viewPimg').src ="/pImg/"+productList.pimgname; // 이미지 출력
             document.querySelector('.pname').innerHTML = productList.pname; // 제품명 출력
@@ -35,42 +34,53 @@ function productView(){
                     // + '<div>' + pstockList.pcolor + '</div>'
                     // + '<div>' + pstockList.pstock + '</div>';
             }
+
+            // let keys = object.keys();
+            // for(let i = 0 ; i<keys.length; i++){
+            //     let key = keys[i];
+            //     data.key
+            // }
+
+            document.querySelector('.sizeBox').innerHTML = sizecolor.L;
+
+            // 사이즈, 컬러 뽑아내기
+            // console.log(sizecolor)
+            // for ( let i = 0; i < sizecolor.length; i++ ){
+            //     document.querySelector('.sizeBox').innerHTML = sizecolor.get();
+            // }
+
             // document.querySelector('.ppriceBox').innerHTML = phtml;
-            console.log("==========")
-            console.log(psizeList)
-            console.log(psizeList.psize)
-            console.log("==========")
-            // 사이즈 목록 중복 제거
-            let sizeList = []; // 중복 값 담을 배열
-            psizeList.forEach( s => {
-                sizeList.push( s.psize );   // 중복제거가 필요한 내용을 리스트에 담기
-            })
-            let sizeSet = new Set( sizeList ) // 사이즈 리스트 -> Set 목록 변경 [ 중복제거 ] 무슨 말..?
-
-            // 사이즈 종류
-            let shtml = '<span> [ '
-            sizeSet.forEach( s => {
-                shtml += " " + s + " ";
-            })
-            shtml += ' ] </span> '
-            document.querySelector('.sizeBox').innerHTML = shtml;
-            console.log("***sizeList***");
-            console.log(sizeList);
-            console.log("==============");
-
-            // 5. 색상 select 구성
-            let colorlist = [];
-            pstockList.pcolor.forEach( c => {
-                colorlist.push( c.pcolor ) });
-
-            let colorSet = new Set( colorlist );
-            // console.log( colorlist )
-
-            let chtml = '<option> 색상 </option>';
-            colorSet.forEach( c => {
-                chtml += '<option value="'+ c +'"> '+ c +' </option>'
-            })
-            document.querySelector('.colorBox').innerHTML += chtml;
+            // // 사이즈 목록 중복 제거
+            // let sizeList = []; // 중복 값 담을 배열
+            // psizeList.forEach( s => {
+            //     sizeList.push( s.psize );   // 중복제거가 필요한 내용을 리스트에 담기
+            // })
+            // let sizeSet = new Set( sizeList ) // 사이즈 리스트 -> Set 목록 변경 [ 중복제거 ] 무슨 말..?
+            //
+            // // 사이즈 종류
+            // let shtml = '<span> [ '
+            // sizeSet.forEach( s => {
+            //     shtml += " " + s + " ";
+            // })
+            // shtml += ' ] </span> '
+            // document.querySelector('.sizeBox').innerHTML = shtml;
+            // console.log("***sizeList***");
+            // console.log(sizeList);
+            // console.log("==============");
+            //
+            // // 5. 색상 select 구성
+            // let colorlist = [];
+            // pstockList.pcolor.forEach( c => {
+            //     colorlist.push( c.pcolor ) });
+            //
+            // let colorSet = new Set( colorlist );
+            // // console.log( colorlist )
+            //
+            // let chtml = '<option> 색상 </option>';
+            // colorSet.forEach( c => {
+            //     chtml += '<option value="'+ c +'"> '+ c +' </option>'
+            // })
+            // document.querySelector('.colorBox').innerHTML += chtml;
 
 
         }

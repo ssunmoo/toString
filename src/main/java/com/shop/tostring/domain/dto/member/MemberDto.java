@@ -1,12 +1,13 @@
 package com.shop.tostring.domain.dto.member;
 
-import com.shop.tostring.constant.Role;
 import com.shop.tostring.domain.entity.member.MemberEntity;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -15,7 +16,7 @@ import java.util.Set;
 @Setter
 @ToString
 @Builder
-public class MemberDto implements UserDetails {
+public class MemberDto implements UserDetails, OAuth2User {
 
     private int mno;            // 회원 번호
     private String mid;         // 회원 아이디
@@ -25,6 +26,7 @@ public class MemberDto implements UserDetails {
     private String memail;      // 회원 이메일
     private String madress;     // 주소
     private Set<GrantedAuthority> authorities; // 인증 권한 [토큰]
+    private Map<String, Object> attributes; // oauth2 인증결과
 
     // 엔티티로 변환
     public MemberEntity toMemberEntity(){
@@ -43,6 +45,7 @@ public class MemberDto implements UserDetails {
     public void setAuthorities(Set<GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
+
     // UserDetails Override
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -80,4 +83,19 @@ public class MemberDto implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
+    // OAuth2User
+    @Override
+    public String getName() {
+        return this.memail;
+    }
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return this.attributes;
+    }
+
+
+
 }

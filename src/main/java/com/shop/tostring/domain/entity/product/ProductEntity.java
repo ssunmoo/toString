@@ -1,12 +1,15 @@
 package com.shop.tostring.domain.entity.product;
 
+import com.shop.tostring.domain.dto.product.PViewVo;
 import com.shop.tostring.domain.dto.product.ProductDto;
+import com.shop.tostring.domain.dto.product.PsizeDto;
+import com.shop.tostring.domain.dto.product.PstockDto;
 import com.shop.tostring.domain.entity.BaseEntity;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @AllArgsConstructor
@@ -43,6 +46,7 @@ public class ProductEntity extends BaseEntity {
 
     // dto로 변환
     public ProductDto toProductDto(){
+
         return ProductDto.builder()
                 .pno( this.pno )
                 .pname( this.pname )
@@ -51,11 +55,53 @@ public class ProductEntity extends BaseEntity {
                 .pactive( this.pactive )
                 .pimgname( this.pimg ) // 파일명 전달
                 .pcno( this.pcategoryEntity.getPcno() ) // @ToString.Exclude으로 막아놔서 dto에 함께 출력하려면 이렇게 호출해야함
-                .psize( this.psizeEntityList.get(0).getPsize() )
-                .pcolor( this.psizeEntityList.get(0).getPstockEntityList().get(0).getPcolor() )
                 .pstock( this.psizeEntityList.get(0).getPstockEntityList().get(0).getPstock() )
                 .build();
     }
+
+    // 사이즈, 컬러를 dto로 변환
+    public PViewVo toPViewVo(){
+
+        Map<String, Set<String>> map = new HashMap<>();
+        for(int i = 0 ; i < psizeEntityList.size(); i++){
+            PsizeEntity psizeEntity = psizeEntityList.get(i);
+            String size = psizeEntity.getPsize();
+
+            // 컬러 뽑아서 저장
+            Set<String> set = new HashSet<>();
+            for(int j = 0 ; j < psizeEntity.getPstockEntityList().size(); j++){
+                PstockEntity pstockEntity = psizeEntity.getPstockEntityList().get(j);
+                set.add(pstockEntity.getPcolor());
+            }
+            map.put(size, set);
+        }
+        return PViewVo.builder()
+                .sizecolor(map)
+                .build();
+
+
+//        // 사이즈, 컬러 뽑아내기
+//        List<String> psizeDtoList = new ArrayList<>();
+//        Set<String> pcolorDtoList = new HashSet<>();
+//
+//        // 사이즈와 컬러를 하나의 객체로 묶기
+//        Map<String, Set<String>> sizecolor = new HashMap<>();
+//
+//        psizeEntityList.forEach( (s) ->{
+//            psizeDtoList.add( s.getPsize() ); // 제품 사이즈 리스트에 넣기
+//            sizecolor.put("sizecolor", pcolorDtoList<String> ); // sizecolor에 사이즈 넣기
+//
+//            s.getPstockEntityList().forEach( (c) -> {
+//                pcolorDtoList.add( c.getPcolor() ); // 제품 컬러 리스트에 넣기
+//                sizecolor.put(pcolorDtoList.toString(), pcolorDtoList ); // sizecolor에에 컬러 객체 넣기
+//            });
+//        });
+
+//        return PViewVo.builder()
+//                .sizecolor( sizecolor )
+//                .build();
+    }
+
 
 
 }

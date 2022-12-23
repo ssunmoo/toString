@@ -84,7 +84,7 @@ public class ProductController {
     @ResponseBody
     @PutMapping("/productUpdate")
     public boolean productUpdate( ProductDto productDto ){
-        return productService.setProduct( productDto );
+        return productService.productUpdate( productDto );
     }
 
     // 장바구니 페이지

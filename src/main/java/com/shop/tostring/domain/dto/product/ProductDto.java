@@ -6,6 +6,10 @@ import com.shop.tostring.domain.entity.product.PstockEntity;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -23,10 +27,9 @@ public class ProductDto {
     private String pimgname;            // 첨부파일 [ 출력용 ]
 
     private int pcno;                   // 제품 카테고리 fk
-
-    private String psize;		// 제품 사이즈 이름
-    private String pcolor;		// 제품 이름
-    private int pstock;			// 제품 재고
+    private String psize;               // 제품 사이즈
+    private String pcolor;              // 제품 컬러
+    private int pstock;			        // 제품 재고
 
 
     // entity 변환
@@ -47,7 +50,7 @@ public class ProductDto {
                 .build();
     }
 
-    // 사이즈, 재고 저장
+    // 컬러, 재고 저장
     public PstockEntity toStockEntity(){
         return PstockEntity.builder()
                 .pcolor( this.pcolor )
