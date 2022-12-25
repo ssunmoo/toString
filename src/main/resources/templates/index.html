@@ -8,7 +8,6 @@
     <link th:href="@{/css/header.css}" rel="stylesheet">
     <link th:href="@{/css/footer.css}" rel="stylesheet">
     <link th:href="@{/css/content.css}" rel="stylesheet">
-    <link th:href="@{/css/write.css}" rel="stylesheet">
 
     <!-- css초기화 -->
     <link rel="stylesheet" href="https://unpkg.com/destyle.css@1.0.5/destyle.css">
@@ -23,10 +22,12 @@
 </head>
 <body>
     <div th:replace="fragments/header.html ::header"></div>
-    <div class="mainImg">
-        <img src="/images/main.png">
-    </div>
     <div layout:fragment="content" class="content">
+
+        <div class="mainImg">
+            <img src="/images/main.png">
+        </div>
+
         <div class="textBox">
             <div class="mainText">
                 New Item
@@ -40,6 +41,7 @@
 
             </div>
         </div>
+
     </div>
     <div th:replace="fragments/footer.html ::footer"></div>
 

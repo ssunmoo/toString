@@ -5,72 +5,74 @@
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
+    <link rel="stylesheet" href="/css/setproduct.css">
 </head>
 
 <body>
 
     <div layout:fragment="content" class="content">
-
-        <h3> 상품 등록페이지 </h3>
-        <div>
-            <div>
+        <div class="setProductBox">
+            <div class="setProductCon">
+                <div class="setProductTitle"> 상품 등록페이지 </div>
                 <div>
-                    신규 카테고리 등록
-                    <input type="text" name="pcname" class="pcname">
-                    <button onclick="setPcategory()"> 등록 </button>
-                </div>
-                <div>
-                    카테고리 선택
-                    <select class="pcategoryList">
-                    </select>
-                </div>
-            </div>
-            <div>
-                <form class="setform" method="post">
-                    <div>
-                        상품명
-                        <input type="text" name="pname" class="pname">
-                    </div>
-                    <div>
-                        판매가
-                        <input type="text" name="pprice" class="pprice"> 원
-                    </div>
-                    <div>
-                        할인율
-                        <input type="text" name="pdiscount" class="pdiscount"> %
-                    </div>
-                    <div>
-                        판매상태
-                        <select name="pactive" class="pactive">
-                            <option>선택</option>
-                            <option value="1">판매중</option>
-                            <option value="0">상품준비중</option>
-                        </select>
-                    </div>
-                    <div>
-                        사이즈
-                        <input type="text" name="psize" class="psize">
-                    </div>
-                    <div>
-                        색상
-                        <input type="text" name="pcolor" class="pcolor">
-                    </div>
-                    <div>
-                        재고수량
-                        <input type="text" name="pstock" class="pstock">
-                    </div>
-                    <div>
-                        대표이미지
-                        <input type="file" name="pimg" class="pimg">
-                        <div>
-                            <img src="" class="imgView">
+                    <div class="setPcategoryBox">
+                        <div class="pcbox1">
+                            <span class="setPcategoryText">카테고리 등록</span>
+                            <input type="text" name="pcname" class="pcname">
+                            <button onclick="setPcategory()" class="setPcategoryBtn"> 등록 </button>
+                        </div>
+                        <div class="pcbox2">
+                            <span class="setPcategoryText">카테고리 선택</span>
+                            <select class="pcategoryList">
+                            </select>
                         </div>
                     </div>
                     <div>
-                        <button type="button" onclick="setProduct()"> 등록 </button>
-                    </div>
-                </form>
+                        <form class="setform" method="post">
+                            <div>
+                                <span class="setProductText">상품명</span>
+                                <input type="text" name="pname" class="pname">
+                            </div>
+                            <div>
+                                <span class="setProductText">판매가</span>
+                                <input type="text" name="pprice" class="pprice">
+                            </div>
+                            <div>
+                                <span class="setProductText">할인율</span>
+                                <input type="text" name="pdiscount" class="pdiscount">
+                            </div>
+                            <div>
+                                <span class="setProductText">판매상태</span>
+                                <select name="pactive" class="pactive">
+                                    <option>선택 ▾</option>
+                                    <option value="1">판매중</option>
+                                    <option value="0">상품준비중</option>
+                                </select>
+                            </div>
+                            <div>
+                                <span class="setProductText">사이즈</span>
+                                <input type="text" name="psize" class="psize">
+                            </div>
+                            <div>
+                                <span class="setProductText">색상</span>
+                                <input type="text" name="pcolor" class="pcolor">
+                            </div>
+                            <div>
+                                <span class="setProductText">재고수량</span>
+                                <input type="text" name="pstock" class="pstock">
+                            </div>
+                            <div>
+                                <span class="setProductText">대표이미지</span>
+                                <input type="file" name="pimg" class="pimg">
+                                <button type="button" onclick="setProduct()" class="setProductbtn"> 등록 </button>
+                                <div>
+                                    <img src="" class="imgView">
+                                </div>
+                            </div>
+                        </form>
 
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@ public class indexController {
     // 레이아웃 페이지 오픈
     @GetMapping("/layout")
     public String getLayout(){
-        return "layouts/layout1";
+        return "main";
     }
 
     // 에러페이지

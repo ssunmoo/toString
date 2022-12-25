@@ -5,29 +5,31 @@
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
+    <link rel="stylesheet" href="/css/bcategory.css">
 </head>
-
-<!-- 스크립트 불러오기 -->
-<th:block layout:fragment="script">
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="/js/board/setBcategory.js"></script>
-</th:block>
 
 <body>
 
     <div layout:fragment="content" class="content">
 
-    <form>
+        <div class="bcategoryBox">
+            <div class="bcategoryCon">
+                <div class="bcategorText"> 게시판 카테고리 등록 </div>
+                <form>
 
-      <input type="text" placeholder="카테고리명" class="bcname" name="bcname">
-      <button type="button" onclick="setWrite()"> 등록 </button>
+                    <input type="text" placeholder="카테고리명" class="bcname" name="bcname">
+                    <button type="button" onclick="setWrite()" class="setBcategoryBtn"> 등록 </button>
 
-    </form>
+                </form>
+            </div>
+        </div>
 
     </div>
 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="/js/board/setBcategory.js"></script>
-
+    <!-- 스크립트 불러오기 -->
+    <th:block layout:fragment="script">
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/js/board/setBcategory.js"></script>
+    </th:block>
 </body>
 </html>

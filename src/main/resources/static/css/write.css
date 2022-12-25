@@ -1,3 +1,88 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.writeBox{
+    margin: 0 auto;
+    width: 500px;
+    height: 800px;
+    padding-top: 50px;
+}
+
+.writeText{
+    font-family: 'Pretendard-Regular';
+    font-weight: 600;
+    font-size: 25px;
+    margin: 50px 0;
+    color: #333;
+    text-align: center;
+}
+
+.categorylist{
+    border: 1px solid #a7a7a7;
+    font-family: 'Pretendard-Regular';
+    font-size: 15px;
+    padding-left: 10px;
+    width: 120px;
+    height: 30px;
+    color: #424242;;
+}
+
+.btitle{
+    width: 500px;
+    height: 50px;
+    border: 1px solid #a7a7a7;
+    font-family: 'Pretendard-Regular';
+    color: #333;
+    font-size: 15px;
+    padding-left: 15px;
+}
+
+.bcontent{
+    width: 500px;
+    height: 300px;
+    border: 1px solid #a7a7a7;
+    font-family: 'Pretendard-Regular';
+    color: #333;
+    font-size: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    resize: none;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+
+.bfile{
+    margin-top: 10px;
+    font-family: 'Pretendard-Regular';
+    color: #333;
+    font-size: 15px;
+}
+
+
+.setWriteBtn{
+    width: 80px;
+    height: 35px;
+    color: #fff;
+    background: #2c2c2c;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 14px;
+    font-weight: 200;
+    margin-left: 10px;
+    margin-top: 10px;
+    float: right;
+    margin-bottom: 150px;
+}
+
+.setWriteBtn:hover{
+    background: #494949;
+}
+
+
 
 #myform fieldset{
     display: inline-block;

@@ -7,7 +7,7 @@ function bcategorylist(){
         url : "/board/bcategorylist",
         type : "get",
         success: re => {
-            let html = '<option selected="selected"> 선택 </option> ';
+            let html = '<option selected="selected"> 카테고리 선택 ▾</option> ';
             re.forEach( (b) => {
                 html += '<option value="'+b.bcno+'">'+b.bcname+'</option> '
             })

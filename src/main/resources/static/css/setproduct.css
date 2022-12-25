@@ -1,0 +1,168 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.setProductBox{
+    margin: 0 auto;
+    width: 800px;
+    height: 100%;
+}
+
+.setProductCon{
+    margin-top: 150px;
+}
+
+.setProductTitle{
+    font-family: 'Pretendard-Regular';
+    font-weight: 600;
+    font-size: 25px;
+    margin: 50px 0;
+    color: #333;
+}
+
+.setPcategoryBox{
+    margin: 20px 0;
+}
+
+
+.setPcategoryBtn{
+    width: 80px;
+    height: 35px;
+    color: #fff;
+    background: #2c2c2c;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 14px;
+    font-weight: 200;
+    margin-left: 10px;
+}
+
+.setPcategoryBtn:hover{
+    background: #494949;
+}
+
+.pcategoryList{
+    width: 100px;
+    height: 35px;
+    font-family: 'Pretendard-Regular';
+    font-size: 15px;
+    color: #333;
+    border: 1px #a7a7a7 solid;
+    text-align: center;
+}
+
+
+
+.pcname{
+    width: 200px;
+    height: 35px;
+    font-family: 'Pretendard-Regular';
+    font-size: 15px;
+    color: #333;
+    border: 1px #a7a7a7 solid;
+    padding-left: 12px;
+}
+
+.setPcategoryText{
+    width: 150px;
+    height: 35px;
+    font-family: 'Pretendard-Regular';
+    font-size: 15px;
+    color: #333;
+    padding: 10px;
+}
+
+.pcbox2{
+    margin-top: 15px;
+}
+
+.setProductText{
+    width: 150px;
+    height: 35px;
+    font-family: 'Pretendard-Regular';
+    font-size: 15px;
+    color: #333;
+    padding: 10px;
+}
+
+.pname, .pprice, .pdiscount, .psize{
+    width: 200px;
+    height: 35px;
+    padding-left: 15px;
+    border: 1px solid #a7a7a7;
+    margin-top: 10px;
+    font-family: 'Pretendard-Regular';
+    margin-left: 40px;
+    color: #333;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.pcolor{
+    width: 200px;
+    height: 35px;
+    padding-left: 15px;
+    border: 1px solid #a7a7a7;
+    margin-top: 10px;
+    font-family: 'Pretendard-Regular';
+    margin-left: 55px;
+    color: #333;
+    font-size: 15px;
+}
+
+.pactive, .pstock{
+    width: 200px;
+    height: 35px;
+    padding-left: 15px;
+    border: 1px solid #a7a7a7;
+    margin-top: 10px;
+    font-family: 'Pretendard-Regular';
+    margin-left: 27px;
+    color: #333;
+    font-size: 15px;
+}
+
+.pimg{
+    width: 200px;
+    height: 35px;
+    padding-left: 5px;
+    border: 1px solid #a7a7a7;
+    margin-top: 10px;
+    font-family: 'Pretendard-Regular';
+    margin-left: 15px;
+    color: #333;
+    font-size: 15px;
+    border-radius: 0;
+    box-shadow: none;
+    line-height: 2;
+}
+
+.imgView{
+    width: 250px;
+    height: 250px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 100px;
+}
+
+
+.setProductbtn{
+    width: 80px;
+    height: 35px;
+    color: #fff;
+    background: #2c2c2c;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 14px;
+    font-weight: 200;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.setProductbtn:hover{
+    background: #494949;
+}

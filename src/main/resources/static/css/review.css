@@ -14,7 +14,7 @@
 .boardCon{
     margin: 0 auto;
     width: 700px;
-    padding-top: 20px;
+    padding-top: 100px;
     padding-bottom: 150px;
     height: 650px;
 }
@@ -70,7 +70,7 @@
 }
 
 .reviewlist{
-    margin-top: 30px;
+    margin-top: 55px;
 }
 .boardNum{
     padding-left: 10px;

@@ -131,3 +131,12 @@
     border: 1px solid #ccc;
     margin-top: 3px;
 }
+
+.check2, .check3, .check4, .check5, .check6{
+    text-align: left;
+    margin-left: 110px;
+    margin-top: 9px;
+    margin-bottom: 10px;
+    color: #c52711;
+    font-size: 13px;
+}
