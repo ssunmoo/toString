@@ -60,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoringAntMatchers("/admin/setProduct") // 제품 등록
                 .ignoringAntMatchers("/admin/productUpdate") // 제품 수정
                 .ignoringAntMatchers("/admin/setCartList") // 장바구니 페이지
+                .ignoringAntMatchers("/admin/productPiano")
                 .and()
 
              // 로그아웃 설정

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{ index }">
+<head>
+    <meta charset="UTF-8">
+    <title>toString</title>
+    <link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+    <div layout:fragment="content" class="content">
+        <div class="textBox">
+            <div class="mainText">
+                건반악기
+            </div>
+        </div>
+        <div class="productList">
+        </div>
+
+    </div>
+
+    <!-- 스크립트 불러오기 -->
+    <th:block layout:fragment="script">
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/js/product/piano.js"></script>
+    </th:block>
+</body>
+</html>

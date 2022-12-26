@@ -1,7 +1,6 @@
 package com.shop.tostring.service.product;
 
 import com.shop.tostring.domain.dto.product.*;
-import com.shop.tostring.domain.entity.board.BoardEntity;
 import com.shop.tostring.domain.entity.product.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +28,8 @@ public class ProductService {
     @Autowired
     private PstockRepository pstockRepository;
 
+    @Autowired
+    private CartRepository cartRepository;
 
     // 1. 제품 카테고리 추가
     @Transactional
@@ -144,36 +145,14 @@ public class ProductService {
         // 엔티티 내용을 dto로 변환
         dtoList = entity.toProductDto();
 
-//        // 사이즈 정보 불러오기
-//        List<PsizeEntity> psizeEntityList = optional.get().getPsizeEntityList();
-//        // 사이즈 정보 저장
-//        List<PsizeDto> psizeDtoList = new ArrayList<>();
-//        for(PsizeEntity pentity : psizeEntityList){
-//            psizeDtoList.add(pentity.toPsizeDto());
-//        }
-//
-//        // 색상, 재고 리스트 불러오기
-//        List<PstockEntity> pstockEntityList = psizeEntityList.get(0).getPstockEntityList();
-//        List<PstockDto> pstockDtoList = new ArrayList<>();
-//        for(PstockEntity pentity : pstockEntityList ){
-//            pstockDtoList.add(pentity.toPstockDto());
-//        }
-
-
         // pViewVo에 모두 담기
         pViewVo.setProductDtoList( dtoList );
         pViewVo.setSizecolor( entity.toPViewVo().getSizecolor() );
-//        pViewVo.setPsizeDtoList( psizeDtoList );
-//        pViewVo.setPstockDtoList( pstockDtoList );
-
-        System.out.println("----------------");
-        System.out.println(pViewVo.getProductDtoList());
-        System.out.println(pViewVo.getSizecolor());
-        System.out.println("----------------");
         return pViewVo;
     }
 
     // 7. 제품 수정
+    @Transactional
     public boolean productUpdate ( ProductDto productDto ) {
 
         // pk 번호로 제품 찾기
@@ -209,12 +188,42 @@ public class ProductService {
     }
 
     // 8. 장바구니 페이지
-    public ProductDto setCartList( ProductDto productDto ){
+    @Transactional
+    public PViewVo getCartList( int pno ){
 
+        Optional<ProductEntity> optional = productRepository.findById( pno );
+        if( !optional.isPresent() ){
+            return null;
+        }
+        // 확인된 정보를 entity에 담기
+        ProductEntity entity = optional.get();
+        // 출력용 객체 생성
+        PViewVo pViewVo = new PViewVo();
+        ProductDto dtoList = new ProductDto();
+        // 엔티티 내용을 dto로 변환
+        dtoList = entity.toProductDto();
+        // pViewVo에 모두 담기
+        pViewVo.setProductDtoList( dtoList );
+        return pViewVo;
 
-        return null;
     }
 
+    // 피아노 카테고리 제품 출력
+    public List<ProductDto> productPiano( int pcno ){
+        System.out.println("★★★★★★");
+        System.out.println(pcno);
+        System.out.println("★★★★★★");
+        Optional<PcategoryEntity> optional = pcategoryRepository.findById( pcno );
+        if( optional.isPresent() ){
+            List<ProductEntity> entityList = (List<ProductEntity>) optional.get();
+            List<ProductDto> dtoList = new ArrayList<>();
+            for(ProductEntity p : entityList){
+                dtoList.add( p.toProductDto());
+            }
+            return dtoList;
+        }
+        return null;
+    }
 
 
 

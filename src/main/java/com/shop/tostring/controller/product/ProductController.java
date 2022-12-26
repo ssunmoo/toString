@@ -42,6 +42,18 @@ public class ProductController {
         return "product/cartList";
     }
 
+    // 피아노 카테고리 제품 페이지
+    @GetMapping("/getPiano")
+    public String getPiano(){
+        return "product/piano";
+    }
+
+    // 현악기 카테고리 제품 페이지
+    @GetMapping("/getString")
+    public String getString(){
+        return "product/string";
+    }
+
 
     // -----------------------------------------------------------------
 
@@ -90,9 +102,20 @@ public class ProductController {
     // 장바구니 페이지
     @ResponseBody
     @PostMapping("/setCartList")
-    public ProductDto setCartList( ProductDto productDto ){
-        return productService.setCartList( productDto );
+    public PViewVo setCartList(@RequestParam("pno") int pno){
+        return productService.getCartList( pno );
     }
+
+    // 피아노 카테고리 제품 출력
+    @ResponseBody
+    @PostMapping("/productPiano")
+    public List<ProductDto> productPiano( @RequestParam("pcno") int pcno){
+        System.out.println(pcno);
+        System.out.println("////////////////////");
+        return productService.productPiano(pcno);
+    }
+
+
 
 
 }

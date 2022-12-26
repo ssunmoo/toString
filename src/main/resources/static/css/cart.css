@@ -7,8 +7,8 @@
 
 .cartListBox{
     margin: 0 auto;
-    width: 800px;
-    height: 100%;
+    width: 1000px;
+    height: 800px;
     padding-top: 50px;
 }
 
@@ -22,39 +22,104 @@
 }
 
 table tr, td{
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 .cartImg img{
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
+    margin: 10px 0;
+}
+.cartList{
+    text-align: center;
+    line-height: 3;
+}
+
+.cartCon{
+    line-height: 7;
+}
+
+.cartTitle{
+    font-family: 'Pretendard-Regular';
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    background: #f1f1f1;
+}
+
+.cartTitle td:nth-child(1){
+    width: 50px;
 }
 
 .cartTitle td:nth-child(2){
     width: 300px;
 }
 
-.cartTitle td:nth-child(3), .cartTitle td:nth-child(4){
-    width: 60px;
+.cartTitle td:nth-child(3){
+    width: 400px;
+    height: 35px;
 }
 
-.cartTitle td:nth-child(3), .cartTitle td:nth-child(4){
-    width: 150px;
+.cartTitle td:nth-child(4), .cartTitle td:nth-child(5){
+    width: 100px;
 }
 
+.cartTitle td:nth-child(6){
+    width: 180px;
+}
 
-.cartPname{
+.cartCon{
     font-family: 'Pretendard-Regular';
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
 }
 
-.cartSize{
 
+.cartAddBtn{
+    float: right;
+    width: 100px;
+    height: 35px;
+    color: #fff;
+    background: #2c2c2c;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 200;
+    margin-top: 20px;
 }
-.cartOption{
 
+.cartAddBtn:hover{
+    background: #494949;
 }
-.cartPrice{
 
+.cartDeleteBtn{
+    float: right;
+    width: 100px;
+    height: 35px;
+    color: #fff;
+    background: #a6a6a6;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 200;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.cartDeleteBtn:hover{
+    background: #545454;
+}
+
+.totaltext{
+    font-family: 'Pretendard-Regular';
+    font-size: 17px;
+    font-weight: 600;
+    color: #282828;
+}
+
+.totalprice{
+    text-align: right;
+    padding-right: 47px;
+    font-family: 'Pretendard-Regular';
+    font-size: 17px;
+    font-weight: 600;
+    color: #282828;
 }

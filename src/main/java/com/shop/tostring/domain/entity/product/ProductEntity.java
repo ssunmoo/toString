@@ -75,9 +75,6 @@ public class ProductEntity extends BaseEntity {
                 PstockEntity pstockEntity = psizeEntity.getPstockEntityList().get(j);
                 set.add(pstockEntity.getPcolor());
 
-                //List<String> list = new ArrayList<>();
-                //set.add(pstockEntity.getPcolor());
-                //list.add(set.toString());
             }
             map.put(size, set);
         }
@@ -85,27 +82,6 @@ public class ProductEntity extends BaseEntity {
                 .sizecolor(map)
                 .build();
 
-
-//        // 사이즈, 컬러 뽑아내기
-//        List<String> psizeDtoList = new ArrayList<>();
-//        Set<String> pcolorDtoList = new HashSet<>();
-//
-//        // 사이즈와 컬러를 하나의 객체로 묶기
-//        Map<String, Set<String>> sizecolor = new HashMap<>();
-//
-//        psizeEntityList.forEach( (s) ->{
-//            psizeDtoList.add( s.getPsize() ); // 제품 사이즈 리스트에 넣기
-//            sizecolor.put("sizecolor", pcolorDtoList<String> ); // sizecolor에 사이즈 넣기
-//
-//            s.getPstockEntityList().forEach( (c) -> {
-//                pcolorDtoList.add( c.getPcolor() ); // 제품 컬러 리스트에 넣기
-//                sizecolor.put(pcolorDtoList.toString(), pcolorDtoList ); // sizecolor에에 컬러 객체 넣기
-//            });
-//        });
-
-//        return PViewVo.builder()
-//                .sizecolor( sizecolor )
-//                .build();
     }
 
 

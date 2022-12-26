@@ -5,11 +5,6 @@
     font-style: normal;
 }
 
-
-a{
-    text-decoration-line: none;
-}
-
 .header{
     background: blueviolet;
     height: 280px;
@@ -87,7 +82,7 @@ a{
 }
 
 
-.userMenu span:nth-child(1), .userMenu span:nth-child(2){
+.userMenu span:nth-child(1), .userMenu span:nth-child(2), .userMenu span:nth-child(3){
     border-right: 1px solid #dcdcdd;
 }
 

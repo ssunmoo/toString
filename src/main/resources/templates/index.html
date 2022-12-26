@@ -5,28 +5,66 @@
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
+
     <link th:href="@{/css/header.css}" rel="stylesheet">
     <link th:href="@{/css/footer.css}" rel="stylesheet">
     <link th:href="@{/css/content.css}" rel="stylesheet">
 
-    <!-- css초기화 -->
-    <link rel="stylesheet" href="https://unpkg.com/destyle.css@1.0.5/destyle.css">
-    <link rel="stylesheet" href="/css/index.css">
     <!-- Libre Baskerville 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- 부트스트랩 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- css초기화 -->
+    <link rel="stylesheet" href="https://unpkg.com/destyle.css@1.0.5/destyle.css">
+    <link rel="stylesheet" href="/css/index.css">
 
     <th:block layout:fragment="css"></th:block>
 
 </head>
 <body>
     <div th:replace="fragments/header.html ::header"></div>
-    <div layout:fragment="content" class="content">
 
-        <div class="mainImg">
-            <img src="/images/main.png">
+    <!--    -->
+    <div class="mainImg">
+        <!-- 대문 [ 이미지 슬라이드 - 캐러셀 ]  -->
+        <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="10000">
+            <!-- carousel-fade: 이미지슬라이드 페이드효과 , data-bs-interval: 변경되는 시간 -->
+            <!-- 이미지 삽입 구역 -->
+            <div class="carousel-inner">
+                <div class="carousel-item active" >	<!-- active : 현재 보이는 이미지 [ 슬라이드 될때마다 active의 위치가 변경됨 ]-->
+                    <img src="/images/1.jpg" class="d-block w-100"> <!-- w-100 : 가로 100% -->
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/2.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/3.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/4.jpg" class="d-block w-100">
+                </div>
+            </div>
+
+            <!-- 왼쪽 버튼 -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true">
+                        </span> <span class="visually-hidden">Previous</span>
+            </button>
+            <!-- 오른쪽 버튼 -->
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
         </div>
+
+    </div>
+    <!--    -->
+    <div layout:fragment="content" class="content">
 
         <div class="textBox">
             <div class="mainText">
@@ -43,6 +81,7 @@
         </div>
 
     </div>
+
     <div th:replace="fragments/footer.html ::footer"></div>
 
 <!--    th : 타임리프 문법
@@ -60,5 +99,8 @@
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/js/product/productList.js"></script>
+
+    <!-- 부트스트랩 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -19,7 +19,6 @@ public class PViewVo { // 제품 출력용 클래스
     ProductDto productDtoList;
     Map<String, Set<String>> sizecolor;
 
-
 }
 
 /*

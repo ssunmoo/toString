@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -7,6 +8,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
+
+a{
+    text-decoration: none; !important
+    color: #333;
+}
+
+a:hover{
+    color: #f4cb49; !important
+}
 
 body {
     overflow: scroll;
@@ -20,13 +30,13 @@ body::-webkit-scrollbar {
 }
 
 .mainImg{
+    width: 100%;
     height: 440px;
     margin-top: 2px;
 }
 
 .mainImg img{
-    width: 100%;
-    height: 100%;
+    height: 440px;
 }
 
 .textBox{

@@ -10,6 +10,7 @@
     width: 600px;
     height: 100%;
     text-align: center;
+    padding-top: 50px;
 }
 
 .signupInputBox{
@@ -77,7 +78,7 @@
     font-family: 'Pretendard-Regular';
     font-weight: 600;
     font-size: 25px;
-    margin: 50px 0;
+    margin-bottom: 50px;
     color: #333;
 }
 

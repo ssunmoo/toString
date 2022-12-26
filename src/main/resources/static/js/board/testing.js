@@ -22,7 +22,6 @@ function boardList( bcno, page ){
         success: re => {
             console.log(re);
             let list = re.boardDtoList;
-            console.log(list.bcno) // bcno 왜 0이야..?
             let html = '';
             list.forEach( (r)=>{
                 html += '<div class="boardText">'
