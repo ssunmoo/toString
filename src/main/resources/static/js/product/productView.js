@@ -34,14 +34,21 @@ function productView(){
                     // + '<div>' + pstockList.pcolor + '</div>'
                     // + '<div>' + pstockList.pstock + '</div>';
             }
-
+            document.querySelector('.sizeBox').innerHTML = productList.psize;
+            document.querySelector('.colorBox').innerHTML = productList.pcolor;
             // let keys = object.keys();
             // for(let i = 0 ; i<keys.length; i++){
             //     let key = keys[i];
             //     data.key
             // }
+            // for(let i = 0; i < sizecolor.length; i++){
+            //     let sc = sizecolor[i];
+            //     console.log(sc)
+            //     document.querySelector('.sizeBox').innerHTML = sc;
+            // }
 
-            document.querySelector('.sizeBox').innerHTML = sizecolor.L;
+
+
 
             // 사이즈, 컬러 뽑아내기
             // console.log(sizecolor)
@@ -90,11 +97,11 @@ function productView(){
 
 // 장바구니 클릭 시
 document.querySelector('.cartBtn').addEventListener( 'click', (e) =>{
-  // 선택한 제품이 없을 경우
-  if( productList.length == 0 ){
-      alert('최소 1개 이상의 옵션을 선택해 주세요.');
-      return;
-  }
+  // // 선택한 제품이 없을 경우
+  // if( productList.length == 0 ){
+  //     alert('최소 1개 이상의 옵션을 선택해 주세요.');
+  //     return;
+  // }
 
     let setform = document.querySelector('.setform');
     // console.log(setform)

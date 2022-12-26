@@ -3,17 +3,34 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{ index }">
 <head>
-  <meta charset="UTF-8">
-  <title>toString</title>
+    <meta charset="UTF-8">
+    <title>toString</title>
+    <link rel="stylesheet" href="/css/cart.css">
 </head>
 
 <body>
     <div layout:fragment="content" class="content">
 
-      <h3>장바구니</h3>
-      <div class="cartList">
+        <div class="cartListBox">
+            <div class="cartListText">장바구니</div>
+            <table class="cartList">
+                <tr class="cartTitle">
+                    <td>제품이미지</td>
+                    <td>제품명</td>
+                    <td>옵션</td>
+                    <td>수량</td>
+                    <td>판매가</td>
+                </tr>
+                <tr>
+                    <td class="cartImg"><img src="/pImg/violin05.jpg"></td>
+                    <td class="cartPname">삼익 입문용 바이올린 LUNA 풀 세트</td>
+                    <td class="cartSize">1/4</td>
+                    <td class="cartOption">1개</td>
+                    <td class="cartPrice">85,900원</td>
+                </tr>
+            </table>
+        </div>
 
-      </div>
 
     </div>
 

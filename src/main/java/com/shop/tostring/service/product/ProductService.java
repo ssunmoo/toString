@@ -51,7 +51,7 @@ public class ProductService {
 
 
     // 3. 대표이미지 업로드 경로
-    String productpath = "C:\\Users\\504\\IdeaProjects\\toString\\src\\main\\resources\\static\\pImg\\";
+    String productpath = "C:\\Users\\504\\Desktop\\toString\\src\\main\\resources\\static\\pImg\\";
 
     @Transactional
     public boolean pimgUpload(  ProductDto productDto, ProductEntity productEntity ){

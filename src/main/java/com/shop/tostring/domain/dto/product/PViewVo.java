@@ -15,15 +15,6 @@ import java.util.Set;
 @ToString
 public class PViewVo { // 제품 출력용 클래스
 
-//    private int pcno;                   // 제품 카테고리
-//    private int pno;                    // 제품 번호
-//    private String pname;				// 제품 이름
-//    private int pprice;					// 제품 가격
-//    private float pdiscount;			// 제품 할인율
-//    private int pactive; 				// 제품 상품 상태 : 0 준비중 등
-//    private MultipartFile pimg;         // 첨부파일 객체 [ 업로드용 ]
-//    private String pimgname;            // 첨부파일 [ 출력용 ]
-
     // 제품 정보
     ProductDto productDtoList;
     Map<String, Set<String>> sizecolor;

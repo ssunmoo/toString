@@ -55,7 +55,9 @@ public class ProductEntity extends BaseEntity {
                 .pactive( this.pactive )
                 .pimgname( this.pimg ) // 파일명 전달
                 .pcno( this.pcategoryEntity.getPcno() ) // @ToString.Exclude으로 막아놔서 dto에 함께 출력하려면 이렇게 호출해야함
+                .psize( this.psizeEntityList.get(0).getPsize() )
                 .pstock( this.psizeEntityList.get(0).getPstockEntityList().get(0).getPstock() )
+                .pcolor( this.psizeEntityList.get(0).getPstockEntityList().get(0).getPcolor() )
                 .build();
     }
 
@@ -72,6 +74,10 @@ public class ProductEntity extends BaseEntity {
             for(int j = 0 ; j < psizeEntity.getPstockEntityList().size(); j++){
                 PstockEntity pstockEntity = psizeEntity.getPstockEntityList().get(j);
                 set.add(pstockEntity.getPcolor());
+
+                //List<String> list = new ArrayList<>();
+                //set.add(pstockEntity.getPcolor());
+                //list.add(set.toString());
             }
             map.put(size, set);
         }

@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.cartListBox{
+    margin: 0 auto;
+    width: 800px;
+    height: 100%;
+    padding-top: 50px;
+}
+
+.cartListText{
+    font-family: 'Pretendard-Regular';
+    font-weight: 600;
+    font-size: 25px;
+    margin: 50px 0;
+    color: #333;
+    text-align: center;
+}
+
+table tr, td{
+    border: 1px solid #ccc;
+}
+
+.cartImg img{
+    width: 150px;
+    height: 150px;
+}
+
+.cartTitle td:nth-child(2){
+    width: 300px;
+}
+
+.cartTitle td:nth-child(3), .cartTitle td:nth-child(4){
+    width: 60px;
+}
+
+.cartTitle td:nth-child(3), .cartTitle td:nth-child(4){
+    width: 150px;
+}
+
+
+.cartPname{
+    font-family: 'Pretendard-Regular';
+    font-size: 18px;
+    color: #333;
+}
+
+.cartSize{
+
+}
+.cartOption{
+
+}
+.cartPrice{
+
+}
