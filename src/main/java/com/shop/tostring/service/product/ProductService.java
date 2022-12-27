@@ -2,6 +2,7 @@ package com.shop.tostring.service.product;
 
 import com.shop.tostring.domain.dto.product.*;
 import com.shop.tostring.domain.entity.product.*;
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -189,40 +190,29 @@ public class ProductService {
 
     // 8. 장바구니 페이지
     @Transactional
-    public PViewVo getCartList( int pno ){
-
-        Optional<ProductEntity> optional = productRepository.findById( pno );
-        if( !optional.isPresent() ){
-            return null;
-        }
-        // 확인된 정보를 entity에 담기
-        ProductEntity entity = optional.get();
-        // 출력용 객체 생성
-        PViewVo pViewVo = new PViewVo();
-        ProductDto dtoList = new ProductDto();
-        // 엔티티 내용을 dto로 변환
-        dtoList = entity.toProductDto();
-        // pViewVo에 모두 담기
-        pViewVo.setProductDtoList( dtoList );
-        return pViewVo;
-
+    public List<ProductDto> getCartList( JSONArray cartlist ){
+        List<ProductDto> list = new ArrayList<>();
+        cartlist.forEach( ( pno ) -> {
+            Optional<ProductEntity> optional = productRepository.findById( Integer.parseInt(String.valueOf(pno)));
+            if( !optional.isPresent() ){
+                return;
+            }
+            // 확인된 정보를 entity에 담기
+            ProductEntity entity = optional.get();
+            // 엔티티 내용을 dto로 변환
+            list.add( entity.toProductDto() );
+        });
+        return list;
     }
 
     // 피아노 카테고리 제품 출력
     public List<ProductDto> productPiano( int pcno ){
-        System.out.println("★★★★★★");
-        System.out.println(pcno);
-        System.out.println("★★★★★★");
-        Optional<PcategoryEntity> optional = pcategoryRepository.findById( pcno );
-        if( optional.isPresent() ){
-            List<ProductEntity> entityList = (List<ProductEntity>) optional.get();
-            List<ProductDto> dtoList = new ArrayList<>();
-            for(ProductEntity p : entityList){
-                dtoList.add( p.toProductDto());
-            }
-            return dtoList;
+        List<ProductEntity> entityList = productRepository.findByBcno( pcno );
+        List<ProductDto> dtoList = new ArrayList<>();
+        for(ProductEntity p : entityList){
+            dtoList.add( p.toProductDto());
         }
-        return null;
+        return dtoList;
     }
 
 

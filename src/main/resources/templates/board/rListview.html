@@ -5,23 +5,24 @@
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
+    <link rel="stylesheet" href="/css/boardView.css">
 </head>
 
 
 
 <body>
     <div layout:fragment="content" class="content">
-        <div> 후기 상세 게시판 </div>
-        <div>
-            <div class="rlist">
-
-
+        <div class="boardViewBox">
+            <div class="boardViewText">
+                후기 상세 게시판
             </div>
             <div>
-                <button onclick="rDelete()"> 삭제 </button>
-            </div>
-            <div>
-                <button><a href="/board/rList">뒤로가기</a></button>
+                <div class="rlist">
+                </div>
+                <div class="rBtnBox">
+                    <button onclick="rDelete()" class="rDeleteBtn"> 삭제 </button>
+                    <button class="returnBtn"><a href="/board/rList">뒤로가기</a></button>
+                </div>
             </div>
         </div>
     </div>

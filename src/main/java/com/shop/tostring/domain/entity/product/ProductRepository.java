@@ -11,8 +11,11 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository < ProductEntity, Integer > {
 
 
+    @Query( value = "select * from product where pcno = :pcno", nativeQuery = true)
+    List<ProductEntity> findByBcno(@Param("pcno") int pcno );
 
-
+//    @Query( value = "select * from product where pno = :pno", nativeQuery = true)
+//    List<ProductEntity> findByPno(@Param("pno") String pno );
 
 
 }

@@ -1,6 +1,5 @@
 
 let bno = sessionStorage.getItem( "bno" );
-alert("게시글번호 : " + bno);
 
 // 후기 게시판 상세보기
 reviewSelect()
@@ -14,8 +13,10 @@ function reviewSelect(){
             console.log(re)
 
             let html = '<div>'
-                + '<div>회원번호'+re.mno+'</div>'
-                + '<div>별점'
+                + '<div class="rViewMnameBox">'
+                + '<span class="profileImg"><img src="/pImg/violin05.jpg"></span>'
+                + '<span class="rViewMname">'+ re.mname +'</span>'
+                + '</div>'
                 + '<form name="myform" id="myform" method="post">'
                 + '<fieldset>' // 체크 설정 추가
                 + '<input type="radio" name="bstar" value="5" id="rate1" class="star1" disabled>'
@@ -32,12 +33,11 @@ function reviewSelect(){
                 + '</form>'
                 + '</div>'
                 + '</div>'
-                + '<div>'+re.btitle+'</div>'
-                + '<div>'+re.bcontent+'</div>'
+                + '<div class="rViewTitle">'+re.btitle+'</div>'
+                + '<div class="rViewCon">'+re.bcontent+'</div>'
                 + '<div><img src="/upload/'+re.bfilename+'"></div>'; // 이미지 경로 수정
             document.querySelector('.rlist').innerHTML = html;
 
-            // css도 같이 바꿔줘야 하는 것 같다..!
             if( re.bstar === 5 ){
                 document.querySelector('.star1').checked = true;
             }else if( re.bstar === 4 ){
@@ -66,7 +66,9 @@ function rDelete(){
         type : "delete",
         data: { "bno" : bno },
         success: re => {
-            location.href="/board/rList";
+            if(confirm('게시글을 삭제 하시겠습니까?')){
+                location.href="/board/rList";
+            }
         }
     })
 }

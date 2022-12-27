@@ -5,18 +5,85 @@
     font-style: normal;
 }
 
-.cartListBox{
+.pianoListBox{
     margin: 0 auto;
     width: 1000px;
-    height: 800px;
+    height: 100%;
     padding-top: 50px;
+    padding-bottom: 150px;
 }
 
-.cartListText{
+.pianoListText{
     font-family: 'Pretendard-Regular';
     font-weight: 600;
     font-size: 25px;
     margin: 50px 0;
     color: #333;
     text-align: center;
+}
+
+.pianoList{
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap
+}
+
+.product{
+    width: 280px;
+    height: 350px;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+.pimg{
+    width: 270px;
+    height: 270px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 5px #ccc;
+}
+
+.pimg img{
+    width: 270px;
+    height: 270px;
+    border-radius: 6px;
+}
+
+
+.pname{
+    font-family: 'Pretendard-Regular';
+    color: #333;
+    font-size: 19px;
+    margin-left: 16px;
+    margin-top: 10px;
+}
+
+.pprice{
+    font-family: 'Pretendard-Regular';
+    color: #b7b7b7;
+    font-size: 13px;
+    text-decoration: line-through;
+    margin-left: 12px;
+    margin-top: 5px;
+}
+
+.ppriceBox{
+    margin-left: 12px;
+    margin-top: 8px;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.discountprice{
+    font-family: 'Pretendard-Regular';
+    color: #575757;
+    margin-left: 8px;
+    font-size: 20px;
+}
+
+.pdiscount{
+    font-family: 'Libre Baskerville', serif;
+    color: #ff7fa3;
+    font-weight: bold;
 }

@@ -30,13 +30,9 @@ table tr, td{
     height: 100px;
     margin: 10px 0;
 }
-.cartList{
+.cartList, .cartProductList{
     text-align: center;
     line-height: 3;
-}
-
-.cartCon{
-    line-height: 7;
 }
 
 .cartTitle{
@@ -47,31 +43,32 @@ table tr, td{
     background: #f1f1f1;
 }
 
-.cartTitle td:nth-child(1){
+.cartTitle td:nth-child(1), .cartProductList td:nth-child(1){
     width: 50px;
 }
 
-.cartTitle td:nth-child(2){
+.cartTitle td:nth-child(2), .cartProductList td:nth-child(2){
     width: 300px;
 }
 
-.cartTitle td:nth-child(3){
+.cartTitle td:nth-child(3), .cartProductList td:nth-child(3){
     width: 400px;
     height: 35px;
 }
 
-.cartTitle td:nth-child(4), .cartTitle td:nth-child(5){
+.cartTitle td:nth-child(4), .cartTitle td:nth-child(5), .cartProductList td:nth-child(4), .cartProductList td:nth-child(5){
     width: 100px;
 }
 
-.cartTitle td:nth-child(6){
+.cartTitle td:nth-child(6), .cartProductList td:nth-child(6){
     width: 180px;
 }
 
-.cartCon{
+.cartProductList{
     font-family: 'Pretendard-Regular';
     font-size: 16px;
     color: #333;
+    line-height: 7;
 }
 
 
@@ -109,6 +106,7 @@ table tr, td{
 }
 
 .totaltext{
+    width: 800px;
     font-family: 'Pretendard-Regular';
     font-size: 17px;
     font-weight: 600;
@@ -116,8 +114,9 @@ table tr, td{
 }
 
 .totalprice{
+    width: 200px;
+    padding-right: 50px;
     text-align: right;
-    padding-right: 47px;
     font-family: 'Pretendard-Regular';
     font-size: 17px;
     font-weight: 600;

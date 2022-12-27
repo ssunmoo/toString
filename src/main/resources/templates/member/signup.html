@@ -17,60 +17,59 @@
                 <div class="signUpText"> 신규 회원가입 </div>
                 <form class="infobox">
                     <div>
-                    <div> <input type="text" class="mid" placeholder="아이디" onkeyup="idCheck()"> </div>
-                    <div class="check1"> </div>
+                        <div> <input type="text" class="mid" placeholder="아이디"> </div>
+                        <div class="check1"> </div>
                     </div>
 
                     <div>
-                    <div> <input type="text" class="mpw" placeholder="비밀번호" onkeyup="pwCheck()"> </div>
-                    <div class="check2"> </div>
+                        <div> <input type="text" class="mpw" placeholder="비밀번호" onkeyup="pwCheck()"> </div>
+                        <div class="check2"> </div>
                     </div>
 
                     <div>
-                    <div> <input type="text" class="mpwcheck" placeholder="비밀번호 재입력" onkeyup="pwCheck2()"> </div>
-                    <div class="check3"> </div>
+                        <div> <input type="text" class="mpwcheck" placeholder="비밀번호 재입력" onkeyup="pwCheck2()"> </div>
+                        <div class="check3"> </div>
                     </div>
 
                     <div>
-                    <div> <input type="text" class="mname" placeholder="이름" onkeyup="nameCheck()"> </div>
-                    <div class="check4"> </div>
+                        <div> <input type="text" class="mname" placeholder="이름" onkeyup="nameCheck()"> </div>
+                        <div class="check4"> </div>
                     </div>
 
                     <div>
-                    <div> <input type="text" class="mphone" placeholder="연락처" onkeyup="phoneCheck()"> </div>
-                    <div class="check5"> </div>
+                        <div> <input type="text" class="mphone" placeholder="연락처 010-xxxx-xxxx" onkeyup="phoneCheck()"> </div>
+                        <div class="check5"> </div>
                     </div>
 
                     <div>
-                    <div> <input type="text" class="madress" placeholder="주소"> </div>
-                    <div class="check7"> </div>
+                        <div> <input type="text" class="madress" placeholder="주소"> </div>
+                        <div class="check7"> </div>
                     </div>
                 </form>
 
                 <div>
-                <div>
-                    <input type="text" class="memail" placeholder="이메일" onkeyup="emailCheck()">
-                    <button type="button" onclick="getAuth()" class="getauthbtn"> 인증코드 발급 </button>
-                </div>
-                <div class="check6"> </div>
-
-                <div class="authbox">
                     <div>
-                        <input type="text" class="authinput">
-                        <button type="button" class="authbtn" onclick="authCode()">인증</button>
+                        <input type="text" class="memail" placeholder="이메일" onkeyup="emailCheck()">
+                        <button type="button" onclick="getAuth()" class="getauthbtn"> 인증코드 발급 </button>
                     </div>
-                    <div class="timerbox"></div>
-                </div>
+                    <div class="check6"> </div>
 
-
-                <div class="confirmbox">
-                <div>
-                    <div class="signupCheckBox">
-                        <input class="check8" type="checkbox">
-                        <span class="checkboxTitle"> [필수] 이용약관 동의 </span>
+                    <div class="authbox">
+                        <div>
+                            <input type="text" class="authinput">
+                            <button type="button" class="authbtn" onclick="authCode()">인증</button>
+                        </div>
+                        <div class="timerbox"></div>
                     </div>
-                    <div>
-                        <textarea readonly="readonly" class="textArea">
+
+                    <div class="confirmbox">
+                        <div>
+                            <div class="signupCheckBox">
+                                <input class="check8" type="checkbox">
+                                <span class="checkboxTitle"> [필수] 이용약관 동의 </span>
+                            </div>
+                            <div>
+                                <textarea readonly="readonly" class="textArea">
 제 1 장 총칙
 제 1 조 (목적)
 본 약관은 통계청이 운영하는 나라통계시스템 운영홈페이지(이하 "당 사이트")에서 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 이용자와 당 사이트의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
@@ -214,18 +213,17 @@
 
 부 칙
 (시행일) 본 약관은 2022년 12월 26일부터 시행됩니다. 개정된 약관의 적용일자 이전 이용자 또는 회원은 개정된 이용약관의 적용을 받습니다.
+                                </textarea>
+                            </div>
+                        </div>
 
-                        </textarea>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="signupCheckBox">
-                        <input class="check9" type="checkbox">
-                        <span class="checkboxTitle"> [필수] 개인정보 수집/이용 동의 </span>
-                    </div>
-                    <div>
-                        <textarea readonly="readonly" class="textArea">
+                        <div>
+                            <div class="signupCheckBox">
+                                <input class="check9" type="checkbox">
+                                <span class="checkboxTitle"> [필수] 개인정보 수집/이용 동의 </span>
+                            </div>
+                            <div>
+                                <textarea readonly="readonly" class="textArea">
 제 1 장 총칙
 제 1 조 (목적)
 본 약관은 통계청이 운영하는 나라통계시스템 운영홈페이지(이하 "당 사이트")에서 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 이용자와 당 사이트의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
@@ -369,15 +367,14 @@
 
 부 칙
 (시행일) 본 약관은 2022년 12월 26일부터 시행됩니다. 개정된 약관의 적용일자 이전 이용자 또는 회원은 개정된 이용약관의 적용을 받습니다.
-
-                        </textarea>
+                                </textarea>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                </div>
 
-                <div>
-                    <button type="button" onclick="setSignup()" class="signupBtn"> 등록 </button>
-                </div>
+                    <div>
+                        <button type="button" onclick="setSignup()" class="signupBtn"> 등록 </button>
+                    </div>
                 </div>
             </div>
         </div>

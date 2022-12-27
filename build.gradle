@@ -34,8 +34,12 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // 타임리프
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect' // 타임리프 layout
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'   // 타임리프 인증객체
 
     implementation 'org.springframework.boot:spring-boot-devtools:2.6.2' // 자동빌드
+
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
 
 }
 

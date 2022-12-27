@@ -21,6 +21,7 @@ public class BoardDto {
 
     private int bcno;			// 게시판 카테고리 번호 FK
     private int mno;			// 작성자 FK
+    private String mname;
 
     // 엔티티로 변환
     public BoardEntity toBoardEntity(){

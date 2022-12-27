@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
       layout:decorate="~{ index }">
 <head>
     <meta charset="UTF-8">
@@ -31,8 +31,10 @@
 
                 </div>
 
-                <div class="boardWBtn">
-                    <button><a href="/board/write">글작성</a></button>
+                <div sec:authorize="hasRole('ADMIN')">
+                    <div class="boardWBtn">
+                        <button><a href="/board/write">글작성</a></button>
+                    </div>
                 </div>
 
                 <div class="pageBox">

@@ -7,9 +7,6 @@ import com.shop.tostring.domain.entity.member.MemberEntity;
 import com.shop.tostring.domain.entity.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.userdetails.User;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.Authentication;
@@ -56,8 +53,7 @@ public class MemberService implements UserDetailsService, OAuth2UserService<OAut
         // 입력받은 아이디가 있는지 확인
         MemberEntity memberEntity = memberRepository
                 .findBymid( mid );
-                //.orElseThrow( () -> new UsernameNotFoundException("사용자가 존재하지않습니다."));
-                // 검색 결과 확인
+                //.orElseThrow( () -> new UsernameNotFoundException("사용자가 존재하지않습니다.")); // 검색 결과 확인
 
         // 검증된 토큰 생성 [ 일반 유저 ]
         Set<GrantedAuthority> authorities = new HashSet<>();
@@ -81,47 +77,10 @@ public class MemberService implements UserDetailsService, OAuth2UserService<OAut
             return null;
         }else {
             MemberDto memberDto = (MemberDto) principal;
-            return memberDto.getMid();
+            return memberDto.getMname();
         }
     }
-
-
-
-
-//    // 로그인 정보 호출
-//    @Autowired
-//    public UserDetails loadUserByUSername( String mid ) throws UsernameNotFoundException{
-//        MemberEntity memberEntity = memberRepository.findBymid( mid ); // 로그인 유저의 아이디 받아오기
-//
-//        if( memberEntity == null ){
-//            throw new UsernameNotFoundException( mid );
-//        }
-//
-//        return User.builder()   // 유저 객체 반환 / 유저 객체 생성을위해 생성자로 회원 아이디, 비밀번호, 룰 전달
-//                .username( memberEntity.getMid() )
-//                .password( memberEntity.getMpw() )
-//                .roles( memberEntity.getRole().toString() )
-//                .build();
-//
-//    }
-
-
-    //    public MemberEntity saveMember( MemberEntity member ){
-//        membercheck( member );
-//        return memberRepository.save( member );
-//    }
-//
-//    // 가입되어있는지 확인
-//    private void membercheck ( MemberEntity member ){
-//        MemberEntity findMember = null;
-//        findMember = memberRepository.findById( member.getMid() ); // 아이디 확인
-//        if( findMember != null ){ // 아이디가 있으면
-//            findMember = memberRepository.findByEmail( member.getMemail() ); // 이메일 확인
-//            if( findMember != null ){ // 이메일이 있으면
-//                throw new IllegalStateException("이미 가입된 회원입니다.");
-//            }
-//        }
-//    }
+    
 
     // 1. 회원가입
     @Transactional
@@ -134,7 +93,7 @@ public class MemberService implements UserDetailsService, OAuth2UserService<OAut
         MemberEntity memberEntity = memberRepository.save( memberDto.toMemberEntity()); // 받아온 값 저장
 
         // 회원등급 삽입
-        memberEntity.setRole("USER");
+        memberEntity.setRole("ROLE_USER");
         return memberEntity.getMno();
     }
 
@@ -154,11 +113,7 @@ public class MemberService implements UserDetailsService, OAuth2UserService<OAut
     // 3. 이메일 확인
     @Transactional
     public boolean emailCheck( String memail ){
-        System.out.println("서비스 memail : " + memail );
-
         List< MemberEntity > entityList = memberRepository.findAll();
-        System.out.println("서비스 entityList" + entityList );
-
         // 입력한 이메일과 같은 이메일이 있는지 확인
         for( MemberEntity entity : entityList ){
             if ( entity.getMemail().equals( memail )){
@@ -279,7 +234,6 @@ public class MemberService implements UserDetailsService, OAuth2UserService<OAut
         OAuth2User oAuth2User = oAuth2UserService.loadUser( userRequest ); // oAuth2User.getAttributes() 임
 
         System.out.println("2. oAuth2User " + oAuth2User.toString());
-
         // 2. oauth2 클라이언트 식별 [ 카카오, 네이버, 구글 등 ]
         String registrationId = userRequest
                 .getClientRegistration()
@@ -324,8 +278,29 @@ public class MemberService implements UserDetailsService, OAuth2UserService<OAut
         memberDto.setMemail( memberEntity.getMemail());
         memberDto.setAuthorities( authorities ); // 권한 이름 전달 kakaoUser 등
         memberDto.setAttributes( oauthDto.getAttributes() );
-
+        memberDto.setMname( memberEntity.getMname());
+        memberDto.setMid( memberEntity.getMname());
         return memberDto; // dto에 담았으니 dto 리턴
     }
+    
+    
+    // 로그인 엔티티 호출
+    public MemberEntity getEntity(){
+        // 시큐리티로 확인
+        Object object = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (object == null ){
+            return null;
+        }
+        // 로그인된 회원번호 호출
+        MemberDto memberDto = (MemberDto) object;
+        Optional<MemberEntity> optional = memberRepository.findByMemail( memberDto.getMemail() );
+        if( !optional.isPresent() ){
+            return null;
+        }
+        // 로그인된 회원 엔티티 반환
+        return optional.get();
+    }
+    
+    
 }
 

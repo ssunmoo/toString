@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>toString</title>
@@ -31,10 +32,23 @@
                     </div>
                     <div class="userMenu">
                         <div>
-                            <span><a href="/member/login">로그인</a></span>
-                            <span><a href="/member/signup">회원가입</a></span>
-                            <span><a href="/admin/getCartList">장바구니</a></span>
-                            <span><a href="#">주문조회</a></span>
+                            <!-- 로그인 전 username이 공백일 경우 -->
+                            <span sec:authorize="isAnonymous()">
+                                <span> </span>
+                                <span><a href="/member/login">로그인</a></span>
+                                <span><a href="/member/signup">회원가입</a></span>
+                                <span><a href="/admin/getCartList">장바구니</a></span>
+                                <span>주문조회</span>
+                            </span>
+                            <!-- 로그인 시 username이 공백이 아닐 경우-->
+                            <span sec:authorize="isAuthenticated()">
+                                <span sec:authentication="name"> </span>
+                                <span>님</span>
+                                <span><a href="/member/logout">로그아웃</a></span>
+                                <span><a href="/admin/getCartList">장바구니</a></span>
+                                <span>주문조회</span>
+                            </span>
+
                         </div>
                     </div>
                 </div>
@@ -64,7 +78,13 @@
                         <span>상품문의</span>
                         <span><a href="/board/rList">시연요청소</a></span>
                         <span><a href="/board/tList">영상시청소</a></span>
+                        <!-- 관리자 로그인 시 -->
+                        <span sec:authorize="hasRole('ADMIN')">
+                            <a href="/admin/getProduct">제품등록</a>
+                            <span><a href="/admin/putProduct">제품수정</a></span>
+                        </span>
                     </div>
+
                     <div class="productMenu">
                         <span><a href="/admin/getPiano">건반악기</a></span>
                         <span><a href="/admin/getString">현악기</a></span>
@@ -73,10 +93,14 @@
                         <span>교재용악기</span>
                         <span>악세사리</span>
                     </div>
+
+
+
                 </div>
             </div>
 
         </div>
     </div>
+
 </body>
 </html>

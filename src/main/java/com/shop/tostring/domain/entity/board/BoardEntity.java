@@ -64,6 +64,8 @@ public class BoardEntity extends BaseEntity {
                 .bstar(this.bstar)
                 .bview(this.bview)
                 .bfilename( this.bfile ) // 파일명만 함께 보내기
+                .mno( this.memberEntity.getMno() )
+                .mname( this.memberEntity.getMname() )
                 .build();
     }
 

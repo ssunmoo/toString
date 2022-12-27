@@ -5,13 +5,15 @@
     font-style: normal;
 }
 
-.writeBox{
+.boardViewBox{
     margin: 0 auto;
-    width: 500px;
-    height: 800px;
+    width: 700px;
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 150px;
 }
 
-.writeText{
+.boardViewText{
     font-family: 'Pretendard-Regular';
     font-weight: 600;
     font-size: 25px;
@@ -20,50 +22,75 @@
     text-align: center;
 }
 
-.categorylist{
-    border: 1px solid #a7a7a7;
-    font-family: 'Pretendard-Regular';
-    font-size: 15px;
-    padding-left: 10px;
-    width: 120px;
-    height: 30px;
-    color: #424242;;
+.profileImg{
+
 }
 
-.btitle{
-    width: 500px;
+.profileImg img{
+    width: 50px;
     height: 50px;
-    border: 1px solid #a7a7a7;
-    font-family: 'Pretendard-Regular';
-    color: #333;
-    font-size: 15px;
-    padding-left: 15px;
+    background: #f4cb49;
+    border-radius: 50px;
 }
 
-.bcontent{
-    width: 500px;
-    height: 300px;
-    border: 1px solid #a7a7a7;
+.rViewMnameBox{
+    margin-left: 20px;
+}
+.rViewMname{
     font-family: 'Pretendard-Regular';
+    font-size: 20px;
     color: #333;
-    font-size: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-    resize: none;
+    margin-left: 20px;
+    line-height: 2.5;
+}
+
+
+.rViewTitle{
+    font-family: 'Pretendard-Regular';
+    font-weight: 500;
+    font-size: 23px;
+    color: #333;
+    margin-left: 20px;
     margin-top: 10px;
-    padding-top: 15px;
 }
 
-.bfile{
-    margin-top: 10px;
+.rViewCon{
+    height: 400px;
     font-family: 'Pretendard-Regular';
+    font-size: 18px;
     color: #333;
-    font-size: 15px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding-top: 20px;
+    padding-left: 20px;
 }
 
 
-.setWriteBtn{
-    width: 80px;
+.rBtnBox{
+    float: right;
+}
+
+.returnBtn{
+    width: 100px;
+    height: 35px;
+    color: #fff;
+    background: #7e7e7e;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 14px;
+    font-weight: 200;
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.returnBtn:hover{
+    background: #494949;
+}
+
+.rDeleteBtn{
+    width: 100px;
     height: 35px;
     color: #fff;
     background: #2c2c2c;
@@ -71,17 +98,19 @@
     line-height: 2.5;
     font-size: 14px;
     font-weight: 200;
-    margin-left: 10px;
-    margin-top: 10px;
     float: right;
-    margin-bottom: 150px;
+    margin-top: 20px;
+    margin-right: 10px;
 }
 
-.setWriteBtn:hover{
+.rDeleteBtn:hover{
     background: #494949;
 }
 
+#myform{
 
+    margin-left: 20px;
+}
 
 #myform fieldset{
     display: inline-block;
@@ -95,7 +124,8 @@
     display: none;
 }
 #myform label{
-    font-size: 3em;
+    font-family: 'Pretendard-Regular';
+    font-size: 1.5em;
     color: transparent;
     text-shadow: 0 0 0 #f0f0f0;
 }

@@ -29,12 +29,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            // 인증된 요청 --> 권한키면 전체확인 어려움 추후 수정 예쩡
-//            .authorizeRequests()
-//                .antMatchers("/admin/**").hasRole("ADMIN") // 관리자는 /admin/ 링크에 모두 접근 가능
-//                .antMatchers("/member/info").hasRole("USER")
-//                .antMatchers("/**").permitAll() // 인증없이도 요청 가능 [ 모든 접근 허용 ]
-//                .and()
+             // 인증된 요청
+            .authorizeRequests()
+                .antMatchers("/admin/menu/**").hasRole("ADMIN") // 관리자는 /admin/ 링크에 모두 접근 가능
+                .antMatchers("/**" ).permitAll() // 인증없이도 요청 가능 [ 모든 접근 허용 ]
+                .and()
 
             // 로그인 페이지 보안 설정
             .formLogin()
@@ -43,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/")         //로그인 성공시 이동 페이지 URL
                 .usernameParameter("mid")       // 로그인 시 아이디로 입력받을 변수명
                 .passwordParameter("mpw")       // 로그인 시 비밀번호로 입력받을 변수명
-                .failureUrl("/error")   // 로그인 실패 시 이동할 URL
+                //.failureUrl("/error")   // 로그인 실패 시 이동할 URL
                 .and()
 
              // 페이지 권한 설정
@@ -60,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoringAntMatchers("/admin/setProduct") // 제품 등록
                 .ignoringAntMatchers("/admin/productUpdate") // 제품 수정
                 .ignoringAntMatchers("/admin/setCartList") // 장바구니 페이지
-                .ignoringAntMatchers("/admin/productPiano")
+                .ignoringAntMatchers("/admin/productPiano") // 장바구니 페이지
                 .and()
 
              // 로그아웃 설정
@@ -71,9 +70,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
 
             // 오류 발생 설정
-            .exceptionHandling()
-                .accessDeniedPage("/error") // 오류 발생 시 시큐리티 페이지 전환
-                .and()
+//            .exceptionHandling()
+//                accessDeniedPage("/error") // 오류 발생 시 시큐리티 페이지 전환
+//                .and()
         // SNS 로그인 보안 설정
                 .oauth2Login()
                 .defaultSuccessUrl("/") // 로그인 성공 시 이동할 URL
@@ -81,18 +80,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userService( memberService ); // 해당 서비스에서 정보를 전달해서 사용
     }
 
-    // 비밀번호 암호화
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-//    @Bean // 인증 [로그인]관리 메소드
-//    protected void configure(AuthenticationManagerBuilder auth ) throws Exception{
-//        auth.userDetailsService( memberService ).passwordEncoder( new BCryptPasswordEncoder() );
-//
+//    // 비밀번호 암호화
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
 //    }
-
 
 
 

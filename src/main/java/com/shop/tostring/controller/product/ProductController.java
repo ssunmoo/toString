@@ -4,8 +4,11 @@ import com.shop.tostring.domain.dto.product.PViewVo;
 import com.shop.tostring.domain.dto.product.PcategoryDto;
 import com.shop.tostring.domain.dto.product.ProductDto;
 import com.shop.tostring.service.product.ProductService;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Indexed;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -102,16 +105,22 @@ public class ProductController {
     // 장바구니 페이지
     @ResponseBody
     @PostMapping("/setCartList")
-    public PViewVo setCartList(@RequestParam("pno") int pno){
-        return productService.getCartList( pno );
+    public List<ProductDto> setCartList( @RequestBody String cartlist )  {
+
+        try {
+            JSONParser parser = new JSONParser();
+            JSONArray jsonArray = (JSONArray) parser.parse(cartlist);
+            return productService.getCartList( jsonArray );
+        }catch (Exception e ){
+            System.out.println(e);
+        }
+        return null;
     }
 
     // 피아노 카테고리 제품 출력
     @ResponseBody
     @PostMapping("/productPiano")
     public List<ProductDto> productPiano( @RequestParam("pcno") int pcno){
-        System.out.println(pcno);
-        System.out.println("////////////////////");
         return productService.productPiano(pcno);
     }
 

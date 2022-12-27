@@ -1,6 +1,5 @@
 let pno = sessionStorage.getItem( "pno" );
 
-
 // 제품 상세정보 출력
 productView()
 function productView(){
@@ -40,11 +39,26 @@ document.querySelector('.cartBtn').addEventListener( 'click', (e) =>{
         data : { "pno" : pno },
         success: re => {
             if( confirm('장바구니 페이지로 이동하시겠습니까?') ) {
-                sessionStorage.setItem( "pno", pno );
-                location.href = "/admin/getCartList";
+
+                let cartlist = []
+                let oldlist = JSON.parse( sessionStorage.getItem( "cartlist" ))
+
+                if( oldlist == null ){  cartlist.push(  pno );  sessionStorage.setItem( "cartlist", JSON.stringify(cartlist) ); }
+                else{  oldlist.push(  pno ) ;  sessionStorage.setItem( "cartlist", JSON.stringify(oldlist) );  }
+
+                 location.href = "/admin/getCartList";
             }else{
                 alert('장바구니 담기 실패');
             }
         }
     })
+})
+
+
+// 바로구매 버튼
+document.querySelector('.buyBtn').addEventListener( 'click', (e) =>{
+    if(confirm('구매하시겠습니까?')){
+        alert('구매 완료되었습니다.😊')
+        location.href = "/";
+    }
 })

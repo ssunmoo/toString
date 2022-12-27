@@ -7,6 +7,9 @@ import com.shop.tostring.domain.entity.board.BcategoryEntity;
 import com.shop.tostring.domain.entity.board.BcategoryRepository;
 import com.shop.tostring.domain.entity.board.BoardEntity;
 import com.shop.tostring.domain.entity.board.BoardRepository;
+import com.shop.tostring.domain.entity.member.MemberEntity;
+import com.shop.tostring.domain.entity.member.MemberRepository;
+import com.shop.tostring.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -35,6 +38,9 @@ public class BoardService {
 
     @Autowired
     private HttpServletResponse response; // 리스폰 선언
+
+    @Autowired
+    private MemberService memberService;
 
 
     // 1. 카테고리 등록
@@ -131,6 +137,13 @@ public class BoardService {
     // 3. 게시글 작성
     @Transactional
     public boolean setWrite(BoardDto boardDto){
+
+        // 회원정보 가져오기
+        MemberEntity memberEntity = memberService.getEntity();
+        if( memberEntity == null ){
+            return false;
+        }
+
         // 카테고리 정보를 가져와서 null 인지 확인
         Optional<BcategoryEntity> optional = bcategoryRepository.findById( boardDto.getBcno() );
         if ( !optional.isPresent() ){ // 엔티티가 없으면 false
@@ -146,6 +159,10 @@ public class BoardService {
         if( boardEntity.getBno() != 0 ){
 
             fileupload( boardDto, boardEntity );    // 업로드 함수 실행
+
+            // 회원 <-> 게시물 연관관계
+            boardEntity.setMemberEntity( memberEntity );
+            memberEntity.getBoardEntityList().add( boardEntity );
 
             // 카테고리 <-> 게시물 연관 관계 대입
             boardEntity.setBcategoryEntity( bcategoryEntity ); // 넣어주기 @Transactional 필수

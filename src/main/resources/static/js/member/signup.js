@@ -12,64 +12,76 @@ function setSignup(){
         madress : document.querySelector('.madress').value
     }
 
-    // 입력하지 않은 값이 있다면 안내 문구 출력
-    if ( info.mid == '' ) { // alert -> document 로 변경
-        document.querySelector('.check1').innerHTML = '아이디를 입력해 주세요'
-    }else if ( info.mpw == '' ) {
-        document.querySelector('.check2').innerHTML = '비밀번호를 입력해 주세요'
-    }else if ( info.mpwcheck == '' ) {
-        document.querySelector('.check3').innerHTML = '비밀번호를 입력해 주세요'
-    }else if ( info.mname == '' ) {
-        document.querySelector('.check4').innerHTML = '이름을 입력해주세요'
-    }else if ( info.mphone == '' ) {
-        document.querySelector('.check5').innerHTML = '연락처를 입력해주세요'
-    }else if ( info.memail == '' ) {
-        document.querySelector('.check6').innerHTML = '이메일을 입력해주세요'
-    }else if ( !info.mpw.includes(info.mpwcheck) ) {			// info.user_pw에 info.user_pw가 포함되어있는지 확인 [ 문자열 비교 시 ]
-        if ( info.mpw.length == info.mpwcheck.length ) {		// info.user_pw와 info.user_pw의 문자열 길이가 맞는지 확인
-            document.querySelector('.check3').innerHTML = ''
-        }else{
-            document.querySelector('.check3').innerHTML = '비밀번호가 일치하지 않습니다.'
-        }
-    }else if(  document.querySelector('.check1').innerHTML == ''
-            && document.querySelector('.check2').innerHTML == ''
-            && document.querySelector('.check3').innerHTML == ''
-            && document.querySelector('.check4').innerHTML == ''
-            && document.querySelector('.check5').innerHTML == ''
-            && document.querySelector('.check6').innerHTML == ''
-            && document.querySelector('.check8').checked == true
-            && document.querySelector('.check9').checked == true ){
-
         $.ajax({
-            url : "/member/setSignup",
-            type : "post" ,
-            data : JSON.stringify( info ) ,
-            contentType : "application/json",
-            success : re => {
-                if( re != 0 ){
+            url: "/member/setSignup",
+            type: "post",
+            data: JSON.stringify(info),
+            contentType: "application/json",
+            success: re => {
+                if (re != 0) {
                     alert("회원가입을 축하드립니다.");
-                }else {
+                } else {
                     alert("회원가입을 다시 시도해 주세요");
                 }
             }
         })
-    }
+
+    // // 입력하지 않은 값이 있다면 안내 문구 출력
+    // if ( info.mid == '' ) { // alert -> document 로 변경
+    //     document.querySelector('.check1').innerHTML = '아이디를 입력해 주세요'
+    // }else if ( info.mpw == '' ) {
+    //     document.querySelector('.check2').innerHTML = '비밀번호를 입력해 주세요'
+    // }else if ( info.mpwcheck == '' ) {
+    //     document.querySelector('.check3').innerHTML = '비밀번호를 입력해 주세요'
+    // }else if ( info.mname == '' ) {
+    //     document.querySelector('.check4').innerHTML = '이름을 입력해주세요'
+    // }else if ( info.mphone == '' ) {
+    //     document.querySelector('.check5').innerHTML = '연락처를 입력해주세요'
+    // }else if ( info.memail == '' ) {
+    //     document.querySelector('.check6').innerHTML = '이메일을 입력해주세요'
+    // }else if ( !info.mpw.includes(info.mpwcheck) ) {			// info.user_pw에 info.user_pw가 포함되어있는지 확인 [ 문자열 비교 시 ]
+    //     if ( info.mpw.length == info.mpwcheck.length ) {		// info.user_pw와 info.user_pw의 문자열 길이가 맞는지 확인
+    //         document.querySelector('.check3').innerHTML = ''
+    //     }else{
+    //         document.querySelector('.check3').innerHTML = '비밀번호가 일치하지 않습니다.'
+    //     }
+    // }else if(  document.querySelector('.check1').innerHTML == ''
+    //         && document.querySelector('.check2').innerHTML == ''
+    //         && document.querySelector('.check3').innerHTML == ''
+    //         && document.querySelector('.check4').innerHTML == ''
+    //         && document.querySelector('.check5').innerHTML == ''
+    //         && document.querySelector('.check6').innerHTML == ''
+    //         && document.querySelector('.check8').checked == true
+    //         && document.querySelector('.check9').checked == true ){
+    //     alert("2")
+    //     $.ajax({
+    //         url : "/member/setSignup",
+    //         type : "post" ,
+    //         data : JSON.stringify( info ) ,
+    //         contentType : "application/json",
+    //         success : re => {
+    //             if( re != 0 ){
+    //                 alert("회원가입을 축하드립니다.");
+    //             }else {
+    //                 alert("회원가입을 다시 시도해 주세요");
+    //             }
+    //         }
+    //     })
+    // }
 }
 
 // 유효성 검사
 
 // 1. 아이디
 function idCheck(){
-    let mid = document.querySelector('.mid').value;
+    let id = document.querySelector('.mid').value;
     let idCheckCf = new RegExp(/^[a-zA-Z가-힣]{2,20}$/);
-    console.log("아이디체크 mid : " + mid)
-    if( idCheckCf.test( mid ) ){ // 입력한 아이디가 유효성검사를 통과할 경우
+    if( idCheckCf.test(id) ){ // 입력한 아이디가 유효성검사를 통과할 경우
         $.ajax({
             url : "/member/idCheck",
             type : "get",
-            data : { "mid":mid },
-            success:re => {
-                console.log("아이디 아작스 결과 : " + re);
+            data : { "mid":id },
+            success : re => {
                 if( re == true ){
                     document.querySelector('.check1').innerHTML = '등록된 아이디입니다.';
                 }else{
@@ -162,6 +174,7 @@ function getAuth(){
         success : re => {
             auth = re; // 응답 받은 인증코드를 전역 변수에 대입
             alert("해당 이메일로 인증코드가 발송되었습니다.");
+            console.log( auth );
             document.querySelector('.getauthbtn').innerHTML = "인증코드 재발급" // 버튼의 문자 변경
             timer = 120;    // 초 단위
             setTimer();     // 타이머 함수 실행
