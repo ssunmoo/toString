@@ -1,6 +1,6 @@
 
 let bno = sessionStorage.getItem( "bno" );
-let path = "C:\\Users\\504\\IdeaProjects\\toString\\src\\main\\resources\\static\\upload\\";
+let path = "/home/ec2-user/toString/build/resources/main/static/upload/";
 let host = "http://localhost:8083/upload/";
 // 후기 게시판 상세보기
 reviewSelect()

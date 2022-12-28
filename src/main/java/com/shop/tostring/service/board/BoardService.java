@@ -64,6 +64,8 @@ public class BoardService {
 
     // [ 첨부파일 업로드 경로 ]
     String path = "C:\\Users\\504\\Desktop\\toString\\src\\main\\resources\\static\\upload\\";
+    // 리눅스 업로드 경로
+    // String path = "/home/ec2-user/toString/build/resources/main/static/upload/";
 
     // 첨부 파일 업로드 메소드
     @Transactional

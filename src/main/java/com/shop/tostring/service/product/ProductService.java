@@ -54,7 +54,8 @@ public class ProductService {
 
     // 3. 대표이미지 업로드 경로
     String productpath = "C:\\Users\\504\\Desktop\\toString\\src\\main\\resources\\static\\pImg\\";
-
+    // 리눅스 업로드 경로
+    // String productpath = "/home/ec2-user/toString/build/resources/main/static/pImg/";
     @Transactional
     public boolean pimgUpload(  ProductDto productDto, ProductEntity productEntity ){
         if( !productDto.getPimg().getOriginalFilename().equals("") ){ // 첨부파일이 있을 경우
