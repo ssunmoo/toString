@@ -21,13 +21,14 @@
 }
 
 .categorylist{
-    border: 1px solid #a7a7a7;
+    border-radius: 50px;
     font-family: 'Pretendard-Regular';
     font-size: 15px;
-    padding-left: 10px;
-    width: 120px;
-    height: 30px;
-    color: #424242;;
+    width: 130px;
+    height: 35px;
+    color: #fff;
+    background: #2c2c2c;
+    text-align: center;
 }
 
 .btitle{
@@ -61,7 +62,6 @@
     font-size: 15px;
 }
 
-
 .setWriteBtn{
     width: 80px;
     height: 35px;
@@ -82,11 +82,11 @@
 }
 
 
-
 #myform fieldset{
     display: inline-block;
     direction: rtl;
     border:0;
+    margin-bottom: 10px;
 }
 #myform fieldset legend{
     text-align: right;
@@ -95,7 +95,7 @@
     display: none;
 }
 #myform label{
-    font-size: 3em;
+    font-size: 1.5em;
     color: transparent;
     text-shadow: 0 0 0 #f0f0f0;
 }
@@ -117,4 +117,8 @@
     border-radius: 5px;
     font-size: 13px;
     resize: none;
+}
+
+.setform{
+    margin-top: 10px;
 }

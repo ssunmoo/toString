@@ -1,7 +1,13 @@
 
 let bno = sessionStorage.getItem( "bno" );
-
 // 후기 게시판 상세보기
+
+// 수정하기 버튼 클릭 시 수정 페이지 이동
+function rUpdateBtn( bno ){
+    sessionStorage.setItem( "bno", bno );
+    location.href = "/board/rListPut";
+}
+
 reviewSelect()
 function reviewSelect(){
 
@@ -35,7 +41,7 @@ function reviewSelect(){
                 + '</div>'
                 + '<div class="rViewTitle">'+re.btitle+'</div>'
                 + '<div class="rViewCon">'+re.bcontent+'</div>'
-                + '<div><img src="/upload/'+re.bfilename+'"></div>'; // 이미지 경로 수정
+                // + '<div><img src="/upload/'+re.bfilename+'"></div>'; // 이미지 경로 수정
             document.querySelector('.rlist').innerHTML = html;
 
             if( re.bstar === 5 ){
@@ -54,11 +60,6 @@ function reviewSelect(){
     })
 }
 
-// 본인일때만 버튼 생성
-function btnCreate(){
-
-}
-
 // 후기 게시판 게시글 삭제
 function rDelete(){
     $.ajax({
@@ -71,10 +72,4 @@ function rDelete(){
             }
         }
     })
-}
-
-// 수정하기 버튼 클릭 시 수정 페이지 이동
-function rUpdateBtn( bno ){
-    sessionStorage.setItem( "bno", bno );
-    location.href = "/board/rListPut";
 }

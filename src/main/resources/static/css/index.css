@@ -132,3 +132,9 @@ body::-webkit-scrollbar {
     width: 500px;
     background: #b7b7b7;
 }
+
+.videoBox{
+    margin: 100px 0;
+    display: flex;
+    justify-content: space-between;
+}

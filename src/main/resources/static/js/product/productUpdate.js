@@ -5,7 +5,7 @@ function pcategoryList(){
         url : "/admin/pcategoryList",
         type : "get",
         success: re => {
-            let phtml = '<option selected="selected">선택</option>';
+            let phtml = '<option selected="selected">선택 ▾</option>';
             re.forEach( (p) =>{
                 phtml += '<option value="'+p.pcno+'">'+ p.pcname +'</option>';
             })
@@ -51,18 +51,17 @@ function productView(pno){
         type : "get",
         data : {"pno" : pno },
         success: re => {
-            let productList = re.productDtoList[0]
-            let psizeList = re.psizeDtoList[0]
-            let pstockList = re.pstockDtoList[0]
+            console.log( re )
+            let productList = re.productDtoList
             console.log(productList.pimgname)
             console.log(productList.pname)
             document.querySelector('.pname').value = productList.pname;
             document.querySelector('.pprice').value = productList.pprice;
             document.querySelector('.pdiscount').value = productList.pdiscount;
             document.querySelector('.pactive').value = productList.pactive;
-            document.querySelector('.psize').value = psizeList.psize;
-            document.querySelector('.pcolor').value = pstockList.pcolor;
-            document.querySelector('.pstock').value = pstockList.pstock;
+            document.querySelector('.psize').value = productList.psize;
+            document.querySelector('.pcolor').value = productList.pcolor;
+            document.querySelector('.pstock').value = productList.pstock;
             document.querySelector('.imgView').src = "/pImg/"+productList.pimgname;
         }
     })
@@ -86,7 +85,7 @@ pimg.addEventListener('change', (e) =>{
 function productUpdate(){
     let setform = document.querySelector('.setform');
     let formdata = new FormData( setform );
-    formdata.set("pcno", pcno ); // 제품 카테고리 값 넣기
+    formdata.set("pno", pno ); // 제품 번호 넣기
 
     $.ajax({
         url : "/admin/productUpdate",
@@ -97,6 +96,7 @@ function productUpdate(){
         success: re => {
             if( re == true ){
                 alert('제품 수정이 완료되었습니다');
+                location.href="/";
             }else {
                 alert('제품 수정이 실패하였습니다.');
             }

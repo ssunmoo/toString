@@ -155,18 +155,10 @@ public class ProductService {
     // 7. 제품 수정
     @Transactional
     public boolean productUpdate ( ProductDto productDto ) {
-
         // pk 번호로 제품 찾기
         Optional<ProductEntity> optional = productRepository.findById(productDto.getPno());
         if (optional.isPresent()) {
             ProductEntity productEntity = optional.get();
-            System.out.println(productEntity);
-
-//            // 2. 사이즈 레코드 생성
-//            PsizeEntity psizeEntity = psizeRepository.save(productDto.toSizeEntity());
-//            // 3. 컬러, 재고 레코드 생성
-//            PstockEntity pstockEntity = pstockRepository.save(productDto.toStockEntity());
-
             // 1. 수정할 첨부파일이 있을 때 : 기존 파일 삭제 후 새로 업로드
             if( !productDto.getPimg().getOriginalFilename().equals("") ){       // 수정할 정보
                 if( productEntity.getPimg() != null ){    // 기존 첨부파일 있을 떄
@@ -181,7 +173,6 @@ public class ProductService {
             productEntity.setPactive( productDto.getPactive() );
             productEntity.setPdiscount( productDto.getPdiscount() );
             productEntity.setPprice( productDto.getPprice() );
-
             return true;
         } else{
             return false;

@@ -1,6 +1,5 @@
-
 let bno = sessionStorage.getItem( "bno" );
-alert("게시글번호 : " + bno);
+let bcno = 0;
 
 // 1. 카테고리 출력
 bcategorylist()
@@ -9,7 +8,7 @@ function bcategorylist(){
         url : "/board/bcategorylist",
         type : "get",
         success: re => {
-            let html = '<option selected="selected"> 선택 </option> ';
+            let html = '<option selected="selected"> 선택 ▾</option> ';
             re.forEach( (b) => {
                 html += '<option value="'+b.bcno+'">'+b.bcname+'</option> '
             })
@@ -31,20 +30,20 @@ function reviewSelect(){
         type : "get",
         data : { "bno" : bno },
         success: re => {
+            console.log(re)
             document.querySelector('.btitle').value = re.btitle;
             document.querySelector('.bcontent').value = re.bcontent;
-            document.querySelector('.bfile').value = re.bfile;
+            document.querySelector('.rfileImg').src = "/upload/" + re.bfilename;
+            ;
         }
     })
 }
 
 // 후기 게시판 게시글 수정
 function rUpdate(){
-
     let updateform = document.querySelector('.updateform');
-    // console.log(setform)
     let formdata = new FormData( updateform );
-    formdata.set("bcno", bcno ); // 카테고리 값 넣기
+    formdata.set("bno", bno ); // 게시글 번호 넣기
 
     $.ajax({
         url : "/board/rUpdate",
@@ -55,6 +54,7 @@ function rUpdate(){
         success: re => {
             if( re == true ){
                 alert('게시글 수정이 완료되었습니다');
+                // location.href="/board/rList";
             }else {
                 alert('게시글 수정이 실패하였습니다.');
             }

@@ -16,7 +16,7 @@
     width: 700px;
     padding-top: 100px;
     padding-bottom: 150px;
-    height: 650px;
+    height: 100%;
 }
 
 .boardWBtn{
@@ -114,3 +114,6 @@
     padding: 5px;
 }
 
+.listBox{
+    margin-bottom: 150px;
+}

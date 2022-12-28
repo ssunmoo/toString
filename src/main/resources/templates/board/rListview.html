@@ -14,14 +14,13 @@
     <div layout:fragment="content" class="content">
         <div class="boardViewBox">
             <div class="boardViewText">
-                후기 상세 게시판
             </div>
             <div>
                 <div class="rlist">
                 </div>
                 <div class="rBtnBox">
                     <button onclick="rDelete()" class="rDeleteBtn"> 삭제 </button>
-                    <button class="returnBtn"><a href="/board/rList">뒤로가기</a></button>
+                    <button class="returnBtn" onclick="rUpdateBtn(bno)"> 수정 </button>
                 </div>
             </div>
         </div>

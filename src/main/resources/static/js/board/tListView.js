@@ -1,6 +1,5 @@
 
 let bno = sessionStorage.getItem( "bno" );
-alert("게시글번호 : " + bno);
 let path = "C:\\Users\\504\\IdeaProjects\\toString\\src\\main\\resources\\static\\upload\\";
 let host = "http://localhost:8083/upload/";
 // 후기 게시판 상세보기

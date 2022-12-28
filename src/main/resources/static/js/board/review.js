@@ -29,7 +29,7 @@ function boardList( bcno, page ){
                 html += '<div class="boardText">'
                     + '<span class="boardNum">'+r.bno+'</span>'
                     + '<span onclick="getView('+r.bno+')" class="boardTitle">'+r.btitle+'</span>'
-                    + '<span class="boardMem">작성자</span>'
+                    + '<span class="boardMem">'+r.mname+' 님</span>'
                     // + '<div>'+r.bview+'</div>'
                     + '</div>';
             });

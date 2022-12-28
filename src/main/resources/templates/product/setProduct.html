@@ -12,66 +12,70 @@
 
     <div layout:fragment="content" class="content">
         <div class="setProductBox">
-            <div class="setProductCon">
-                <div class="setProductTitle"> 상품 등록페이지 </div>
+            <div class="setProductTile">
+                상품 등록페이지
+            </div>
+
+            <div>
+                <div class="setPcategoryBox">
+                    <div class="pcbox1">
+                        <span class="setPcategoryText">카테고리 등록</span>
+                        <input type="text" name="pcname" class="pcname">
+                        <button onclick="setPcategory()" class="setPcategoryBtn"> 등록 </button>
+                    </div>
+                    <div class="pcbox2">
+                        <span class="setPcategoryText">카테고리 선택</span>
+                        <select class="pcategoryList">
+                        </select>
+                    </div>
+                </div>
                 <div>
-                    <div class="setPcategoryBox">
-                        <div class="pcbox1">
-                            <span class="setPcategoryText">카테고리 등록</span>
-                            <input type="text" name="pcname" class="pcname">
-                            <button onclick="setPcategory()" class="setPcategoryBtn"> 등록 </button>
+                    <form class="setform" method="post">
+                        <div>
+                            <span class="setProductText">상품명</span>
+                            <input type="text" name="pname" class="pname">
                         </div>
-                        <div class="pcbox2">
-                            <span class="setPcategoryText">카테고리 선택</span>
-                            <select class="pcategoryList">
+                        <div>
+                            <span class="setProductText">판매가</span>
+                            <input type="text" name="pprice" class="pprice">
+                        </div>
+                        <div>
+                            <span class="setProductText">할인율</span>
+                            <input type="text" name="pdiscount" class="pdiscount">
+                        </div>
+                        <div>
+                            <span class="setProductText">판매상태</span>
+                            <select name="pactive" class="pactive">
+                                <option>선택 ▾</option>
+                                <option value="1">판매중</option>
+                                <option value="0">상품준비중</option>
                             </select>
                         </div>
-                    </div>
-                    <div>
-                        <form class="setform" method="post">
-                            <div>
-                                <span class="setProductText">상품명</span>
-                                <input type="text" name="pname" class="pname">
+                        <div>
+                            <span class="setProductText">사이즈</span>
+                            <input type="text" name="psize" class="psize">
+                        </div>
+                        <div>
+                            <span class="setProductText">색상</span>
+                            <input type="text" name="pcolor" class="pcolor">
+                        </div>
+                        <div>
+                            <span class="setProductText">재고수량</span>
+                            <input type="text" name="pstock" class="pstock">
+                        </div>
+                        <div>
+                            <span class="setProductText">대표이미지</span>
+                            <input type="file" name="pimg" class="pimg">
+                             <div>
+                                <img src="" class="imgView">
                             </div>
-                            <div>
-                                <span class="setProductText">판매가</span>
-                                <input type="text" name="pprice" class="pprice">
-                            </div>
-                            <div>
-                                <span class="setProductText">할인율</span>
-                                <input type="text" name="pdiscount" class="pdiscount">
-                            </div>
-                            <div>
-                                <span class="setProductText">판매상태</span>
-                                <select name="pactive" class="pactive">
-                                    <option>선택 ▾</option>
-                                    <option value="1">판매중</option>
-                                    <option value="0">상품준비중</option>
-                                </select>
-                            </div>
-                            <div>
-                                <span class="setProductText">사이즈</span>
-                                <input type="text" name="psize" class="psize">
-                            </div>
-                            <div>
-                                <span class="setProductText">색상</span>
-                                <input type="text" name="pcolor" class="pcolor">
-                            </div>
-                            <div>
-                                <span class="setProductText">재고수량</span>
-                                <input type="text" name="pstock" class="pstock">
-                            </div>
-                            <div>
-                                <span class="setProductText">대표이미지</span>
-                                <input type="file" name="pimg" class="pimg">
-                                <button type="button" onclick="setProduct()" class="setProductbtn"> 등록 </button>
-                                <div>
-                                    <img src="" class="imgView">
-                                </div>
-                            </div>
-                        </form>
+                        </div>
+                        <div>
+                            <button type="button" onclick="setProduct()" class="setProductbtn"> 등록 </button>
 
-                    </div>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>

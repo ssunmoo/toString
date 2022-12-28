@@ -55,6 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoringAntMatchers("/board/setBcategory") // 게시판 카테고리 등록
                 .ignoringAntMatchers("/board/setWrite") // 게시글 작성
                 .ignoringAntMatchers("/board/rUpdate") // 게시글 수정
+                .ignoringAntMatchers("/board/rDelete") // 게시글 삭제
                 .ignoringAntMatchers("/admin/setPcategory") // 제품 카테고리등록
                 .ignoringAntMatchers("/admin/setProduct") // 제품 등록
                 .ignoringAntMatchers("/admin/productUpdate") // 제품 수정

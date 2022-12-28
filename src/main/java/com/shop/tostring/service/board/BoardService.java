@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-
 @Service
 public class BoardService {
 
@@ -64,7 +63,7 @@ public class BoardService {
 
 
     // [ 첨부파일 업로드 경로 ]
-    String path = "C:\\Users\\504\\IdeaProjects\\toString\\src\\main\\resources\\static\\upload\\";
+    String path = "C:\\Users\\504\\Desktop\\toString\\src\\main\\resources\\static\\upload\\";
 
     // 첨부 파일 업로드 메소드
     @Transactional
@@ -152,12 +151,9 @@ public class BoardService {
         BcategoryEntity bcategoryEntity = optional.get(); // 가져온 카테고리번호&이름 넣기
         // 저장하기 dto->entity
         BoardEntity boardEntity = boardRepository.save( boardDto.toBoardEntity() ); // boardEntity 생성 FK 생성 전
-        System.out.println(boardEntity);
-//        boardEntity.getBcategoryEntity().setBcno(boardDto.getBcno());
 
         // 게시글번호를 가져왔을때 0이 아니면 실행
         if( boardEntity.getBno() != 0 ){
-
             fileupload( boardDto, boardEntity );    // 업로드 함수 실행
 
             // 회원 <-> 게시물 연관관계
@@ -233,11 +229,11 @@ public class BoardService {
     }
 
     // 후기 게시판 게시글 수정
+    @Transactional
     public boolean rUpdate( BoardDto boardDto ){
         Optional<BoardEntity> optional = boardRepository.findById(boardDto.getBno());
         if( optional.isPresent() ){
             BoardEntity boardEntity = optional.get();
-            
             // 첨부파일 수정 관련
             if( !boardDto.getBfile().getOriginalFilename().equals("") ){ // dto에 파일이 있고
                 if( boardEntity.getBfile() != null ){ // 엔티티에 첨부파일이 있으면
@@ -250,6 +246,9 @@ public class BoardService {
             }
             boardEntity.setBtitle( boardDto.getBtitle() );
             boardEntity.setBcontent( boardDto.getBcontent() );
+            boardEntity.setBstar( boardDto.getBstar() );
+            System.out.println("수정 서비스 데이터");
+            System.out.println(boardEntity);
             return true;
         }else {
             return false;
@@ -275,14 +274,6 @@ public class BoardService {
             return false;
         }
     }
-
-//    // 시연영상 게시판
-//    public List<BoardDto> testingList(){
-//        return false;
-//    }
-
-
-
 
 
 
