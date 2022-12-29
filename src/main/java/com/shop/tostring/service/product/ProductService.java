@@ -78,6 +78,7 @@ public class ProductService {
         }
     }
 
+
     // 4. 제품 등록
     @Transactional
     public boolean setProduct(ProductDto productDto){
