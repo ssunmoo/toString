@@ -7,7 +7,6 @@
 .footer{
     height: 170px;
     background: #333;
-
 }
 
 .footerBox{
@@ -32,6 +31,7 @@
     padding-top: 50px;
     padding-left: 30px;
 }
+
 .fContent div:nth-child(1){
     margin-bottom: 15px;
 }
