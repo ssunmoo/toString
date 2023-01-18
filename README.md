@@ -1,5 +1,6 @@
 # 🎻 toString
 - 스프링 부트를 이용한 악기 쇼핑몰 웹사이트  
+- AWS 배포 링크 : http://ec2-3-36-115-141.ap-northeast-2.compute.amazonaws.com:8083/
 
 <br>
 
