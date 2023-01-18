@@ -13,13 +13,15 @@ function cartList(){
         data : JSON.stringify(cartlist),
         contentType: "application/json",
         success: re => {
-            console.log(re)
             let cartProduct = re.productDtoList;
+            console.log(cartProduct)
+            console.log("-----")
+            console.log(cartProduct.pimgname)
             let cartHtml = '';
             re.forEach( cartProduct => {
                 cartHtml += '<tr class="cartProductList">'
                 + '<td><input type="checkbox" class="checkBoxBtn" name="checkBoxBtn"></td>'
-                + '<td><img src="/pImg/" class="cartImg"></td>'
+                + '<td><img src="/pImg/'+ cartProduct.pimgname +'" class="cartImg"></td>'
                 + '<td class="cartPname">'+cartProduct.pname+'</td>'
                 + '<td class="cartSize">'+cartProduct.psize+'</td>'
                 + '<td class="cartOption">1개</td>'
